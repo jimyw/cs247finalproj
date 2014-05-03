@@ -5,6 +5,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var handlebars = require('express3-handlebars');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -26,8 +27,11 @@ app.set('port', process.env.PORT || 3000); // method 1
 
 
 // view engine setup
+app.engine('handlebars', handlebars());
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
+app.set('view engine', 'handlebars');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hjs');
 
 app.use(favicon());
 app.use(logger('dev'));
