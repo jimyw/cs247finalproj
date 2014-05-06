@@ -27,7 +27,7 @@ app.set('port', process.env.PORT || 3000); // method 1
 
 
 // view engine setup
-app.engine('handlebars', handlebars());
+app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 // app.set('views', path.join(__dirname, 'views'));
@@ -41,7 +41,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', routes.index);
 app.use('/users', users);
 
 /// catch 404 and forwarding to error handler
