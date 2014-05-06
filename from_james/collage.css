@@ -5,16 +5,40 @@ body {
 
 .wrapper {
 	position: relative;
+	width: 200px;
+	height:200px;
 }
 
 .wrapper img {
 	position: absolute;
-	left: 100px;
-	top: 100px;
-	width: 260px;
-	height:400px;
+	width: 200px;
+	height:200px;
 }
 
-.transparent {
+.wrapper form {
+	position: absolute;
+	left: 20px;
+	top: 120px;
+	width: 80px;
+	height:30px;
+	z-index: 2;
+}
+
+.overlay {
+	z-index: 1;
+	width: 200px;
+	height: 200px;
 	opacity: 0.4;
+}
+
+.rotate-right {
+	-webkit-transform:rotate(90deg);
+}
+
+.rotate-over {
+	-webkit-transform:rotate(180deg);
+}
+
+.rotate-left {
+	-webkit-transform:rotate(270deg);
 }
