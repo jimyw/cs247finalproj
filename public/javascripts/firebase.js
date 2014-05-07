@@ -1,12 +1,12 @@
 /* Include your Firebase link here!*/
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 var fb = new Firebase(fb_link);
-var fb_collage_id = 'jp20g3hxgvi';
-// var tile_list;
-// var fb_tile_id = '14vuynqxgvi';
+var fb_collage_id = 'zipycc5l8fr';
+var fb_tile_id = '';  //oivqj6vfgvi
 
 $(document).ready(function(){
   initialize_page();
+  tileListener();
 });
 
 function initialize_page() {
@@ -92,19 +92,36 @@ function show(snap) {
    $('pre').text(JSON.stringify(snap.val(), null, 2));
 }
 
+function tileListener() {
+  $(".tile").click(function(e) {
+    fb_tile_id = $(this).attr("id");
+    // get simplecam
+    console.log(fb_tile_id);
+  })
+}
+
 function displayPage(tile_list) {
   console.log('displayPage')
   console.log(tile_list);
   var numTiles = tile_list.length;
 
+  var tile_list1 = new Array();
+  var tile_list2 = new Array();
+
+  // separate the tiles into top row and bottom row
   for (key in tile_list) {
-    console.log(tile_list[key]);
+    if (key % 2 == 0) {
+      tile_list1.push(tile_list[key]);
+    } else {
+      tile_list2.push(tile_list[key]);
+    }
   }
 
-  // var tileList = new Array;
-  var template = Handlebars.compile($("#tile-template").html());
-  Handlebars.registerPartial("tileItem", $("#tile-partial").html());
-  console.log(template(tile_list));
-  template(tile_list);
+  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <img src="{{photo}}" class="overlay"> <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post"> </form> </div> </td>'; 
+  var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> '; 
+  var data1 = {tile_list:tile_list1};
+  includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")
+  var data2 = {tile_list:tile_list2};
+  includeHandlebarsTemplate(partial, wrapper, "tileItem",  data2, "#row2")
 
 }
