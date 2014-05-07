@@ -2,11 +2,13 @@
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 var fb = new Firebase(fb_link);
 var numTiles = 12;
-var fb_collage_id = '1f5ern3ik9';
+var fb_collage_id = 'jp20g3hxgvi';
 var tile_list;
+// var fb_tile_id = '14vuynqxgvi';
+
 
 $(document).ready(function(){
-  initialize_collage();
+  // initialize_collage();
   load_collage();
 });
 
@@ -20,12 +22,12 @@ function initialize_collage() {
     var fb_tile_id = Math.random().toString(36).substring(7)
     var fb_new_tile = fb_new_collage.child('Tile').child(fb_tile_id);  // create numTiles
 
-    fb_new_tile.push({
-      'name': 'test', 
-      'email': 'test', 
-      'photo':'test',
-      'video':'test',
-      'text':'test'
+    fb_new_tile.set({
+      'name': '', 
+      'email': '', 
+      'photo':'',
+      'video':'',
+      'text':''
     })
     // for every tile, there is a user and a stream
     // var fb_users = fb_new_tile.child('users'); 
@@ -41,18 +43,21 @@ function load_collage() {
     // console.log(tile_list)
     show(snap);
     // return tile_list
-    // tileIsDone(tile_list,'02xjhh0k9');
   });
 }
 
 // returns true if tile is already filled (i.e. has valid photo)
-function tileIsDone(tile_list, fb_tile_id) {
+function tileIsDone(fb_tile_id) {
   var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
   tile_instance.once('value', function(snap) {
-    console.log(snap.val().name);
+    var tile = snap.val();  // dictionary
+    if (tile.photo && tile.name) {   // if tile is filled
+      return true;
+    } else {
+      return false;
+    }
   })
 }
-
 
 function updateTile(fb_tile_id, json_data) {
   var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
