@@ -14,6 +14,51 @@
   </body>
 </html> --}}
 
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-    <pre>?</pre>
+
+{{!-- <pre>?</pre> --}}
+
+<p>Choose a tile and upload a photo!</p>
+<p>Notes: Upon loading of this page, we need to check collageID to see which tiles are already filled, then fill in those images, and remove form element for those tiles.</p>
+<table id="collage_table">
+  <tr>
+    <td>
+      <div class="wrapper" id="tile1">
+          <img src="/images/photo1.jpg" class="overlay rotate-right">
+          <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
+            <p><input name="photo" type="file"/></p>
+            <p><input type="submit"/></p>
+          </form>
+      </div>
+    </td>
+    <td>
+      <div class="wrapper" id="tile2">
+          <img src="/images/photo1.jpg" class="overlay rotate-over">
+          <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
+            <p><input name="photo" type="file"/></p>
+            <p><input type="submit"/></p>
+          </form>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="wrapper" id="tile3">
+          <img src="/images/photo1.jpg" class="overlay">
+          <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
+            <p><input name="photo" type="file"/></p>
+            <p><input type="submit"/></p>
+          </form>
+      </div>
+    </td>
+    <td>
+      <div class="wrapper" id="tile4">
+          <img src="/images/photo1.jpg" class="overlay rotate-left">
+          <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
+            <p><input name="photo" type="file"/></p>
+            <p><input type="submit"/></p>
+          </form>
+        </div>
+    </td>
+  </tr>
+
+</table>
