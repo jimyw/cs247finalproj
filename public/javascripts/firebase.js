@@ -93,11 +93,13 @@ function show(snap) {
 }
 
 function tileListener() {
+  console.log('tileListener')
+  console.log($(".tile"))
   $(".tile").click(function(e) {
     fb_tile_id = $(this).attr("id");
     // get simplecam
     console.log(fb_tile_id);
-  })
+  });
 }
 
 function displayPage(tile_list) {
@@ -117,7 +119,7 @@ function displayPage(tile_list) {
     }
   }
 
-  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <img src="{{photo}}" class="overlay"> <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post"> </form> </div> </td>'; 
+  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <img src="{{photo}}" class="overlay"></div> </td>'; 
   var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> '; 
   var data1 = {tile_list:tile_list1};
   includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")

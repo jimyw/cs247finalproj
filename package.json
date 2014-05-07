@@ -20,5 +20,16 @@
     "chai": "*",
     "sinon": "*",
     "supervisor": "*"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-shell": "^0.7.0",
+    "grunt-express-server": "^0.4.17",
+    "grunt-nodemon": "^0.2.1",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-shell-spawn": "^0.3.0"
   }
 }
