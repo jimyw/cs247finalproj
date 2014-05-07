@@ -10,5 +10,16 @@
 
 
 exports.index = function(req, res) {
-	res.render('index', { title: 'Express' });
+	console.log('index')
+	res.render('index', { title: 'Card Collage' });
+}
+
+exports.simplecam = function(req, res) {
+	console.log('picture')
+	res.render('simplecam', { title: 'Simplecam' });
+}
+
+exports.picture = function(req, res) {
+	console.log('picture')
+	res.render('picture', { title: 'complex cam' });
 }

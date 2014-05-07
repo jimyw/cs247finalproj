@@ -19,11 +19,12 @@
 
 <p>Choose a tile and upload a photo!</p>
 <p>Notes: Upon loading of this page, we need to check collageID to see which tiles are already filled, then fill in those images, and remove form element for those tiles.</p>
+
 <table id="collage_table">
   <tr>
     <td>
       <div class="wrapper" id="tile1">
-          <img src="/images/photo1.jpg" class="overlay rotate-right">
+          <img src="/images/photo1.jpg" class="overlay">
           <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
             <p><input name="photo" type="file"/></p>
             <p><input type="submit"/></p>
@@ -32,7 +33,7 @@
     </td>
     <td>
       <div class="wrapper" id="tile2">
-          <img src="/images/photo1.jpg" class="overlay rotate-over">
+          <img src="/images/photo2.jpg" class="overlay">
           <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
             <p><input name="photo" type="file"/></p>
             <p><input type="submit"/></p>
@@ -43,7 +44,7 @@
   <tr>
     <td>
       <div class="wrapper" id="tile3">
-          <img src="/images/photo1.jpg" class="overlay">
+          <img src="/images/photo3.jpg" class="overlay">
           <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
             <p><input name="photo" type="file"/></p>
             <p><input type="submit"/></p>
@@ -52,13 +53,36 @@
     </td>
     <td>
       <div class="wrapper" id="tile4">
-          <img src="/images/photo1.jpg" class="overlay rotate-left">
+          <img src="/images/photo4.jpg" class="overlay">
           <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
             <p><input name="photo" type="file"/></p>
             <p><input type="submit"/></p>
           </form>
-        </div>
+      </div>
     </td>
   </tr>
+</table>
 
+
+<script id="tile-template" type="text/x-handlebars-template">
+{{#each tile_list}}
+  {{> tileItem}}
+{{/each}}
+</script>
+ 
+<table> 
+<tr>
+<script id="tile-partial" type="text/x-handlebars-template">
+  <p> Number of tiles is {{photo}}.</p>
+  <td>
+      <div class="wrapper" id="{{fb_tile_id}}">
+          <img src="{{photo}}" class="overlay">
+          <form accept-charset="UTF-8" action="non-exist" enctype="multipart/form-data" method="post">
+            <p><input name="photo" type="file"/></p>
+            <p><input type="submit"/></p>
+          </form>
+      </div>
+  </td>
+</script>
+</tr>
 </table>
