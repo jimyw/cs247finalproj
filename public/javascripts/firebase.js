@@ -3,12 +3,14 @@
 /* Include your Firebase link here!*/
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 var fb = new Firebase(fb_link);
-var fb_collage_id = 'zipycc5l8fr';
-var fb_tile_id = '';  //oivqj6vfgvi
+var fb_collage_id = 'yxha3e4s4i';
+var fb_tile_id = 'ka0thtihpvi';  
 var loadDirect = true;
 
 $(document).ready(function(){
   initialize_page();
+  tileIsDone(fb_tile_id)
+  var pp = getTilePhoto(fb, fb_collage_id, fb_tile_id);
 });
 
 function initialize_page() {
@@ -44,7 +46,7 @@ function initialize_collage() {
       'name': '', 
       'email': '', 
       'photo':'/images/'+photoArray[j],
-      'default_hoto':'/images/'+photoArray[j],
+      'default_photo':'/images/'+photoArray[j],
       'video':'',
       'audio':'',
       'text':'',
@@ -90,6 +92,7 @@ function tileIsDone(fb_tile_id) {
   var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
   tile_instance.once('value', function(snap) {
     var tile = snap.val();  // dictionary
+    console.log(tile);
     if (tile.filled) {   // if tile is filled
       return true;
     } else {
@@ -148,9 +151,7 @@ function displayPage(tile_list) {
   }
 
 
-
-
-  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> <img src="{{photo}}" class="overlay"> </a> </div> </td>'; 
+  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flip"> {{else}} <img src="{{photo}}" class="overlay"> {{/if}} </a> </div> </td>';
   var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> ';
   var data1 = {tile_list:tile_list1};
   includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")
