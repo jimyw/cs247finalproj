@@ -1,5 +1,10 @@
 var Firebase = require('firebase');
+var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 
+// get firebase tile instance
+function getTileInstance(fb, fb_collage_id, fb_tile_id) {
+	return fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+}
 
 
 exports.index = function(req, res) {
@@ -10,11 +15,12 @@ exports.index = function(req, res) {
 exports.simplecam = function(req, res) {
 	console.log('simplecam')
 	// Connect to firebase
-	var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
+	
 	var fb = new Firebase(fb_link);
 	var fb_collage_id = req.query.fb_collage_id;
 	var fb_tile_id = req.query.fb_tile_id;
-	var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+	var tile_instance = getTileInstance(fb, fb_collage_id, fb_tile_id);
+	// var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
 
 	var res_data = { title: 'Simplecam', fb_collage_id: req.query.fb_collage_id, fb_tile_id: req.query.fb_tile_id };
 
@@ -46,4 +52,26 @@ exports.personalmsg = function(req, res) {
 	console.log('personalmsg')
 	console.log(req.query);
 	res.render('personalmsg', { title: 'complex cam', fb_collage_id: req.query.fb_collage_id, fb_tile_id: req.query.fb_tile_id});
+}
+
+function onComplete() {
+	res.redirect('/#'+params.fb_collage_id);
+}
+
+exports.postVideo = function (req, res) {
+	console.log('postVideo');
+	params = req.body;
+	console.log(params);
+	var fb = new Firebase(fb_link);
+	var fb_collage_id = params.fb_collage_id;
+	var fb_tile_id = params.fb_tile_id;
+	var audioURL = params.audio;
+	var videoURL = params.video;
+	var text = params.textmsg;
+	var tile_instance = getTileInstance(fb, fb_collage_id, fb_tile_id);
+	var json_data = {audio: audioURL, video: videoURL, text:text};
+	tile_instance.update(json_data, function() {
+		// on complete
+		res.redirect('/#'+params.fb_collage_id);
+	});
 }

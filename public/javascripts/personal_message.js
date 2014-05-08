@@ -3,14 +3,14 @@
 
 (function() {
 
-  var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
-  var fb = new Firebase(fb_link);
-  var fb_collage_id;
-  var fb_tile_id;
+  // var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
+  // var fb = new Firebase(fb_link);
+  // var fb_collage_id;
+  // var fb_tile_id;
 
 
   var cur_video_blob = null;
-  var fb_instance;
+  // var fb_instance;
   var mediaRecorder;
   var filter_class = "none";
   var ready = 0;
@@ -75,9 +75,10 @@
     $("#start_recording").click(function (){   
       if(ready == 2){
         // update ids here, because page loads too slowly
-        fb_collage_id = $("#fb_collage_id").html();
-        fb_tile_id = $("#fb_tile_id").html();
-        console.log(fb_tile_id);
+        // fb_collage_id = $("#fb_collage_id").html();
+        // fb_tile_id = $("#fb_tile_id").html();
+        // console.log(fb_tile_id);
+        
         record_audio_and_video();
 
         $("#audio_link").html("");        
@@ -98,16 +99,23 @@
         $("#audio_link").append("<audio id='audio' src='"+audioURL+"'></audio>")
 
         // updating firebase
-        var json_data = {audio: audioURL};
-        updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+        // var json_data = {audio: audioURL};
+        // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
+        // update the form element
+        $("#audio_form").val(audioURL);
 
       });
+
       recordRTC_Video.stopRecording(function(videoURL) {
         $("#video_link").append("<video id='replay' src='"+videoURL+"'></video>")
 
         // updating firebase
-        var json_data = {video: videoURL, text: textbox_text};
-        updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+        // var json_data = {video: videoURL, text: textbox_text};
+        // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
+        // update the form element
+        $("#video_form").val(videoURL);
 
       });
 

@@ -47,6 +47,7 @@ app.get('/', routes.index);
 app.get('/simplecam', index.simplecam);
 app.get('/picture', index.picture);
 app.get('/personalmsg', index.personalmsg);
+app.post('/postVideo', index.postVideo);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

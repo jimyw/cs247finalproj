@@ -5,10 +5,19 @@
 <div><button class="button" id="start_recording">Start Recording Video</button></div>
 <div><button class="button" id="stop_recording">Stop Recording Video</button></div>
 <div id="conversation"></div>
-<div id="submission">
+{{!-- <div id="submission">
   <input type="text" id="textbox" placeholder="And put your text message here..">
+</div> --}}
+<div>
+<form name="input" id="submission" action="/postVideo" method="post">
+	<input type="text" name="textmsg" id="textbox" placeholder="And put your text message here..">
+	<input type="hidden" name="fb_collage_id" value="{{fb_collage_id}}">
+	<input type="hidden" name="fb_tile_id" value="{{fb_tile_id}}">
+	<input type="hidden" id="video_form" name="video" value="">
+	<input type="hidden" id="audio_form" name="audio" value="">
+	<button type="submit" class="button" id="finish">Finish!</button>
+</form>
 </div>
-<div><button class="button" id="finish">Finish!</button></div>
 <div id="webcam_stream"></div>
 <div id="video_container"></div>
 <div id="audio_link"></div>
