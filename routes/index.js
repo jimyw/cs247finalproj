@@ -26,5 +26,7 @@ exports.picture = function(req, res) {
 }
 
 exports.personalmsg = function(req, res) {
-	res.render('personalmsg', { title: 'complex cam' });
+	console.log('personalmsg')
+	console.log(req.query);
+	res.render('personalmsg', { title: 'complex cam', fb_collage_id: req.query.fb_collage_id, fb_tile_id: req.query.fb_tile_id});
 }

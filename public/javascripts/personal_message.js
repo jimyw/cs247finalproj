@@ -3,6 +3,12 @@
 
 (function() {
 
+  var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
+  var fb = new Firebase(fb_link);
+  var fb_collage_id;
+  var fb_tile_id;
+
+
   var cur_video_blob = null;
   var fb_instance;
   var mediaRecorder;
@@ -60,32 +66,45 @@
     //Start recording button touched
     $("#start_recording").click(function (){   
       if(ready == 2){
+        // update ids here, because page loads too slowly
+        fb_collage_id = $("#fb_collage_id").html();
+        fb_tile_id = $("#fb_tile_id").html();
+
         record_audio_and_video();
+        $(this).hide();
       }else{
         $("#status").html("Need to enable both microphone and camera to record a message");
       }
-      $(this).remove();
     });
 
     //Stop recording button touched
     $("#stop_recording").click(function (){
       recordRTC_Audio.stopRecording(function(audioURL) {
         //$("#audio_link").append("<a href='"+audioURL+"'' target='_blank'>"+audioURL+"</a>")
-        console.log(audioURL);
+        // console.log('audio url '+audioURL);
         $("#audio_link").append("<audio id='audio' src='"+audioURL+"'></audio>")
+
+        // updating firebase
+        var json_data = {audio: audioURL};
+        updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
       });
       recordRTC_Video.stopRecording(function(videoURL) {
-        $("#video_link").append("<video id='video' src='"+videoURL+"'></video>")
+        $("#video_link").append("<video id='replay' src='"+videoURL+"'></video>")
+
+        // updating firebase
+      var json_data = {video: videoURL};
+      updateTile(fb, fb_collage_id, fb_tile_id, json_data)
       });
 
       setTimeout(function(){
-        document.getElementById("video").play();
+        document.getElementById("replay").play();
         setTimeout(function(){
           document.getElementById("audio").play(); // delay 500 seconds for audio, it worked well on my machine
         },0);
-      },1000); // wait until audio and video are both appended
+      },video_audio_sync_time); // wait until audio and video are both appended
 
-      $(this).remove();
+      $(this).hide();
     });
   });
 

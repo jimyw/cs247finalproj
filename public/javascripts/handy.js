@@ -1,5 +1,5 @@
 // handy functions
-
+var video_audio_sync_time = 1000;	// ms
 
 // append handlebars partial template
 // e.g.
@@ -18,6 +18,7 @@ function includeHandlebarsTemplate(partial, wrapper, inner_item, data, append_id
 // update firebase with new tile
 function updateTile(fb, fb_collage_id, fb_tile_id, json_data) {
   console.log('updateTile');
+  console.log(fb.child(fb_collage_id));
   var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
   tile_instance.update(json_data, onComplete);
 }

@@ -5,6 +5,7 @@
   var fb = new Firebase(fb_link);
   var fb_collage_id = $("#fb_collage_id").html();
   var fb_tile_id = $("#fb_tile_id").html();
+  console.log(fb_collage_id);
 
   // var fb_tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
   // console.log(fb_tile_instance)
@@ -67,6 +68,10 @@
     data = canvas.toDataURL('image/png');
     console.log(fb_tile_id)
     photo.setAttribute('src', data);
+
+
+    var json_data = {photo: data, filled: 1};
+    updateTile(fb, fb_collage_id, fb_tile_id, json_data)
   }
 
   function showCountDown() {
@@ -96,12 +101,13 @@
   //   console.log('update completed')
   // });
 
-  donebutton.addEventListener('click', function(ev){
-    console.log("Done taking photo");
-    var data = photo.getAttribute('src');
-    var json_data = {photo: data, filled: 1};
-    console.log('json_data')
-    updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+  // donebutton.addEventListener('click', function(ev){
+  //   console.log("Done taking photo");
+  //   var data = photo.getAttribute('src');
+    
+  //   console.log('json_data')
+    
+
     // $.ajax({
     //   url: 'personalmsg',
     //   type: 'get',
@@ -114,6 +120,6 @@
     //     console.log('ajax get error')
     //   }
     // })
-  }, false);
+  // }, false);
 
 })();
