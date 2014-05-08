@@ -9,8 +9,8 @@ var loadDirect = true;
 
 $(document).ready(function(){
   initialize_page();
-  tileIsDone(fb_tile_id)
-  var pp = getTilePhoto(fb, fb_collage_id, fb_tile_id);
+  // tileIsDone(fb_tile_id)
+  // var pp = getTilePhoto(fb, fb_collage_id, fb_tile_id);
 });
 
 function initialize_page() {

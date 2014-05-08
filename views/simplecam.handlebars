@@ -3,12 +3,16 @@
 <div id="container">
 	<div class="border" id="videowrapper">
 		<video id="video"></video>
-		<img src="/images/photo1.jpg" width=320 id="overlay">
+		<img src="{{default_photo}}" width=320 id="overlay">
 	</div>
 	<button class="button" id="startbutton">Take photo</button>
 	<a href="personalmsg?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"><button class="button" id="donebutton">Done!</button></a>
 	<canvas id="canvas"></canvas>
-	<div class="border" id="photowrapper"><img src="/images/photo1.jpg" class="" id="photo" alt="photo"></div>
+	{{#if filled}}
+	<div class="border" id="photowrapper"><img src="{{photo}}" class="flip" id="photo" alt="photo"></div>
+	{{else}}
+	<div class="border" id="photowrapper"><img src="{{photo}}" class="" id="photo" alt="photo"></div>
+	{{/if}}
 	<p id="countdown"></p>
 </div>
 

@@ -32,6 +32,7 @@
     "grunt-concurrent": "^0.5.0",
     "grunt-shell-spawn": "^0.3.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-contrib-handlebars": "^0.8.0"
+    "grunt-contrib-handlebars": "^0.8.0",
+    "firebase": "^1.0.15"
   }
 }

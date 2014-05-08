@@ -1,20 +1,5 @@
+var Firebase = require('firebase');
 
-
-function getTilePhoto(fb, fb_collage_id, fb_tile_id) {
-  console.log('getTilePhoto');
-  var tile_instance = getTileInstance(fb, fb_collage_id, fb_tile_id) ;
-  console.log(tile_instance);
-  tile_instance.once('value', function(snap) {
-  	console.log('tile_instance');
-    var tile = snap.val();  // dictionary
-    console.log(tile);
-    if (tile.filled) {   // if tile is filled
-      return {photo: tile.photo, default_photo: tile.default_photo};
-    } else {
-      return {photo: tile.default_photo, default_photo: tile.default_photo};
-    }
-  });
-}
 
 exports.index = function(req, res) {
 	console.log('index')
@@ -28,10 +13,27 @@ exports.simplecam = function(req, res) {
 	var fb = new Firebase(fb_link);
 	var fb_collage_id = req.query.fb_collage_id;
 	var fb_tile_id = req.query.fb_tile_id;
+	var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+
+	var res_data = { title: 'Simplecam', fb_collage_id: req.query.fb_collage_id, fb_tile_id: req.query.fb_tile_id };
+
+	tile_instance.once('value', function(snap) {
+	  	console.log('tile_instance');
+	    var tile = snap.val();  // dictionary
+	    console.log(tile);
+	    res_data.filled = tile.filled;
+	    if (tile.filled) {   // if tile is filled
+	      res_data.photo = tile.photo;
+	      res_data.default_photo = tile.default_photo;
+	    } else {
+	      res_data.photo = tile.default_photo;
+	      res_data.default_photo = tile.default_photo;
+	    }
+
+	    res.render('simplecam', res_data);
+	});
 
 	
-
-	res.render('simplecam', { title: 'Simplecam', fb_collage_id: req.query.fb_collage_id, fb_tile_id: req.query.fb_tile_id });
 }
 
 exports.picture = function(req, res) {

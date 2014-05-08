@@ -5,14 +5,14 @@
   var fb = new Firebase(fb_link);
   var fb_collage_id = $("#fb_collage_id").html();
   var fb_tile_id = $("#fb_tile_id").html();
-  console.log(fb_tile_id);
+  // console.log(fb_tile_id);
 
-  var photo_json = getTilePhoto(fb, fb_collage_id, fb_tile_id);
+  // var photo_json = getTilePhoto(fb, fb_collage_id, fb_tile_id);
 
-  setTimeout(function(){
-    console.log(photo_json);
-    $("#overlay").attr('src', photo_json.photo);
-  },3000);
+  // setTimeout(function(){
+  //   console.log(photo_json);
+  //   $("#overlay").attr('src', photo_json.photo);
+  // },3000);
 
 
   // var fb_tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
