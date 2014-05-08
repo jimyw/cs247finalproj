@@ -1,6 +1,7 @@
 var Firebase = require('firebase');
 
 
+
 exports.index = function(req, res) {
 	console.log('index')
 	res.render('index', { title: 'Card Collage' });
