@@ -24,3 +24,7 @@ exports.picture = function(req, res) {
 	console.log('picture')
 	res.render('picture', { title: 'complex cam' });
 }
+
+exports.personalmsg = function(req, res) {
+	res.render('personalmsg', { title: 'complex cam' });
+}

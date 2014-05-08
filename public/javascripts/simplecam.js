@@ -14,6 +14,7 @@
       canvas       = document.querySelector('#canvas'),
       photo        = document.querySelector('#photo'),
       startbutton  = document.querySelector('#startbutton'),
+      donebutton  = document.querySelector('#donebutton'),
       width = 320,
       height = 0;
 
@@ -64,6 +65,23 @@
   startbutton.addEventListener('click', function(ev){
   	takepicture();
     ev.preventDefault();
+  }, false);
+
+  donebutton.addEventListener('click', function(ev){
+    console.log("Done taking photo");
+
+    $.ajax({
+      url: 'personalmsg',
+      type: 'get',
+      success: function(response) {
+        //Do Something
+        console.log('ajax get success')
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+        console.log('ajax get error')
+      }
+    })
   }, false);
 
 })();
