@@ -95,13 +95,13 @@ canvas {
 
 #donebutton, #startbutton {
 	left: 380px;
-	background: orange;
 }
 
 .button {
 	border: none;
+	background: orange;
 	color: #fff;
-	margin: 100px 20px 20px 20px;
+	margin: 0px 20px 20px 20px;
 	padding: 10px 20px;
 	font-size: 20px;
 	border-radius: 10px;
@@ -113,9 +113,69 @@ canvas {
 	top: 100px;
 }
 
+#finish {
+	position: fixed;
+	background: green;
+	bottom: 30px;	
+}
+
 #container {
 	position: relative;
 	width: 980px;
 	height: 400px;
 	margin: 20px auto;
+}
+
+.msg {
+	margin-left: 20px;
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#replay, #webcam_stream {
+	position: fixed;
+	margin-left: 20px;
+	bottom: 200px;
+	height: 200px;
+	width: 280px;
+	height: 210px;
+}
+
+#replay {
+	bottom: 195px;
+}
+
+#webcam_stream video {
+	width: 280px;
+	height: 210px;	
+}
+
+#replay, .not-recording {
+  border: 2px solid #dcc;
+}
+.recording {
+  border: 2px solid red;
+}
+
+#conversation {
+  padding: 10px 10px 80px;
+  overflow-y: scroll;
+  height: 100%;
+}
+#submission {
+  position: fixed;
+  bottom: 120px;
+  width: 40%;
+  margin-left: 20px;
+  border-top: 2px solid #dcc;
+  background: #fff;
+}
+#submission input {
+  border: none;
+  font-size: 15px;
+  padding: 15px;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
 }

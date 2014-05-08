@@ -31,7 +31,9 @@
       window.recordRTC_Video = RecordRTC(mediaStream,{type:"video"});
       //Number of media ready
       ready += 1;
-
+      if(ready == 2){
+        $("#start_recording").show();
+      }
       //Add a video indicator to the upper right corner
       var video_width= 160;
       var video_height= 120;
@@ -59,9 +61,15 @@
       $("#status").html("waiting..");
       window.recordRTC_Audio = RecordRTC(mediaStream,{type:"audio"});
       ready += 1;
+      if(ready == 2){
+        $("#start_recording").show();
+      }
     },function(failure){
       console.log(failure);
     });
+
+    $("#stop_recording").hide();
+    $("#start_recording").hide();
 
     //Start recording button touched
     $("#start_recording").click(function (){   
@@ -69,9 +77,13 @@
         // update ids here, because page loads too slowly
         fb_collage_id = $("#fb_collage_id").html();
         fb_tile_id = $("#fb_tile_id").html();
-
+        console.log(fb_tile_id);
         record_audio_and_video();
+
+        $("#audio_link").html("");        
+        $("#video_link").html("");
         $(this).hide();
+        $("#stop_recording").show();
       }else{
         $("#status").html("Need to enable both microphone and camera to record a message");
       }
@@ -96,6 +108,7 @@
         // updating firebase
         var json_data = {video: videoURL, text: textbox_text};
         updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
       });
 
       setTimeout(function(){
@@ -106,6 +119,8 @@
       },video_audio_sync_time); // wait until audio and video are both appended
 
       $(this).hide();
+      $("#start_recording").html("Retake the Video");
+      $("#start_recording").show();
     });
   });
 
