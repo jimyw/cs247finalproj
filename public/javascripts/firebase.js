@@ -105,8 +105,12 @@ function show(snap) {
 }
 
 function tileListener() {
-  console.log('tileListener')
-  console.log($(".tile"))
+  console.log('tileListener');
+  console.log($(".tile"));
+  $(".tile").hover(function(e) {
+      console.log('hover');
+  });
+
   $(".tile").click(function(e) {
     fb_tile_id = $(this).attr("id");
     // get simplecam
