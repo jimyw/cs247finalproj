@@ -3,15 +3,27 @@ html {
 	height: 100%;
 	background: linear-gradient( #333, #000);
 }
+
 canvas {
 	display: none;
 }
-video, img, #startbutton {
+
+#video, #photo, #startbutton {
+	position: absolute;
+	left: 10px;
+	top: 10px;
 	display: block;
 	float: left;
 	border: 10px solid #fff;
 	border-radius: 10px;
 }
+
+#overlay {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+
 #startbutton {
 	background: green;
 	border: none;
@@ -20,7 +32,9 @@ video, img, #startbutton {
 	padding: 10px 20px;
 	font-size: 20px;
 }
+
 #container {
+	position: relative;
 	overflow: hidden;
 	width: 880px;
 	margin: 20px auto;
