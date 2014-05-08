@@ -96,6 +96,7 @@
         // updating firebase
         var json_data = {video: videoURL, text: textbox_text};
         updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
       });
 
       setTimeout(function(){
