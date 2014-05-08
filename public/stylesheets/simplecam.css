@@ -14,14 +14,33 @@ canvas {
 	top: 0px;
 	display: block;
 	float: left;
+}
+
+#photowrapper {
+	position: absolute;
+	left: 600px;
+	width: 320px;
+	height: 313px;
+	overflow: hidden;
+}
+
+#videowrapper {
+	position: absolute;
+	left: 0px;
+	width: 320px;
+	height: 313px;
+	overflow: hidden;
+}
+
+.border {
 	border: 10px solid #fff;
 	border-radius: 10px;
 }
 
 #video {
 	position: absolute;
-	left: 10px;
-	top: 10px;
+	left: 0px;
+	top: 0px;
 	width: 417px;
 	height: 313px;
 	display: block;
@@ -34,13 +53,34 @@ canvas {
     -ms-filter: "FlipH";
 }
 
+#blocker {
+	position: absolute;
+	width: 90px;
+	height: 313px;
+	top: 10px;
+	left: 340px;
+	background-color: black;
+	background: #111111;
+	background: linear-gradient( #333, #000);
+}
+
+#countdown {
+	position: absolute;
+	top: 0px;
+	left: 620px;
+	color: red;
+	font-weight: bold;
+	font-size: 18pt;
+}
+
 #overlay {
 	opacity: 0.3;
 }
 
 #photo {
-	width: 320px;
 	height: 313px;
+	width: 417px;
+	left: 0px;
 	-moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
@@ -50,27 +90,27 @@ canvas {
 }
 
 #donebutton, #startbutton {
-	left: 360px;
-	background: green;
+	left: 380px;
+	background: orange;
+}
+
+.button {
 	border: none;
 	color: #fff;
 	margin: 100px 20px 20px 20px;
 	padding: 10px 20px;
 	font-size: 20px;
+	border-radius: 10px;
 }
 
 #donebutton {
-	left: 385px;
+	background: green;
+	left: 400px;
 	top: 100px;
-}
-
-#photo {
-	left: 580px;
 }
 
 #container {
 	position: relative;
-	overflow: hidden;
 	width: 980px;
 	height: 400px;
 	margin: 20px auto;
