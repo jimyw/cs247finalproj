@@ -3,12 +3,15 @@
 <link rel="stylesheet" href="/stylesheets/simplecam.css">
 
 <div id="container">
-	<video id="video"></video>
-	<img src="/images/photo1.jpg" width=320 id="overlay">
-	<button id="startbutton">Take photo</button>
-	<a href="personalmsg"><button id="donebutton">Done!</button></a>
+	<div class="border" id="videowrapper">
+		<video id="video"></video>
+		<img src="/images/photo1.jpg" width=320 id="overlay">
+	</div>
+	<button class="button" id="startbutton">Take photo</button>
+	<a href="personalmsg"><button class="button" id="donebutton">Done!</button></a>
 	<canvas id="canvas"></canvas>
-	<img src="/images/photo1.jpg" width=320 id="photo" alt="photo">
+	<div class="border" id="photowrapper"><img src="/images/photo1.jpg" id="photo" alt="photo"></div>
+	<p id="countdown"></p>
 </div>
 
 <div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>

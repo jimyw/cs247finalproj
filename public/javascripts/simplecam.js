@@ -15,6 +15,7 @@
       photo        = document.querySelector('#photo'),
       startbutton  = document.querySelector('#startbutton'),
       donebutton  = document.querySelector('#donebutton'),
+      countdown  = document.querySelector('#countdown'),
       width = 320,
       height = 0;
 
@@ -54,6 +55,8 @@
   }, false);
 
   function takepicture() {
+    // setTimeout(takepicture(), 3000);
+    console.log('takepicture')
     canvas.width = width;
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
@@ -62,9 +65,26 @@
     photo.setAttribute('src', data);
   }
 
+  function showCountDown() {
+    countdown.innerHTML = "3";
+    setTimeout(function(){
+      countdown.innerHTML = "2";
+    }, 1000);
+    setTimeout(function(){
+      countdown.innerHTML = "1";
+    }, 2000);
+    setTimeout(function(){
+      countdown.innerHTML = "0";
+    }, 3000);
+    setTimeout(function(){
+      countdown.innerHTML = "";
+    }, 3100);
+  }
+
   startbutton.addEventListener('click', function(ev){
-  	takepicture();
-    ev.preventDefault();
+  	ev.preventDefault();
+    showCountDown();
+    setTimeout(takepicture, 3000);
   }, false);
 
   donebutton.addEventListener('click', function(ev){
