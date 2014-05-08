@@ -44,6 +44,7 @@ function initialize_collage() {
       'name': '', 
       'email': '', 
       'photo':'/images/'+photoArray[j],
+      'default_hoto':'/images/'+photoArray[j],
       'video':'',
       'audio':'',
       'text':'',

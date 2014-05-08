@@ -59,6 +59,7 @@
 
   function takepicture() {
     // setTimeout(takepicture(), 3000);
+    $("#photo").addClass('flip');
     console.log('takepicture')
     canvas.width = width;
     canvas.height = height;

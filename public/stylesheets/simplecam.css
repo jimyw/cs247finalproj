@@ -77,16 +77,20 @@ canvas {
 	opacity: 0.3;
 }
 
-#photo {
-	height: 313px;
-	width: 417px;
-	left: 0px;
+.flip {
 	-moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+}
+
+#photo {
+	height: 313px;
+	width: 417px;
+	left: 0px;
+
 }
 
 #donebutton, #startbutton {
