@@ -79,6 +79,7 @@
 
     //Stop recording button touched
     $("#stop_recording").click(function (){
+      var textbox_text = $("#textbox").val();
       recordRTC_Audio.stopRecording(function(audioURL) {
         //$("#audio_link").append("<a href='"+audioURL+"'' target='_blank'>"+audioURL+"</a>")
         // console.log('audio url '+audioURL);
@@ -93,8 +94,8 @@
         $("#video_link").append("<video id='replay' src='"+videoURL+"'></video>")
 
         // updating firebase
-      var json_data = {video: videoURL};
-      updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+        var json_data = {video: videoURL, text: textbox_text};
+        updateTile(fb, fb_collage_id, fb_tile_id, json_data)
       });
 
       setTimeout(function(){
