@@ -75,11 +75,11 @@
         $("#audio_link").append("<audio id='audio' src='"+audioURL+"'></audio>")
       });
       recordRTC_Video.stopRecording(function(videoURL) {
-        $("#video_link").append("<video id='video' src='"+videoURL+"'></video>")
+        $("#video_link").append("<video id='replay' src='"+videoURL+"'></video>")
       });
 
       setTimeout(function(){
-        document.getElementById("video").play();
+        document.getElementById("replay").play();
         setTimeout(function(){
           document.getElementById("audio").play(); // delay 500 seconds for audio, it worked well on my machine
         },0);
