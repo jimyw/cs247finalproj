@@ -1,3 +1,5 @@
+// (function() {
+
 /* Include your Firebase link here!*/
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 var fb = new Firebase(fb_link);
@@ -6,7 +8,7 @@ var fb_tile_id = '';  //oivqj6vfgvi
 
 $(document).ready(function(){
   initialize_page();
-  tileListener();
+  
 });
 
 function initialize_page() {
@@ -47,6 +49,7 @@ function initialize_collage() {
       'tile_index': i
     })
   }
+  load_collage();
 }
 
 // returns the list of tiles for a given collage id as JSON
@@ -59,6 +62,7 @@ function load_collage() {
     snap.forEach(function(childSnap) {  // loop through all the children and fill them into tile_list
       var val = childSnap.val();
       val.fb_tile_id = childSnap.name();
+      val.fb_collage_id = fb_collage_id;
       var tile_index = val.tile_index;
       tile_list[tile_index]=val;
     });
@@ -99,6 +103,22 @@ function tileListener() {
     fb_tile_id = $(this).attr("id");
     // get simplecam
     console.log(fb_tile_id);
+
+    $.ajax({
+      url: 'simplecam',
+      type: 'get',
+      data: {fb_collage_id: fb_collage_id, fb_tile_id: fb_tile_id},
+      success: function(response) {
+        //Do Something
+        console.log('ajax get success')
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+        console.log('ajax get error')
+      }
+    })
+
+
   });
 }
 
@@ -119,11 +139,21 @@ function displayPage(tile_list) {
     }
   }
 
-  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <img src="{{photo}}" class="overlay"></div> </td>'; 
-  var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> '; 
+  // Retrieve templates from template file
+  // var template = Collage.Templates["templates/tileList.handlebars"];
+  // console.log(template);
+
+
+  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> <img src="{{photo}}" class="overlay"> </a> </div> </td>'; 
+  var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> ';
   var data1 = {tile_list:tile_list1};
   includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")
   var data2 = {tile_list:tile_list2};
   includeHandlebarsTemplate(partial, wrapper, "tileItem",  data2, "#row2")
 
+
+  tileListener();
 }
+
+
+// })();

@@ -1,55 +1,98 @@
 module.exports = function(grunt) {
-
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
-      options: {
-        separator: ';'
-      },
-      dist: {
-        src: ['src/**/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
+    yeoman:{
+      src: 'src',
+      dist: 'public'
     },
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+      jshint: {
+        // uglify task configuration goes here.
+        files: ['routes/*.js, *.js'],
+        options: {
+          globals: {
+            jQuery: true,
+            console: true,
+            module: true
+          }
+        },
+        // ignore_warning: {
+        //  options: {
+        //    '-WO99': true
+        //  },
+        //  src: ['routes/*.js, *.js']
+        // }
       },
-      dist: {
-        files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+      handlebars: {
+        compile: {
+          files: {
+            '<%= yeoman.dist %>/templates/hbt.js': [
+              'templates/*.handlebars'
+            ]
+          },
+          options: {
+            namespace: 'Collage.Templates',
+            wrapped: true,
+            processName: function(filename) {
+              // funky name processing here
+              return filename
+                      .replace(/^app\/modules\//, '')
+                      .replace(/\.hbs$/, '');
+            }
+          }
+        }
+      },
+      nodemon: {
+        dev: {
+          options: {
+            file: 'app.js',
+          }
+        }
+      },
+      express: {
+        options: {
+          delay: 250
+        },
+        dev: {
+          options: {
+            script: 'app.js'
+          }
+        }
+      },
+      shell: {
+        launchExpress: {
+          options: {
+            stdout: true,
+            execOptions: {
+              killSignal: 'SIGTERM'
+            }
+          },
+          command: 'node app.js'
+        }
+      },
+      concurrent: {
+        target: {
+          tasks: ['express:dev:stop' ,'express:dev'],
+          options: {
+            logConcurrentOutput: true
+          }
+        }
+      },
+      watch: {
+        files: ['routes/*.js', '*.js','templates/*.handlebars'],
+        tasks: ['jshint', 'express:dev','handlebars'],
+        options: {
+          spawn: false
         }
       }
-    },
-    qunit: {
-      files: ['test/**/*.html']
-    },
-    jshint: {
-      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
-      options: {
-        // options here to override JSHint defaults
-        globals: {
-          jQuery: true,
-          console: true,
-          module: true,
-          document: true
-        }
-      }
-    },
-    watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'qunit']
-    }
   });
-
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
+  grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-express-server');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-shell-spawn');
 
-  grunt.registerTask('test', ['jshint', 'qunit']);
-
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-
-};
+  grunt.registerTask('default', ['express:dev', 'jshint', 'watch', 'shell:mongo', 'handlebars']);
+}

@@ -1,5 +1,13 @@
 (function() {
 
+  // Connect to firebase
+  // var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
+  // var fb = new Firebase(fb_link);
+  var fb_collage_id = $("#fb_collage_id").html();
+  var fb_tile_id = $("#fb_tile_id").html();
+  var fb_tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+  console.log(fb_tile_instance)
+
   var streaming = false,
       video        = document.querySelector('#video'),
       cover        = document.querySelector('#cover'),
@@ -49,7 +57,7 @@
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL('image/png');
-    console.log(fb_collage_id)
+    console.log(fb_tile_id)
     photo.setAttribute('src', data);
   }
 

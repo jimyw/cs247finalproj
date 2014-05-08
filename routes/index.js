@@ -15,8 +15,9 @@ exports.index = function(req, res) {
 }
 
 exports.simplecam = function(req, res) {
-	console.log('picture')
-	res.render('simplecam', { title: 'Simplecam' });
+	console.log('simplecam')
+	console.log(req.query);
+	res.render('simplecam', { title: 'Simplecam', fb_collage_id: req.query.fb_collage_id, fb_tile_id: req.query.fb_tile_id });
 }
 
 exports.picture = function(req, res) {
