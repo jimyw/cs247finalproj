@@ -14,3 +14,14 @@ function includeHandlebarsTemplate(partial, wrapper, inner_item, data, append_id
   // console.log(htmltext)
   $(append_id).html(htmltext);
 }
+
+// update firebase with new tile
+function updateTile(fb, fb_collage_id, fb_tile_id, json_data) {
+  console.log('updateTile');
+  var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+  tile_instance.update(json_data, onComplete);
+}
+
+function onComplete() {
+	console.log('update complete')
+}

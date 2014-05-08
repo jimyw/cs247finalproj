@@ -9,11 +9,11 @@ var loadDirect = true;
 
 $(document).ready(function(){
   initialize_page();
-  
 });
 
 function initialize_page() {
-  var url_segments = document.location.href.split("/");
+  var url_segments = document.location.href.split("/#");
+  console.log(url_segments);
   if (url_segments[1]) {
     fb_collage_id = url_segments[1];  // get collage_id from url
     console.log('Collage ID in url is ' + fb_collage_id);
@@ -53,10 +53,9 @@ function initialize_collage() {
 
     console.log('initialize_collage, var='+i);
   }
-  // if (i==numTiles) {
-    loadDirect = false;
-    load_collage(numTiles);  
-  // }
+
+  loadDirect = false;
+  load_collage(numTiles);  
   
 }
 
@@ -98,11 +97,7 @@ function tileIsDone(fb_tile_id) {
   })
 }
 
-function updateTile(fb_tile_id, json_data) {
-  console.log('updateTile');
-  var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
-  tile_instance.set(json_data);
-}
+
 
 function show(snap) {
    $('pre').text(JSON.stringify(snap.val(), null, 2));
@@ -151,9 +146,7 @@ function displayPage(tile_list) {
     }
   }
 
-  // Retrieve templates from template file
-  // var template = Collage.Templates["templates/tileList.handlebars"];
-  // console.log(template);
+
 
 
   var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> <img src="{{photo}}" class="overlay"> </a> </div> </td>'; 
@@ -163,6 +156,11 @@ function displayPage(tile_list) {
   var data2 = {tile_list:tile_list2};
   includeHandlebarsTemplate(partial, wrapper, "tileItem",  data2, "#row2")
 
+  // Retrieve templates from template file
+  // var template = Collage.Templates["templates/tileList.handlebars"];
+  // Handlebars.registerPartial('tileItem', Collage.Templates["templates/tileItem.handlebars"]);
+  // var htmlText = template(data2)
+  // $("#row2").html(htmlText)
 
   // tileListener();
 }

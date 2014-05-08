@@ -5,8 +5,9 @@
   var fb = new Firebase(fb_link);
   var fb_collage_id = $("#fb_collage_id").html();
   var fb_tile_id = $("#fb_tile_id").html();
-  var fb_tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
-  console.log(fb_tile_instance)
+
+  // var fb_tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+  // console.log(fb_tile_instance)
 
   var streaming = false,
       video        = document.querySelector('#video'),
@@ -17,6 +18,8 @@
       donebutton  = document.querySelector('#donebutton'),
       width = 320,
       height = 0;
+
+  var data = photo.getAttribute('src');
 
   navigator.getMedia = ( navigator.getUserMedia || 
                          navigator.webkitGetUserMedia ||
@@ -57,7 +60,7 @@
     canvas.width = width;
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-    var data = canvas.toDataURL('image/png');
+    data = canvas.toDataURL('image/png');
     console.log(fb_tile_id)
     photo.setAttribute('src', data);
   }
@@ -67,21 +70,29 @@
     ev.preventDefault();
   }, false);
 
+  // var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+  // tile_instance.onDisconnect().update({photo:data}, function(){
+  //   console.log('update completed')
+  // });
+
   donebutton.addEventListener('click', function(ev){
     console.log("Done taking photo");
-
-    $.ajax({
-      url: 'personalmsg',
-      type: 'get',
-      success: function(response) {
-        //Do Something
-        console.log('ajax get success')
-      },
-      error: function(xhr) {
-        //Do Something to handle error
-        console.log('ajax get error')
-      }
-    })
+    var data = photo.getAttribute('src');
+    var json_data = {photo: data, filled: 1};
+    console.log('json_data')
+    updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+    // $.ajax({
+    //   url: 'personalmsg',
+    //   type: 'get',
+    //   success: function(response) {
+    //     //Do Something
+    //     console.log('ajax get success')
+    //   },
+    //   error: function(xhr) {
+    //     //Do Something to handle error
+    //     console.log('ajax get error')
+    //   }
+    // })
   }, false);
 
 })();

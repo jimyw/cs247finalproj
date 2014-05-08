@@ -1,3 +1,4 @@
+<script src="/templates/hbt.js"></script>
 <script src="/javascripts/firebase.js"></script>
 <p>Choose a tile and upload a photo!</p>
 <p>Notes: Upon loading of this page, we need to check collageID to see which tiles are already filled, then fill in those images, and remove form element for those tiles.</p>
@@ -17,7 +18,7 @@
 {{!-- <script id="tile-partial" type="text/x-handlebars-template">
   <td>
       <div class="wrapper tile" id="{{fb_tile_id}}">
-        <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_collage_id}}">
+        <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}">
           <img src="{{photo}}" class="overlay">
         </a>
       </div>
