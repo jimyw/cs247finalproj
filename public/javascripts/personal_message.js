@@ -103,7 +103,11 @@
         // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
 
         // update the form element
+        // blob_to_base64(audioURL,function(b64_data){
+        //   $("#audio_form").val(b64_data);
+        // });
         $("#audio_form").val(audioURL);
+        
 
       });
 
@@ -115,10 +119,17 @@
         // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
 
         // update the form element
+        recordRTC.getDataURL(function(dataURL) {
+           mediaElement.src = dataURL;
+        });
+        // blob_to_base64(videoURL,function(b64_data){
+        //   $("#audio_form").val(b64_data);
+        // });
         $("#video_form").val(videoURL);
 
       });
 
+      // playing the video
       setTimeout(function(){
         document.getElementById("replay").play();
         setTimeout(function(){

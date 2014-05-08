@@ -11,8 +11,7 @@ var jofish = 'tjpe1qhncdi';
 
 $(document).ready(function(){
   initialize_page();
-  // tileIsDone(fb_tile_id)
-  // var pp = getTilePhoto(fb, fb_collage_id, fb_tile_id);
+  
 });
 
 function initialize_page() {
@@ -84,10 +83,20 @@ function load_collage(numTiles) {
         var val = childSnap.val();
         val.fb_tile_id = childSnap.name();
         val.fb_collage_id = fb_collage_id;
+        console.log('loading tiles')
+        if (val.audio) {
+          console.log('audio present');
+          console.log(val.audio);
+          // val.photo = base64_to_blob(val.photo);
+          // val.audio = base64_to_blob(val.audio);
+        }
+
         var tile_index = val.tile_index;
+
         tile_list[tile_index]=val;
-        console.log(iter)
-        iter+=1;
+        
+
+
       });
 
       displayPage(tile_list);
@@ -126,23 +135,16 @@ function tileListener() {
     fb_tile_id = $(this).attr("id");
     // get simplecam
     console.log(fb_tile_id);
-
-    // $.ajax({
-    //   url: 'simplecam',
-    //   type: 'get',
-    //   data: {fb_collage_id: fb_collage_id, fb_tile_id: fb_tile_id},
-    //   success: function(response) {
-    //     //Do Something
-    //     console.log('ajax get success')
-    //   },
-    //   error: function(xhr) {
-    //     //Do Something to handle error
-    //     console.log('ajax get error')
-    //   }
-    // })
-
-
   });
+}
+
+function playVideo() {
+  setTimeout(function(){
+    $("#replay").play();
+    setTimeout(function(){
+      $("#audio").play(); // delay 500 seconds for audio, it worked well on my machine
+    },0);
+  },video_audio_sync_time);
 }
 
 function displayPage(tile_list) {
@@ -162,8 +164,10 @@ function displayPage(tile_list) {
     }
   }
 
+  // var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flip"> {{else}} <img src="{{photo}}" class="overlay"> {{/if}} </a> </div> </td>';
+  // var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flip"> {{else}} <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> <img src="{{photo}}" class="overlay"> </a> {{/if}} </div> </td>';
+  var partial = '<td> {{#if filled}} <div class="wrapper tile" id="video{{fb_tile_id}}"> <video id="replay" src="{{vieo}}"></video>"<audio id="audio" src="{{audio}}"></audio> </div> {{else}} <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> <img src="{{photo}}" class="flip"> <img src="{{photo}}" class="overlay"> </a> </div> {{/if}} </td>'
 
-  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flip"> {{else}} <img src="{{photo}}" class="overlay"> {{/if}} </a> </div> </td>';
   var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> ';
   var data1 = {tile_list:tile_list1};
   includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")
@@ -176,7 +180,7 @@ function displayPage(tile_list) {
   // var htmlText = template(data2)
   // $("#row2").html(htmlText)
 
-  // tileListener();
+  tileListener();
 }
 
 
