@@ -85,6 +85,13 @@ function load_collage(numTiles) {
       displayPage(tile_list);
     }
   });
+
+  $("td").mouseover(function(e) {
+    console.log('hover in');
+  }, function(e) {
+    console.log('hover out');  
+  });
+
 }
 
 // returns true if tile is already filled (i.e. has valid photo)
@@ -110,9 +117,7 @@ function show(snap) {
 function tileListener() {
   console.log('tileListener');
   console.log($(".tile"));
-  $(".tile").hover(function(e) {
-      console.log('hover');
-  });
+  
 
   $(".tile").click(function(e) {
     fb_tile_id = $(this).attr("id");
