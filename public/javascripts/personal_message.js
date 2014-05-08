@@ -111,6 +111,10 @@
 
       });
 
+      $("#finish").click(function (){ 
+        
+      }
+
       setTimeout(function(){
         document.getElementById("replay").play();
         setTimeout(function(){
