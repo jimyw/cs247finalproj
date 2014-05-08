@@ -1,4 +1,4 @@
-// (function() {
+(function() {
 
 /* Include your Firebase link here!*/
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
@@ -13,7 +13,7 @@ $(document).ready(function(){
 });
 
 function initialize_page() {
-  var url_segments = document.location.href.split("/#");
+  var url_segments = document.location.href.split("/");
   if (url_segments[1]) {
     fb_collage_id = url_segments[1];  // get collage_id from url
     console.log('Collage ID in url is ' + fb_collage_id);
@@ -168,4 +168,4 @@ function displayPage(tile_list) {
 }
 
 
-// })();
+})();

@@ -1,8 +1,8 @@
 (function() {
 
   // Connect to firebase
-  // var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
-  // var fb = new Firebase(fb_link);
+  var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
+  var fb = new Firebase(fb_link);
   var fb_collage_id = $("#fb_collage_id").html();
   var fb_tile_id = $("#fb_tile_id").html();
   var fb_tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
