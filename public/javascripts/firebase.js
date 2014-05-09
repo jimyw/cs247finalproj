@@ -84,6 +84,13 @@ function load_collage(numTiles) {
         var val = childSnap.val();
         val.fb_tile_id = childSnap.name();
         val.fb_collage_id = fb_collage_id;
+
+        if (val.audio) {  // convert back to blob
+          console.log('audio');
+          val.audio = base64_to_blob(val.audio);
+          val.video = base64_to_blob(val.video);
+        }
+
         var tile_index = val.tile_index;
         tile_list[tile_index]=val;
         console.log(iter)
@@ -147,7 +154,7 @@ function tileListener() {
 
 function displayPage(tile_list) {
   console.log('displayPage')
-  // console.log(tile_list);
+  console.log(tile_list);
   var numTiles = tile_list.length;
 
   var tile_list1 = new Array();
