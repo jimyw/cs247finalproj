@@ -84,6 +84,15 @@ function load_collage(numTiles) {
         var val = childSnap.val();
         val.fb_tile_id = childSnap.name();
         val.fb_collage_id = fb_collage_id;
+
+        if (val.audio) {  // convert back to blob
+          console.log('audio');
+          val.audio = URL.createObjectURL(base64_to_blob(val.audio));
+          val.video = URL.createObjectURL(base64_to_blob(val.video));
+
+          console.log(val.audio);
+        }
+
         var tile_index = val.tile_index;
         tile_list[tile_index]=val;
         console.log(iter)
@@ -152,7 +161,7 @@ function tileListener() {
 
 function displayPage(tile_list) {
   console.log('displayPage')
-  // console.log(tile_list);
+  console.log(tile_list);
   var numTiles = tile_list.length;
 
   var tile_list1 = new Array();
@@ -167,19 +176,19 @@ function displayPage(tile_list) {
     }
   }
 
-
-  var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flip"> {{else}} <img src="{{photo}}" class="overlay"> {{/if}} </a> </div> </td>';
-  var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> ';
   var data1 = {tile_list:tile_list1};
-  includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")
   var data2 = {tile_list:tile_list2};
-  includeHandlebarsTemplate(partial, wrapper, "tileItem",  data2, "#row2")
+
+  // var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flip"> {{else}} <img src="{{photo}}" class="overlay"> {{/if}} </a> </div> </td>';
+  // var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> ';
+  // includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")
+  // includeHandlebarsTemplate(partial, wrapper, "tileItem",  data2, "#row2")
 
   // Retrieve templates from template file
-  // var template = Collage.Templates["templates/tileList.handlebars"];
-  // Handlebars.registerPartial('tileItem', Collage.Templates["templates/tileItem.handlebars"]);
-  // var htmlText = template(data2)
-  // $("#row2").html(htmlText)
+  var template = Collage.Templates["templates/tileList.handlebars"];
+  Handlebars.registerPartial('tileItem', Collage.Templates["templates/tileItem.handlebars"]);
+  $("#row1").html(template(data1));
+  $("#row2").html(template(data2));
 
   // tileListener();
 }

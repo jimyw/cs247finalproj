@@ -65,11 +65,11 @@ exports.postVideo = function (req, res) {
 	var fb = new Firebase(fb_link);
 	var fb_collage_id = params.fb_collage_id;
 	var fb_tile_id = params.fb_tile_id;
-	var audioURL = params.audio;
-	var videoURL = params.video;
+	// var audioURL = params.audio;
+	// var videoURL = params.video;
 	var text = params.textmsg;
 	var tile_instance = getTileInstance(fb, fb_collage_id, fb_tile_id);
-	var json_data = {audio: audioURL, video: videoURL, text:text};
+	var json_data = {text:text};	// audio: audioURL, video: videoURL, 
 	tile_instance.update(json_data, function() {
 		// on complete
 		res.redirect('/#'+params.fb_collage_id);

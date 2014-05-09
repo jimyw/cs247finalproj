@@ -17,16 +17,25 @@
 <table> 
 <tr id="row1">
 {{!-- <script id="tile-partial" type="text/x-handlebars-template">
+  
+
   <td>
+    {{#if filled}}
+      <div class="wrapper tile" style="display:none" id="{{fb_tile_id}}">
+              <img src="{{photo}}" class="flip">            
+      </div>
+      <div class="wrapper tile" id="video{{fb_tile_id}}">
+              <audio class='audio' src="{{audio}}"></audio>
+              <video class='replay' src="{{video}}"></video>
+      </div>
+
+    {{else}}
       <div class="wrapper tile" id="{{fb_tile_id}}">
-        <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}">
-          {{#if filled}}
-            <img src="{{photo}}" class="flip">
-          {{else}}
+        <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}">          
             <img src="{{photo}}" class="overlay">
-          {{/if}}
         </a>
       </div>
+    {{/if}}
   </td>
 </script> --}}
 </tr>

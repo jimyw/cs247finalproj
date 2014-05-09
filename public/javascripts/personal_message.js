@@ -3,10 +3,10 @@
 
 (function() {
 
-  // var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
-  // var fb = new Firebase(fb_link);
-  // var fb_collage_id;
-  // var fb_tile_id;
+  var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
+  var fb = new Firebase(fb_link);
+  var fb_collage_id;
+  var fb_tile_id;
 
 
   var cur_video_blob = null;
@@ -75,8 +75,8 @@
     $("#start_recording").click(function (){   
       if(ready == 2){
         // update ids here, because page loads too slowly
-        // fb_collage_id = $("#fb_collage_id").html();
-        // fb_tile_id = $("#fb_tile_id").html();
+        fb_collage_id = $("#fb_collage_id").html();
+        fb_tile_id = $("#fb_tile_id").html();
         // console.log(fb_tile_id);
         
         record_audio_and_video();
@@ -96,14 +96,38 @@
       recordRTC_Audio.stopRecording(function(audioURL) {
         //$("#audio_link").append("<a href='"+audioURL+"'' target='_blank'>"+audioURL+"</a>")
         // console.log('audio url '+audioURL);
+
         $("#audio_link").append("<audio id='audio' src='"+audioURL+"'></audio>")
 
         // updating firebase
+        datauri_to_blob(audioURL,function(blob){
+          blob_to_base64(blob,function(base64){
+            console.log('conversion')
+            var json_data = {audio: base64};
+            updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+            // $("#video_form").val(base64);
+            // console.log(base64);
+
+            // var converteddata = URL.createObjectURL(base64_to_blob(base64))
+            // $("#audio_link").append("<audio id='audio' src='"+converteddata+"'></audio>")
+
+
+          });
+        });
+
+
         // var json_data = {audio: audioURL};
         // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
 
         // update the form element
-        $("#audio_form").val(audioURL);
+        // datauri_to_blob(audioURL,function(blob){
+        //   blob_to_base64(blob,function(base64){
+        //     $("#audio_form").val(base64);
+        //     //console.log(base64);
+        //   });
+        // });
+
+        
 
       });
 
@@ -111,11 +135,35 @@
         $("#video_link").append("<video id='replay' src='"+videoURL+"'></video>")
 
         // updating firebase
+        datauri_to_blob(videoURL,function(blob){
+          blob_to_base64(blob,function(base64){
+            console.log('conversion')
+            var json_data = {video: base64};
+            updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+            // $("#video_form").val(base64);
+            // console.log(base64);
+
+            // var converteddata = URL.createObjectURL(base64_to_blob(base64))
+            // $("#video_link").append("<video id='replay' src='"+converteddata+"'></video>")
+            // console.log(videoURL);
+            // console.log(converteddata);
+          });
+        });
+
         // var json_data = {video: videoURL, text: textbox_text};
         // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
 
         // update the form element
-        $("#video_form").val(videoURL);
+        // datauri_to_blob(videoURL,function(blob){
+        //   blob_to_base64(blob,function(base64){
+        //     console.log('conversion')
+        //     $("#video_form").val(base64);
+        //     console.log(base64);
+        //   });
+        // });
+
+
+        // $("#video_form").val(videoURL);
 
       });
 

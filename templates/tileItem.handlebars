@@ -1,5 +1,20 @@
-<td>
-  <div class="wrapper tile" id="{{fb_tile_id}}">
-      <img src="{{photo}}" class="overlay">
-  </div>
-</td>
+  <td>
+    {{#if filled}}
+      <div class="wrapper tile" style="display:none" id="{{fb_tile_id}}">
+              <img src="{{photo}}" class="flip">            
+      </div>
+      <div class="wrapper tile" id="video{{fb_tile_id}}">
+              <audio class="audio" src="{{audio}}"></audio>
+              <video class="replay">
+              	<source src="{{video}}" type="video/webm"></source>
+              </video>
+      </div>
+
+    {{else}}
+      <div class="wrapper tile" id="{{fb_tile_id}}">
+        <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}">          
+            <img src="{{photo}}" class="overlay">
+        </a>
+      </div>
+    {{/if}}
+  </td>
