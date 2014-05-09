@@ -7,6 +7,8 @@ var fb_collage_id = 'yxha3e4s4i';
 var fb_tile_id = 'ka0thtihpvi';  
 var loadDirect = true;
 
+var jofish = 'tjpe1qhncdi';
+
 $(document).ready(function(){
   initialize_page();
   // tileIsDone(fb_tile_id)
@@ -33,7 +35,9 @@ function initialize_collage() {
   // create new collage
   var numTiles = 12;
   fb_collage_id = Math.random().toString(36).substring(7);
-  console.log("Share this url with your friend to collaborate: "+ document.location.origin+"/#"+fb_collage_id)
+  var shareLink = "Share this url with your friends to collaborate: "+ document.location.origin+"/#"+fb_collage_id;
+  console.log(shareLink);
+  $("#shareLink").html(shareLink);
 
   var fb_new_collage = fb.child(fb_collage_id);
   for (var i=0; i<numTiles; i++) {
@@ -65,6 +69,10 @@ function initialize_collage() {
 // returns the list of tiles for a given collage id as JSON
 function load_collage(numTiles) {
   console.log('load_collage')
+  if (fb_collage_id == jofish) {
+    $("#intromsg").html("Jofish's birthday is coming up in a week. Choose a tile and upload a personal birthday wish for him!")
+  }
+
   var tile_list = new Array();
   var iter=0;
   var tile_instance = fb.child(fb_collage_id).child('Tile');

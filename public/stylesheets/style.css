@@ -38,3 +38,6 @@ a {
 .rotate-left {
   -webkit-transform: rotate(270deg);
 }
+.regtext {
+  color: #fafafa;
+}
