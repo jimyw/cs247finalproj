@@ -96,7 +96,8 @@
       recordRTC_Audio.stopRecording(function(audioURL) {
         //$("#audio_link").append("<a href='"+audioURL+"'' target='_blank'>"+audioURL+"</a>")
         // console.log('audio url '+audioURL);
-        $("#audio_link").append("<audio id='audio' src='"+audioURL+"'></audio>")
+
+        // $("#audio_link").append("<audio id='audio' src='"+audioURL+"'></audio>")
 
         // updating firebase
         datauri_to_blob(audioURL,function(blob){
@@ -105,9 +106,16 @@
             var json_data = {audio: base64};
             updateTile(fb, fb_collage_id, fb_tile_id, json_data)
             // $("#video_form").val(base64);
-            console.log(base64);
+            // console.log(base64);
+
+            var converteddata = URL.createObjectURL(base64_to_blob(base64))
+            $("#audio_link").append("<audio id='audio' src='"+converteddata+"'></audio>")
+
+
           });
         });
+
+
         // var json_data = {audio: audioURL};
         // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
 
@@ -124,7 +132,7 @@
       });
 
       recordRTC_Video.stopRecording(function(videoURL) {
-        $("#video_link").append("<video id='replay' src='"+videoURL+"'></video>")
+        // $("#video_link").append("<video id='replay' src='"+videoURL+"'></video>")
 
         // updating firebase
         datauri_to_blob(videoURL,function(blob){
@@ -133,7 +141,12 @@
             var json_data = {video: base64};
             updateTile(fb, fb_collage_id, fb_tile_id, json_data)
             // $("#video_form").val(base64);
-            console.log(base64);
+            // console.log(base64);
+
+            var converteddata = URL.createObjectURL(base64_to_blob(base64))
+            $("#video_link").append("<video id='replay' src='"+converteddata+"'></video>")
+            console.log(videoURL);
+            console.log(converteddata);
           });
         });
 
