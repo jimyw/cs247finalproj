@@ -167,16 +167,7 @@
 
       });
 
-      $("#finish").click(function (){ 
-        
-      }
-
-      setTimeout(function(){
-        document.getElementById("replay").play();
-        setTimeout(function(){
-          document.getElementById("audio").play(); // delay 500 seconds for audio, it worked well on my machine
-        },0);
-      },video_audio_sync_time); // wait until audio and video are both appended
+      playVideo('');
 
       $(this).hide();
       $("#start_recording").html("Retake the Video");

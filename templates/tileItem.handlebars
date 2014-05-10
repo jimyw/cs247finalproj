@@ -3,11 +3,9 @@
       <div class="wrapper tile" style="display:none" id="{{fb_tile_id}}">
               <img src="{{photo}}" class="flip">            
       </div>
-      <div class="wrapper tile" id="video{{fb_tile_id}}">
-              <audio class="audio" src="{{audio}}"></audio>
-              <video class="replay">
-              	<source src="{{video}}" type="video/webm"></source>
-              </video>
+      <div class="wrapper tile" id="{{fb_tile_id}}">
+              <audio id="audio{{fb_tile_id}}" src="{{audio}}"></audio>
+              <video id="replay{{fb_tile_id}}" src="{{video}}"></video>
       </div>
 
     {{else}}

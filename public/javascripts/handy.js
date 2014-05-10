@@ -83,3 +83,13 @@ function datauri_to_blob(dataURI,callback) {
     var blob = new Blob([view]);
     return blob;
   };
+
+
+function playVideo(tileId) {
+  setTimeout(function(){
+    document.getElementById("replay"+tileId).play();
+    setTimeout(function(){
+      document.getElementById("audio"+tileId).play(); // delay 500 seconds for audio, it worked well on my machine
+    },0);
+  },video_audio_sync_time); // wait until audio and video are both appended
+}

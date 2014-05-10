@@ -87,8 +87,13 @@ function load_collage(numTiles) {
 
         if (val.audio) {  // convert back to blob
           console.log('audio');
-          val.audio = URL.createObjectURL(base64_to_blob(val.audio));
-          val.video = URL.createObjectURL(base64_to_blob(val.video));
+          var audio_blob = base64_to_blob(val.audio);
+          audio_blob.type = "audio/wav"; 
+          val.audio = URL.createObjectURL(audio_blob);
+
+          var video_blob = base64_to_blob(val.video);
+          video_blob.type = "video/webm";
+          val.video = URL.createObjectURL(video_blob);
 
           console.log(val.audio);
         }
@@ -131,7 +136,7 @@ function show(snap) {
    $('pre').text(JSON.stringify(snap.val(), null, 2));
 }
 
-function tileListener() {
+function playTile() {
   console.log('tileListener');
   console.log($(".tile"));
   
@@ -140,21 +145,7 @@ function tileListener() {
     fb_tile_id = $(this).attr("id");
     // get simplecam
     console.log(fb_tile_id);
-
-    // $.ajax({
-    //   url: 'simplecam',
-    //   type: 'get',
-    //   data: {fb_collage_id: fb_collage_id, fb_tile_id: fb_tile_id},
-    //   success: function(response) {
-    //     //Do Something
-    //     console.log('ajax get success')
-    //   },
-    //   error: function(xhr) {
-    //     //Do Something to handle error
-    //     console.log('ajax get error')
-    //   }
-    // })
-
+    playVideo(fb_tile_id);
 
   });
 }
@@ -190,7 +181,10 @@ function displayPage(tile_list) {
   $("#row1").html(template(data1));
   $("#row2").html(template(data2));
 
-  // tileListener();
+  playTile();
+
+
+
 }
 
 
