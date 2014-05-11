@@ -83,19 +83,20 @@
   }
 
   function showCountDown() {
-    countdown.innerHTML = "3";
-    setTimeout(function(){
-      countdown.innerHTML = "2";
-    }, 1000);
+    $("#videowrapper").addClass("redborder");
+    $("#videowrapper").removeClass("border");
+    countdown.innerHTML = "2";
     setTimeout(function(){
       countdown.innerHTML = "1";
-    }, 2000);
+    }, 1000);
     setTimeout(function(){
       countdown.innerHTML = "0";
-    }, 3000);
+    }, 2000);
     setTimeout(function(){
       countdown.innerHTML = "";
-    }, 3100);
+      $("#videowrapper").addClass("border");
+      $("#videowrapper").removeClass("redborder");
+    }, 2100);
   }
 
   startbutton.addEventListener('click', function(ev){

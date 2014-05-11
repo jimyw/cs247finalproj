@@ -141,12 +141,13 @@ function playTile() {
   console.log($(".tile"));
   
 
-  $(".tile").click(function(e) {
+  $(".tile").mouseenter(function(e) {
     fb_tile_id = $(this).attr("id");
     // get simplecam
     console.log(fb_tile_id);
-    playVideo(fb_tile_id);
-
+    //playVideo(fb_tile_id);
+    document.getElementById("replay"+fb_tile_id).play();
+    document.getElementById("audio"+fb_tile_id).play();
   });
 }
 

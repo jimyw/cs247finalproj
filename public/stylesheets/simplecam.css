@@ -16,6 +16,11 @@ canvas {
 	float: left;
 }
 
+#simplecammsg {
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+
 #photowrapper {
 	position: absolute;
 	left: 600px;
@@ -34,6 +39,11 @@ canvas {
 
 .border {
 	border: 10px solid #fff;
+	border-radius: 10px;
+}
+
+.redborder {
+	border: 10px solid red;
 	border-radius: 10px;
 }
 
@@ -66,8 +76,8 @@ canvas {
 
 #countdown {
 	position: absolute;
-	top: 0px;
-	left: 620px;
+	top: 30px;
+	left: 20px;
 	color: red;
 	font-weight: bold;
 	font-size: 18pt;
@@ -107,16 +117,28 @@ canvas {
 	border-radius: 10px;
 }
 
+#startbutton {
+	top: 80px;
+}
+
 #donebutton {
 	background: green;
-	left: 400px;
-	top: 100px;
+	right: 400px;
+	top: 180px;
 }
 
 #finish {
 	position: fixed;
 	background: green;
-	bottom: 30px;	
+	right: 300px;
+	bottom: 100px;	
+}
+
+.yellow {
+	margin-left: 20px;
+	color: yellow;
+	font-weight: bold;
+	font-size: 16px;
 }
 
 #container {
@@ -133,11 +155,7 @@ canvas {
 	font-size: 16px;
 }
 
-#replay, #webcam_stream {
-	position: fixed;
-	margin-left: 20px;
-	bottom: 200px;
-	height: 200px;
+#replay{
 	width: 280px;
 	height: 210px;
 }
@@ -151,7 +169,16 @@ canvas {
 	height: 210px;	
 }
 
-#replay, .not-recording {
+.cropper {
+	position: fixed;
+	margin-left: 20px;
+	bottom: 200px;
+	width: 210px;
+	height: 210px;
+	overflow: hidden;
+}
+
+.cropper, .not-recording {
   border: 2px solid #dcc;
 }
 .recording {
@@ -188,6 +215,7 @@ canvas {
 /* entire container, keeps perspective */
 .flip-container {
 	-webkit-perspective: 1000;
+	overflow: hidden;
 }
 	/* flip the pane when hovered */
 	.flip-container:hover .flipper, .flip-container.hover .flipper {
@@ -195,13 +223,13 @@ canvas {
 	}
 
 .flip-container, .front, .back {
-	width: 320px;
-	height: 480px;
+	width: 200px;
+	height: 200px;
 }
 
 .overlay {
-	width: 320px;
-	height: 480px;	
+	width: 200px;
+	height: 200px;	
 }
 
 /* flip speed goes here */
@@ -229,4 +257,10 @@ canvas {
 /* back, initially hidden pane */
 .back {
 	-webkit-transform: rotateY(180deg);
+}
+
+
+
+.videoMSG {
+	height: 200px;
 }

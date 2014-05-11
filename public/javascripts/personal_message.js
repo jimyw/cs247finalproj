@@ -27,7 +27,7 @@
 
     // record video
     navigator.getUserMedia({video: true}, function(mediaStream) {
-      $("#status").html("waiting..");
+      $("#status").html("Please also enable microphone :)");
       window.recordRTC_Video = RecordRTC(mediaStream,{type:"video"});
       //Number of media ready
       ready += 1;
@@ -58,7 +58,10 @@
 
     // record audio
     navigator.getUserMedia({audio: true}, function(mediaStream) {
-      $("#status").html("waiting..");
+      $("#status").removeClass("yellow");
+      $("#status").addClass("msg");
+      $("#status").html("You can now start recording the video!");
+
       window.recordRTC_Audio = RecordRTC(mediaStream,{type:"audio"});
       ready += 1;
       if(ready == 2){
@@ -69,11 +72,13 @@
     });
 
     $("#stop_recording").hide();
-    $("#start_recording").hide();
+    $("#start_recording").show();
+    $("#replay_recording").hide();
 
     //Start recording button touched
     $("#start_recording").click(function (){   
       if(ready == 2){
+        $("#replay_recording").hide();
         // update ids here, because page loads too slowly
         fb_collage_id = $("#fb_collage_id").html();
         fb_tile_id = $("#fb_tile_id").html();
@@ -86,7 +91,9 @@
         $(this).hide();
         $("#stop_recording").show();
       }else{
-        $("#status").html("Need to enable both microphone and camera to record a message");
+        $("#status").html("Need to enable both microphone and camera to record a message :)");
+        $("#status").addClass("yellow");
+        $("#status").removeClass("msg");
       }
     });
 
@@ -98,6 +105,9 @@
         // console.log('audio url '+audioURL);
 
         $("#audio_link").append("<audio id='audio' src='"+audioURL+"'></audio>")
+        $("#status").html("Video message recorded!");
+        $("#status").removeClass("yellow");
+        $("#status").addClass("msg");
 
         // updating firebase
         datauri_to_blob(audioURL,function(blob){
@@ -172,7 +182,13 @@
       $(this).hide();
       $("#start_recording").html("Retake the Video");
       $("#start_recording").show();
+      $("#replay_recording").show();
     });
+
+    $("#replay_recording").click(function (){
+      playVideo('');
+    });
+
   });
 
 })();

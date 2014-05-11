@@ -4,6 +4,7 @@
 <p/>
 <div><button class="button" id="start_recording">Start Recording Video</button></div>
 <div><button class="button" id="stop_recording">Stop Recording Video</button></div>
+<div><button class="button" id="replay_recording">Replay the Video</button></div>
 <div id="conversation"></div>
 {{!-- <div id="submission">
   <input type="text" id="textbox" placeholder="And put your text message here..">
@@ -18,9 +19,9 @@
 	<button type="submit" class="button" id="finish">Finish!</button>
 </form>
 </div>
-<div id="webcam_stream"></div>
-<div id="video_container"></div>
+<div class="cropper"><div id="webcam_stream"></div></div>
+<div class="cropper"><div id="video_container"></div></div>
 <div id="audio_link"></div>
-<div id="video_link"></div>
+<div class="cropper"><div id="video_link"></div></div>
 <div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
 <div id="fb_tile_id" style="display: none;">{{fb_tile_id}}</div>
