@@ -18,7 +18,7 @@ var ruth_msg = "Ruth is studying abroad. Choose a tile and tell her how you miss
 var messages = ["Happy birthday,", "Happy birthday", "We miss you,"];
 var intromessages = [Jonathan_msg, grandma_msg, ruth_msg];
 var names = ["Jonathan", "Zoia", "Ruth"];
-var collage_ids = ['o4v2fwghkt9','ciskxs10pb9','z738xwjc3di']
+var collage_ids = ['tva5rqnnrk9','cpiecul3di','1d689ztzkt9']
 
 exports.index = function(req, res) {
 	console.log('index');
