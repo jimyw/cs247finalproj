@@ -114,7 +114,9 @@
       showCountDown();
       setTimeout(takepicture, 3000);
     } else {
-      $("#status").html("you must first enable the webcam.");
+      $("#status").html("You must first enable the webcam to take a picture.");
+      $("#status").addClass("yellow");
+      $("#status").removeClass("msg");
     }
 
   }, false);
