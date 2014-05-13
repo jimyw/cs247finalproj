@@ -165,16 +165,25 @@ function playTile() {
 
 function displayTwoRows(tile_list) {
   var numTiles = tile_list.length;
-
+  console.log('displayTwoRows')
   var tile_list1 = new Array();
   var tile_list2 = new Array();
 
   // separate the tiles into top row and bottom row
   for (key in tile_list) {
-    if (key % 2 == 0) {
-      tile_list1.push(tile_list[key]);
-    } else {
-      tile_list2.push(tile_list[key]);
+
+    if (name_collage == 1) {  // for spelling out name
+      if (key < numTiles/2) {
+        tile_list1.push(tile_list[key]);
+      } else {
+        tile_list2.push(tile_list[key]);
+      }
+    } else {    // case where we go by columns first
+      if (key % 2 == 0) {
+        tile_list1.push(tile_list[key]);
+      } else {
+        tile_list2.push(tile_list[key]);
+      }
     }
   }
 
@@ -205,9 +214,9 @@ function displayName(tile_list) {
 function displayPage(tile_list) {
   console.log('displayPage')
   // console.log(tile_list);
-  
-  if (name_collage == 1) {
-    displayName(tile_list);  
+  var numTiles = tile_list.length;
+  if (numTiles <= 2 && name_collage == 1) {
+      displayName(tile_list);  
   } else {
     displayTwoRows(tile_list);
   }
