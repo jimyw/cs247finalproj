@@ -18,7 +18,8 @@ var ruth_msg = "Ruth is studying abroad. Choose a tile and tell her how you miss
 var messages = ["Happy birthday,", "Happy birthday", "We miss you,"];
 var intromessages = [Jonathan_msg, grandma_msg, ruth_msg];
 var names = ["Jonathan", "Zoia", "Ruth"];
-var collage_ids = ['5g6p65bqpvi','q6wq9z4cxr','l25y8ccjtt9']
+var collage_ids = ['5g6p65bqpvi','q6wq9z4cxr','l25y8ccjtt9'];
+var collage_ids_hearts = ['ryp2pt4kj4i','dmyjndvlsor','ps0wx5pzaor'];
 
 exports.index = function(req, res) {
 	console.log('index');
@@ -28,12 +29,21 @@ exports.index = function(req, res) {
 	if (!post) {
 		post = 0;
 	}
+	var name_collage = 0;
 
 	var person = 0;
-	if (collage_id == collage_ids[1]) {
-		person = 1;
-	} else if (collage_id == collage_ids[2]) {
-		person = 2;
+	if (name_collage == 1) {	// spell out name
+		if (collage_id == collage_ids[1]) {
+			person = 1;
+		} else if (collage_id == collage_ids[2]) {
+			person = 2;
+		}	
+	} else {
+		if (collage_id == collage_ids_hearts[1]) {
+			person = 1;
+		} else if (collage_id == collage_ids_hearts[2]) {
+			person = 2;
+		}	
 	}
 
 
@@ -41,9 +51,9 @@ exports.index = function(req, res) {
 	var basic_data = { 
 		title: 'Card Collage',  
 		intromsg: intromessages[person],
-		message: messages[person],
+		message: messages[person] + ' '+names[person],
 		recipient_name: names[person],
-		name_collage: 1,		// handle name_collage in backend (based on what planner wants)
+		name_collage: name_collage,		// handle name_collage in backend (based on what planner wants)
 		post: post,
 		fb_collage_id: collage_id,
 	};

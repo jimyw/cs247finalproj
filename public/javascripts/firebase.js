@@ -8,10 +8,10 @@ var fb_tile_id = 'ka0thtihpvi';
 var loadDirect = true;
 var recipient_name;
 
-
 var name_collage = 1;
 
 $(document).ready(function(){
+  name_collage = $("#name_collage").html();
   recipient_name = $("#recipient_name").html();
   recipient_name = recipient_name.toUpperCase();
   console.log(recipient_name)
@@ -32,13 +32,21 @@ function initialize_page() {
 }
 
 function initialize_collage() {
-  var numTiles = recipient_name.length;
-  var photoArray = new Array();
+  var numTiles;
+  var photoArray;
+
   // create simple design for M4
-  for (var i=0; i<numTiles; i++) {
-    photoArray.push(recipient_name[i]+'.jpg');
+  if (name_collage == 1) {
+    numTiles = recipient_name.length;
+    photoArray = new Array();
+    for (var i=0; i<numTiles; i++) {
+      photoArray.push(recipient_name[i]+'.jpg');
+    }
+  } else {
+    photoArray = ['Heart1.jpg','Heart3.jpg','Heart2.jpg','Heart4.jpg'];  
+    numTiles = photoArray.length;
   }
-  // var photoArray = ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg'];
+  
 
   // create new collage  
   fb_collage_id = Math.random().toString(36).substring(7);
@@ -198,7 +206,7 @@ function displayPage(tile_list) {
   console.log('displayPage')
   // console.log(tile_list);
   
-  if (name_collage) {
+  if (name_collage == 1) {
     displayName(tile_list);  
   } else {
     displayTwoRows(tile_list);
