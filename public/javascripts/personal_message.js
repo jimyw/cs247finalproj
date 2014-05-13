@@ -78,6 +78,10 @@
     //Start recording button touched
     $("#start_recording").click(function (){   
       if(ready == 2){
+        // send google analytics
+        ga('send', 'event', 'button', 'click', 'take video');
+
+
         $("#replay_recording").hide();
         // update ids here, because page loads too slowly
         fb_collage_id = $("#fb_collage_id").html();
@@ -186,6 +190,7 @@
     });
 
     $("#replay_recording").click(function (){
+      ga('send', 'event', 'button', 'click', 'replay video');
       playVideo('');
     });
 

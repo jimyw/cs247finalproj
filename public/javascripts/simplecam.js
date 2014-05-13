@@ -80,6 +80,8 @@
 
     var json_data = {photo: data, filled: 1};
     updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
+
   }
 
   function showCountDown() {
@@ -101,6 +103,10 @@
 
   startbutton.addEventListener('click', function(ev){
   	ev.preventDefault();
+
+    // send google analytics
+    ga('send', 'event', 'button', 'click', 'take photo');
+
     showCountDown();
     setTimeout(takepicture, 3000);
   }, false);
