@@ -5,6 +5,7 @@
   var fb = new Firebase(fb_link);
   var fb_collage_id = $("#fb_collage_id").html();
   var fb_tile_id = $("#fb_tile_id").html();
+  var ready = 0;
   // console.log(fb_tile_id);
 
   // var photo_json = getTilePhoto(fb, fb_collage_id, fb_tile_id);
@@ -42,6 +43,9 @@
       audio: false 
     },
     function(stream) {
+
+      ready += 1;
+      console.log(ready);
       if (navigator.mozGetUserMedia) { 
         video.mozSrcObject = stream;
       } else {
@@ -101,8 +105,12 @@
 
   startbutton.addEventListener('click', function(ev){
   	ev.preventDefault();
-    showCountDown();
-    setTimeout(takepicture, 3000);
+    if (ready == 1) {
+      showCountDown();
+      setTimeout(takepicture, 3000);
+    }
+
+    
   }, false);
 
   // var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);

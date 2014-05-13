@@ -31,9 +31,9 @@
       window.recordRTC_Video = RecordRTC(mediaStream,{type:"video"});
       //Number of media ready
       ready += 1;
-      if(ready == 2){
-        $("#start_recording").show();
-      }
+      // if(ready == 2){
+      //   $("#start_recording").show();
+      // }
       //Add a video indicator to the upper right corner
       var video_width= 160;
       var video_height= 120;
@@ -64,9 +64,9 @@
 
       window.recordRTC_Audio = RecordRTC(mediaStream,{type:"audio"});
       ready += 1;
-      if(ready == 2){
-        $("#start_recording").show();
-      }
+      // if(ready == 2){
+      //   $("#start_recording").show();
+      // }
     },function(failure){
       console.log(failure);
     });
