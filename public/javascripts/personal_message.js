@@ -15,7 +15,10 @@
   var filter_class = "none";
   var ready = 0;
 
+  var starttime;
+
   function record_audio_and_video(){
+    starttime = new Date().getTime();
 
     $("#status").html("Audio and video recording started");
 
@@ -78,6 +81,10 @@
     //Start recording button touched
     $("#start_recording").click(function (){   
       if(ready == 2){
+        // send google analytics
+        ga('send', 'event', 'button', 'click', 'take video');
+
+
         $("#replay_recording").hide();
         // update ids here, because page loads too slowly
         fb_collage_id = $("#fb_collage_id").html();
@@ -186,6 +193,7 @@
     });
 
     $("#replay_recording").click(function (){
+      ga('send', 'event', 'button', 'click', 'replay video');
       playVideo('');
     });
 

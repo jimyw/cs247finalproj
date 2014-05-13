@@ -84,6 +84,8 @@
 
     var json_data = {photo: data, filled: 1};
     updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
+
   }
 
   function showCountDown() {
@@ -106,11 +108,15 @@
   startbutton.addEventListener('click', function(ev){
   	ev.preventDefault();
     if (ready == 1) {
+      // send google analytics
+      ga('send', 'event', 'button', 'click', 'take photo');
+
       showCountDown();
       setTimeout(takepicture, 3000);
+    } else {
+      $("#status").html("you must first enable the webcam.");
     }
 
-    
   }, false);
 
   // var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
@@ -121,22 +127,24 @@
   // donebutton.addEventListener('click', function(ev){
   //   console.log("Done taking photo");
   //   var data = photo.getAttribute('src');
-    
-  //   console.log('json_data')
-    
+
+    // $.get('/personalmsg', data)
 
     // $.ajax({
-    //   url: 'personalmsg',
+    //   url: '/personalmsg',
     //   type: 'get',
+    //   data: data,
     //   success: function(response) {
     //     //Do Something
+
     //     console.log('ajax get success')
     //   },
     //   error: function(xhr) {
     //     //Do Something to handle error
     //     console.log('ajax get error')
     //   }
-    // })
+    // });
+
   // }, false);
 
 })();

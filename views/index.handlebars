@@ -1,5 +1,14 @@
 <script src="/templates/hbt.js"></script>
 <script src="/javascripts/firebase.js"></script>
+<script>
+ga('set', 'page', 'homepage');
+ga('send', 'pageview');
+</script>
+
+{{#if post}}
+<div class="alert alert-success">Thank you for contributing to the collage for {{recipient_name}}. We would appreciate you filling out a short survey about your experience: <a href="http://goo.gl/7HPDhv">http://goo.gl/7HPDhv</a></div>
+
+{{/if}}
 
 <p class="regtext" id="intromsg">{{intromsg}}</p>
 <p class="regtext" id="shareLink"></p>
