@@ -7,7 +7,7 @@ var fb_collage_id = 'yxha3e4s4i';
 var fb_tile_id = 'ka0thtihpvi';  
 var loadDirect = true;
 
-var recipient_name = "Jonathan";
+var recipient_name = "JONATHAN";
 var name_collage = 1;
 
 
@@ -31,12 +31,17 @@ function initialize_page() {
 }
 
 function initialize_collage() {
+  var numTiles = recipient_name.length;
+  var photoArray = new Array();
   // create simple design for M4
-  var photoArray = ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg'];
+  for (var i=0; i<numTiles; i++) {
+    photoArray.push(recipient_name[i]+'.jpg');
+  }
+  // var photoArray = ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg'];
 
 
   // create new collage
-  var numTiles = recipient_name.length;
+  
   fb_collage_id = Math.random().toString(36).substring(7);
   var shareLink = "Share this url with your friends to collaborate: "+ document.location.href+"/#"+fb_collage_id;
   console.log(shareLink);
@@ -48,7 +53,7 @@ function initialize_collage() {
     var fb_new_tile = fb_new_collage.child('Tile').child(fb_tile_id);  // create numTiles
 
     var j = i % (photoArray.length);
-
+    console.log(photoArray[j])
     fb_new_tile.set({
       'name': '', 
       'email': '', 

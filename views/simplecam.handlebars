@@ -9,6 +9,7 @@
 	</div>
 	<button class="button" id="startbutton">Take photo</button>
 	<a href="personalmsg?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"><button class="button" id="donebutton">Done!</button></a>
+	<a href="/#{{fb_collage_id}}"><button class="button" id="cancelbutton">Cancel</button></a>
 	<canvas id="canvas"></canvas>
 	{{#if filled}}
 	<div class="border" id="photowrapper"><img src="{{photo}}" class="flip" id="photo" alt="photo"></div>

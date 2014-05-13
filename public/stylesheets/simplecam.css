@@ -8,7 +8,7 @@ canvas {
 	display: none;
 }
 
-#photo, #donebutton, #startbutton, #overlay {
+#photo, #donebutton, #startbutton, #cancelbutton, #overlay {
 	position: absolute;
 	left: 0px;
 	top: 0px;
@@ -45,6 +45,11 @@ canvas {
 .redborder {
 	border: 10px solid red;
 	border-radius: 10px;
+}
+
+.stretch {
+	width: 210px;
+	height: 160px;
 }
 
 #video {
@@ -103,7 +108,7 @@ canvas {
 
 }
 
-#donebutton, #startbutton {
+#donebutton, #startbutton, #cancelbutton {
 	left: 380px;
 }
 
@@ -127,6 +132,12 @@ canvas {
 	top: 180px;
 }
 
+#cancelbutton {
+	background: gray;
+	right: 400px;
+	top: 280px;
+}
+
 #finish {
 	position: fixed;
 	background: green;
@@ -139,6 +150,12 @@ canvas {
 	color: yellow;
 	font-weight: bold;
 	font-size: 16px;
+}
+
+.wishMSG {
+	font-size: 40pt;
+	color: yellow;
+	font-style: italic;
 }
 
 #container {
@@ -168,6 +185,13 @@ canvas {
 	width: 280px;
 	height: 210px;	
 }
+
+.crop {
+	width: 160px;
+	height:160px;
+	overflow: hidden;
+}
+	
 
 .cropper {
 	position: fixed;
@@ -215,21 +239,15 @@ canvas {
 /* entire container, keeps perspective */
 .flip-container {
 	-webkit-perspective: 1000;
-	overflow: hidden;
 }
 	/* flip the pane when hovered */
 	.flip-container:hover .flipper, .flip-container.hover .flipper {
 		-webkit-transform: rotateY(180deg);
 	}
 
-.flip-container, .front, .back {
-	width: 200px;
-	height: 200px;
-}
-
-.overlay {
-	width: 200px;
-	height: 200px;	
+.flip-container, .front, .back, .overlay {
+	width: 160px;
+	height: 160px;
 }
 
 /* flip speed goes here */
@@ -262,5 +280,35 @@ canvas {
 
 
 .videoMSG {
-	height: 200px;
+	height: 160px;
+}
+
+.textMSG {
+	color: white;
+	font-size: 14pt;
+	z-index: 1;
+}
+
+.wrapper {
+	position: relative;
+	width: 160px;
+	height:160px;
+}
+
+.wrapper img {
+	position: absolute;
+}
+
+.wrapper form {
+	position: absolute;
+	left: 20px;
+	top: 120px;
+	width: 80px;
+	height:30px;
+	z-index: 2;
+}
+
+.overlay {
+	z-index: 1;
+	opacity: 0.4;
 }

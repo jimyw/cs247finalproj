@@ -3,16 +3,17 @@
       <div class="flip-container wrapper tile" id="wrapper{{fb_tile_id}}" ontouchstart="this.classList.toggle('hover');">
         <div class="flipper">
           <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}">
-            <div class="front" id="front">
-              <div class="wrapper tile " id="photo{{fb_tile_id}}">
-                    <img src="{{photo}}" class="flip">            
+            <div class="front crop" id="front">
+              <div class="wrapper tile" id="photo{{fb_tile_id}}">
+                    <img src="{{photo}}" class="flip stretch">            
                 </div>
             </div>
             <div class="back">
-                <div class="wrapper tile" id="{{fb_tile_id}}">
+                <div class="wrapper tile crop" id="{{fb_tile_id}}">
                     <audio id="audio{{fb_tile_id}}" src="{{audio}}"></audio>
-                    <video class="videoMSG" id="replay{{fb_tile_id}}" src="{{video}}"></video>
+                    <video class="videoMSG flip" id="replay{{fb_tile_id}}" src="{{video}}"></video>
                 </div>  
+                <p class="textMSG">{{text}}</p>
             </div>
           </a>
         </div>
