@@ -7,9 +7,19 @@ function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 }
 
 
+// exports.birthday = function(req, res) {
+// 	console.log('index')
+// 	res.render('index', { title: 'Card Collage' });
+// }
+
 exports.index = function(req, res) {
 	console.log('index')
-	res.render('index', { title: 'Card Collage' });
+	res.render('index', { 
+		title: 'Card Collage',  
+		intromsg: "John's birthday is coming up in a week. Choose a tile and upload a personal birthday wish for him!",
+		message: "Happy birthday",
+		name_collage: 1,		// handle name_collage in backend (based on what planner wants)
+	});
 }
 
 exports.simplecam = function(req, res) {

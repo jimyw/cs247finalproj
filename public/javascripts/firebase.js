@@ -7,7 +7,10 @@ var fb_collage_id = 'yxha3e4s4i';
 var fb_tile_id = 'ka0thtihpvi';  
 var loadDirect = true;
 
-var jofish = 'tjpe1qhncdi';
+var recipient_name = "Jonathan";
+var name_collage = 1;
+
+
 
 $(document).ready(function(){
   initialize_page();
@@ -33,9 +36,9 @@ function initialize_collage() {
 
 
   // create new collage
-  var numTiles = 12;
+  var numTiles = recipient_name.length;
   fb_collage_id = Math.random().toString(36).substring(7);
-  var shareLink = "Share this url with your friends to collaborate: "+ document.location.origin+"/#"+fb_collage_id;
+  var shareLink = "Share this url with your friends to collaborate: "+ document.location.href+"/#"+fb_collage_id;
   console.log(shareLink);
   $("#shareLink").html(shareLink);
 
@@ -69,10 +72,6 @@ function initialize_collage() {
 // returns the list of tiles for a given collage id as JSON
 function load_collage(numTiles) {
   console.log('load_collage')
-  if (fb_collage_id == jofish) {
-    $("#intromsg").html("Jofish's birthday is coming up in a week. Choose a tile and upload a personal birthday wish for him!")
-  }
-
   var tile_list = new Array();
   var iter=0;
   var tile_instance = fb.child(fb_collage_id).child('Tile');
@@ -143,17 +142,16 @@ function playTile() {
 
   $(".tile").mouseenter(function(e) {
     fb_tile_id = $(this).attr("id");
-    // get simplecam
     console.log(fb_tile_id);
-    //playVideo(fb_tile_id);
-    document.getElementById("replay"+fb_tile_id).play();
-    document.getElementById("audio"+fb_tile_id).play();
+    var replay = document.getElementById("replay"+fb_tile_id);
+    if (replay) {
+      replay.play();
+      document.getElementById("audio"+fb_tile_id).play();
+  }
   });
 }
 
-function displayPage(tile_list) {
-  console.log('displayPage')
-  console.log(tile_list);
+function displayTwoRows(tile_list) {
   var numTiles = tile_list.length;
 
   var tile_list1 = new Array();
@@ -181,6 +179,27 @@ function displayPage(tile_list) {
   Handlebars.registerPartial('tileItem', Collage.Templates["templates/tileItem.handlebars"]);
   $("#row1").html(template(data1));
   $("#row2").html(template(data2));
+
+}
+
+function displayName(tile_list) {
+  // Retrieve templates from template file
+  var template = Collage.Templates["templates/tileList.handlebars"];
+  Handlebars.registerPartial('tileItem', Collage.Templates["templates/tileItem.handlebars"]);
+  var data = {tile_list:tile_list, name_collage:name_collage}
+  $("#row1").html(template(data));
+}
+
+function displayPage(tile_list) {
+  console.log('displayPage')
+  // console.log(tile_list);
+  
+  if (name_collage) {
+    displayName(tile_list);  
+  } else {
+    displayTwoRows(tile_list);
+  }
+  
 
   playTile();
 

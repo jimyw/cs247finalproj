@@ -1,16 +1,19 @@
 <script src="/templates/hbt.js"></script>
 <script src="/javascripts/firebase.js"></script>
 
-<p class="regtext" id="intromsg">John's birthday is coming up in a week. Choose a tile and upload a personal birthday wish for him!<p>
+<p class="regtext" id="intromsg">{{intromsg}}</p>
 <p class="regtext" id="shareLink"></p>
 
-{{!-- <div id="row1">
-</div>
-<div id="row2">
-</div> --}}
+{{#if name_collage}}
+<h1>{{message}} </h1>
+<table> 
+<tr id="row1">
+{{!-- Code is in template/tileItem.handlebars --}}
+</tr>
+</table>
 
 
-
+{{else}}
 <table> 
 <tr id="row1">
 {{!-- Code is in template/tileItem.handlebars --}}
@@ -20,3 +23,5 @@
 </tr>
 
 </table>
+
+{{/if}}
