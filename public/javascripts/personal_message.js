@@ -15,7 +15,10 @@
   var filter_class = "none";
   var ready = 0;
 
+  var starttime;
+
   function record_audio_and_video(){
+    starttime = new Date().getTime();
 
     $("#status").html("Audio and video recording started");
 

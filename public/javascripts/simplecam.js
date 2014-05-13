@@ -119,22 +119,24 @@
   // donebutton.addEventListener('click', function(ev){
   //   console.log("Done taking photo");
   //   var data = photo.getAttribute('src');
-    
-  //   console.log('json_data')
-    
+
+    // $.get('/personalmsg', data)
 
     // $.ajax({
-    //   url: 'personalmsg',
+    //   url: '/personalmsg',
     //   type: 'get',
+    //   data: data,
     //   success: function(response) {
     //     //Do Something
+
     //     console.log('ajax get success')
     //   },
     //   error: function(xhr) {
     //     //Do Something to handle error
     //     console.log('ajax get error')
     //   }
-    // })
+    // });
+
   // }, false);
 
 })();
