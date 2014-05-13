@@ -1,6 +1,7 @@
 var Firebase = require('firebase');
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 
+
 // get firebase tile instance
 function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 	return fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
@@ -13,13 +14,24 @@ function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 // }
 
 exports.index = function(req, res) {
-	console.log('index')
-	res.render('index', { 
+	console.log('index');
+	console.log(req.query);
+	var post = req.query.post;
+	if (!post) {
+		post = 0;
+	}
+
+	console.log(post);
+	var basic_data = { 
 		title: 'Card Collage',  
 		intromsg: "John's birthday is coming up in a week. Choose a tile and upload a personal birthday wish for him!",
 		message: "Happy birthday",
+		recipient_name: "John",
 		name_collage: 1,		// handle name_collage in backend (based on what planner wants)
-	});
+		post: post,
+	};
+
+	res.render('index', basic_data);
 }
 
 exports.simplecam = function(req, res) {
@@ -80,8 +92,11 @@ exports.postVideo = function (req, res) {
 	var text = params.textmsg;
 	var tile_instance = getTileInstance(fb, fb_collage_id, fb_tile_id);
 	var json_data = {text:text};	// audio: audioURL, video: videoURL, 
+
+	// var render_data = JSON.parse( JSON.stringify(basic_data));	// make deep copy
+
 	tile_instance.update(json_data, function() {
 		// on complete
-		res.redirect('/#'+params.fb_collage_id);
+		res.redirect('/?collage_id='+params.fb_collage_id+'&post=1');
 	});
 }
