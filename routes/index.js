@@ -29,7 +29,7 @@ exports.index = function(req, res) {
 		post = 0;
 	}
 
-	var person = 0;
+	var person = 1;
 	if (collage_id == collage_ids[1]) {
 		person = 1;
 	} else if (collage_id == collage_ids[2]) {
