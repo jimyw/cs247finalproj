@@ -18,7 +18,7 @@ var ruth_msg = "Ruth is studying abroad. Choose a tile and tell her how you miss
 var messages = ["Happy birthday,", "Happy birthday", "We miss you,"];
 var intromessages = [Jonathan_msg, grandma_msg, ruth_msg];
 var names = ["Jonathan", "Zoia", "Ruth"];
-var collage_ids = ['tva5rqnnrk9','cpiecul3di','1d689ztzkt9']
+var collage_ids = ['5g6p65bqpvi','q6wq9z4cxr','l25y8ccjtt9']
 
 exports.index = function(req, res) {
 	console.log('index');
@@ -29,7 +29,7 @@ exports.index = function(req, res) {
 		post = 0;
 	}
 
-	var person = 1;
+	var person = 0;
 	if (collage_id == collage_ids[1]) {
 		person = 1;
 	} else if (collage_id == collage_ids[2]) {
