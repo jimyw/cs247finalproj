@@ -13,7 +13,7 @@ var name_collage = 1;
 
 $(document).ready(function(){
   recipient_name = $("#recipient_name").html();
-  recipient_name.toUpperCase();
+  recipient_name = recipient_name.toUpperCase();
   console.log(recipient_name)
   initialize_page();
 });
