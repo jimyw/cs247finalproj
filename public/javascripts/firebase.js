@@ -3,26 +3,23 @@
 /* Include your Firebase link here!*/
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 var fb = new Firebase(fb_link);
-var fb_collage_id = 'yxha3e4s4i';
+var fb_collage_id = '';
 var fb_tile_id = 'ka0thtihpvi';  
 var loadDirect = true;
 
 var recipient_name = "JONATHAN";
 var name_collage = 1;
 
-
-
 $(document).ready(function(){
   initialize_page();
-  // tileIsDone(fb_tile_id)
-  // var pp = getTilePhoto(fb, fb_collage_id, fb_tile_id);
 });
 
 function initialize_page() {
-  var url_segments = document.location.href.split("/#");
-  console.log(url_segments);
-  if (url_segments[1]) {
-    fb_collage_id = url_segments[1];  // get collage_id from url
+  // var url_segments = document.location.href.split("/#");
+  fb_collage_id = getParameterByName('collage_id');
+  // console.log(url_segments);
+  if (fb_collage_id) {
+    // fb_collage_id = url_segments[1];  // get collage_id from url
     console.log('Collage ID in url is ' + fb_collage_id);
     load_collage();
   } else {
