@@ -25,6 +25,26 @@
     recordRTC_Audio.startRecording();
     recordRTC_Video.startRecording();
   }
+
+  function showCountDown() {
+    console.log('showCountDown')
+    // $(".cropper").addClass("redborder");
+    var countdown = $("#videocountdown")
+    countdown.html("3");
+    setTimeout(function(){
+      countdown.html("2");
+    }, 1000);
+    setTimeout(function(){
+      countdown.html("1");
+    }, 2000);
+    setTimeout(function(){
+      countdown.html("0");
+    }, 3000);
+    setTimeout(function(){
+      countdown.html("");
+      // $(".cropper").addClass("border");
+    }, 3100);
+  }
   
   $(document).ready(function() {
 
@@ -84,14 +104,17 @@
         // send google analytics
         ga('send', 'event', 'button', 'click', 'take video');
 
+        $("#stop_recording").css("background-color", "red")
 
         $("#replay_recording").hide();
         // update ids here, because page loads too slowly
         fb_collage_id = $("#fb_collage_id").html();
         fb_tile_id = $("#fb_tile_id").html();
         // console.log(fb_tile_id);
-        
-        record_audio_and_video();
+
+        showCountDown();
+        setTimeout(record_audio_and_video,3000);
+        // record_audio_and_video();
 
         $("#audio_link").html("");        
         $("#video_link").html("");
@@ -106,6 +129,8 @@
 
     //Stop recording button touched
     $("#stop_recording").click(function (){
+      // $(".cropper").removeClass("redborder");
+      $(this).css("background-color", "orange")
       var textbox_text = $("#textbox").val();
       recordRTC_Audio.stopRecording(function(audioURL) {
         //$("#audio_link").append("<a href='"+audioURL+"'' target='_blank'>"+audioURL+"</a>")
@@ -119,7 +144,6 @@
         // updating firebase
         datauri_to_blob(audioURL,function(blob){
           blob_to_base64(blob,function(base64){
-            console.log('conversion')
             var json_data = {audio: base64};
             updateTile(fb, fb_collage_id, fb_tile_id, json_data)
             // $("#video_form").val(base64);

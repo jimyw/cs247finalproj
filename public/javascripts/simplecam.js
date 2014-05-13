@@ -6,6 +6,9 @@
   var fb_collage_id = $("#fb_collage_id").html();
   var fb_tile_id = $("#fb_tile_id").html();
   var ready = 0;
+  var filled = $("#fb_filled").html();
+  
+  var status = $("#status");
   // console.log(fb_tile_id);
 
   // var photo_json = getTilePhoto(fb, fb_collage_id, fb_tile_id);
@@ -81,9 +84,11 @@
     console.log(fb_tile_id)
     photo.setAttribute('src', data);
 
-
-    var json_data = {photo: data, filled: 1};
+    filled = 1;
+    var json_data = {photo: data, filled: filled};
     updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+    startbutton.innerHTML="Retake photo";
+
 
 
   }
@@ -91,18 +96,21 @@
   function showCountDown() {
     $("#videowrapper").addClass("redborder");
     $("#videowrapper").removeClass("border");
-    countdown.innerHTML = "2";
+    countdown.innerHTML = "3";
     setTimeout(function(){
-      countdown.innerHTML = "1";
+      countdown.innerHTML = "2";
     }, 1000);
     setTimeout(function(){
-      countdown.innerHTML = "0";
+      countdown.innerHTML = "1";
     }, 2000);
+    setTimeout(function(){
+      countdown.innerHTML = "0";
+    }, 3000);
     setTimeout(function(){
       countdown.innerHTML = "";
       $("#videowrapper").addClass("border");
       $("#videowrapper").removeClass("redborder");
-    }, 2100);
+    }, 3100);
   }
 
   startbutton.addEventListener('click', function(ev){
@@ -110,13 +118,16 @@
     if (ready == 1) {
       // send google analytics
       ga('send', 'event', 'button', 'click', 'take photo');
+      status.removeClass("yellow");
+      status.addClass("msg");
+      status.html("");
 
       showCountDown();
       setTimeout(takepicture, 3000);
     } else {
-      $("#status").html("You must first enable the webcam to take a picture.");
-      $("#status").addClass("yellow");
-      $("#status").removeClass("msg");
+      status.html("You must first enable the webcam to take a picture.");
+      status.addClass("yellow");
+      status.removeClass("msg");
     }
 
   }, false);
@@ -126,27 +137,30 @@
   //   console.log('update completed')
   // });
 
-  // donebutton.addEventListener('click', function(ev){
-  //   console.log("Done taking photo");
-  //   var data = photo.getAttribute('src');
+  donebutton.addEventListener('click', function(ev){
+    // console.log(filled)
+    if (filled == 1) {
+      console.log("Done taking photo");
+      $.ajax({
+        url: '/personalmsg',
+        type: 'get',
+        success: function(response) {
+          //Do Something
+          window.location = "/personalmsg?fb_collage_id="+fb_collage_id+"&fb_tile_id="+fb_tile_id
+          console.log('ajax get success')
+        },
+        error: function(xhr) {
+          //Do Something to handle error
+          console.log('ajax get error')
+        }
+      });
+    } else {
+      console.log(filled)
+      status.html("You haven't taken a photo yet.")
+      status.addClass("yellow");
+      status.removeClass("msg");
+    }
 
-    // $.get('/personalmsg', data)
-
-    // $.ajax({
-    //   url: '/personalmsg',
-    //   type: 'get',
-    //   data: data,
-    //   success: function(response) {
-    //     //Do Something
-
-    //     console.log('ajax get success')
-    //   },
-    //   error: function(xhr) {
-    //     //Do Something to handle error
-    //     console.log('ajax get error')
-    //   }
-    // });
-
-  // }, false);
+  }, false);
 
 })();

@@ -1,14 +1,10 @@
 <link rel="stylesheet" href="/stylesheets/simplecam.css">
 <script src='/javascripts/personal_message.js'></script>
-<div class="msg">Please also record a video message and/or type in a text message :) <span class="msg" id="status"> Allow both microphone and web cam to record a video message.</span></div>
+<div class="direction">Don't forget to leave a personal video and/or text message :) <span class="msg" id="status"></span></div>
 <p/>
 <div><button class="button" id="start_recording">Start Recording Video</button></div>
-<div><button class="button" id="stop_recording">Stop Recording Video</button></div>
+<div><button class="button" id="stop_recording">Stop Recording Video</button><span id="videocountdown"></span></div>
 <div><button class="button" id="replay_recording">Replay the Video</button></div>
-<div id="conversation"></div>
-{{!-- <div id="submission">
-  <input type="text" id="textbox" placeholder="And put your text message here..">
-</div> --}}
 <div>
 <form name="input" id="submission" action="/postVideo" method="post">
 	<input type="text" name="textmsg" id="textbox" placeholder="And put your text message here..">

@@ -81,8 +81,14 @@ canvas {
 
 #countdown {
 	position: absolute;
-	top: 30px;
+	top: 40px;
 	left: 20px;
+	color: red;
+	font-weight: bold;
+	font-size: 18pt;
+}
+
+#videocountdown {
 	color: red;
 	font-weight: bold;
 	font-size: 18pt;
@@ -155,6 +161,12 @@ canvas {
 .wishMSG {
 	font-size: 40pt;
 	color: yellow;
+	font-style: italic;
+}
+
+.direction {
+	font-size: 20pt;
+	color: white;
 	font-style: italic;
 }
 

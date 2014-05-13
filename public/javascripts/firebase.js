@@ -40,7 +40,7 @@ function initialize_collage() {
   // create new collage
   
   fb_collage_id = Math.random().toString(36).substring(7);
-  var shareLink = "Share this url with your friends to collaborate: "+ document.location.href+"/#"+fb_collage_id;
+  var shareLink = "Share this url with your friends to collaborate: "+ document.location.href+"#"+fb_collage_id;
   console.log(shareLink);
   $("#shareLink").html(shareLink);
 

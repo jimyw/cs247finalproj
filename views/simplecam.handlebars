@@ -1,14 +1,14 @@
 {{!-- Source: https://github.com/codepo8/interaction-cam/ --}}
 
 <div id="container">
-	<div class="msg" id="simplecammsg">Please take or upload a photo to match the shape :)<span class="msg" id="status"></span></div><p/>
+	<div class="direction" id="simplecammsg">Please take a photo to match the letter shown :)<span class="msg" id="status"></span></div><p/>
 <p/>
 	<div class="border" id="videowrapper">
 		<video id="video"></video>
 		<img src="{{default_photo}}" width=320 id="overlay">
 	</div>
 	<button class="button" id="startbutton">Take photo</button>
-	<a href="personalmsg?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"><button class="button" id="donebutton">Done!</button></a>
+	<button class="button" id="donebutton">Done!</button>
 	<a href="/#{{fb_collage_id}}"><button class="button" id="cancelbutton">Cancel</button></a>
 	<canvas id="canvas"></canvas>
 	{{#if filled}}
@@ -21,5 +21,5 @@
 
 <div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
 <div id="fb_tile_id" style="display: none;">{{fb_tile_id}}</div>
-
+<div id="fb_filled" style="display: none;">{{filled}}</div>
 <script src="/javascripts/simplecam.js"></script>
