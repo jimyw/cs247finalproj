@@ -9,7 +9,7 @@
 	</div>
 	<button class="button" id="startbutton">Take photo</button>
 	<button class="button" id="donebutton">Done!</button>
-	<a href="/#{{fb_collage_id}}"><button class="button" id="cancelbutton">Cancel</button></a>
+	<a href="/?collage_id={{fb_collage_id}}"><button class="button" id="cancelbutton">Cancel</button></a>
 	<canvas id="canvas"></canvas>
 	{{#if filled}}
 	<div class="border" id="photowrapper"><img src="{{photo}}" class="flip" id="photo" alt="photo"></div>
@@ -22,5 +22,4 @@
 <div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
 <div id="fb_tile_id" style="display: none;">{{fb_tile_id}}</div>
 <div id="fb_filled" style="display: none;">{{filled}}</div>
-<div id="recipient_name" style="display: none;">{{filled}}</div>
 <script src="/javascripts/simplecam.js"></script>

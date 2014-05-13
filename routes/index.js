@@ -29,7 +29,7 @@ exports.index = function(req, res) {
 	if (!post) {
 		post = 0;
 	}
-	var name_collage = 0;
+	var name_collage = 1;
 
 	var person = 0;
 	if (name_collage == 1) {	// spell out name
