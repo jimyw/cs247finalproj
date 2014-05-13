@@ -89,8 +89,6 @@
     updateTile(fb, fb_collage_id, fb_tile_id, json_data)
     startbutton.innerHTML="Retake photo";
 
-
-
   }
 
   function showCountDown() {
@@ -129,17 +127,11 @@
       status.addClass("yellow");
       status.removeClass("msg");
     }
-
   }, false);
 
-  // var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
-  // tile_instance.onDisconnect().update({photo:data}, function(){
-  //   console.log('update completed')
-  // });
-
   donebutton.addEventListener('click', function(ev){
-    // console.log(filled)
     if (filled == 1) {
+      ga('send', 'event', 'button', 'click', 'done photo');
       console.log("Done taking photo");
       $.ajax({
         url: '/personalmsg',
@@ -160,7 +152,6 @@
       status.addClass("yellow");
       status.removeClass("msg");
     }
-
   }, false);
 
 })();

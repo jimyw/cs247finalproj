@@ -12,22 +12,40 @@ function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 // 	res.render('index', { title: 'Card Collage' });
 // }
 
+var Jonathan_msg = "Jonathan's birthday is coming up soon. Choose a tile and upload a personal birthday wish for him!";
+var grandma_msg = "Grandma Zoia's birthday is coming up soon. Choose a tile and upload a personal birthday wish for her!";
+var ruth_msg = "Ruth is studying abroad. Choose a tile and tell her how you miss her!"
+var messages = ["Happy birthday,", "Happy birthday", "We miss you,"];
+var intromessages = [Jonathan_msg, grandma_msg, ruth_msg];
+var names = ["Jonathan", "Zoia", "Ruth"];
+var collage_ids = ['o4v2fwghkt9','ciskxs10pb9','z738xwjc3di']
+
 exports.index = function(req, res) {
 	console.log('index');
 	console.log(req.query);
 	var post = req.query.post;
+	var collage_id = req.query.collage_id;
 	if (!post) {
 		post = 0;
 	}
 
+	var person = 0;
+	if (collage_id == collage_ids[1]) {
+		person = 1;
+	} else if (collage_id == collage_ids[2]) {
+		person = 2;
+	}
+
+
 	console.log(post);
 	var basic_data = { 
 		title: 'Card Collage',  
-		intromsg: "Jonathan's birthday is coming up soon. Choose a tile and upload a personal birthday wish for him!",
-		message: "Happy birthday,",
-		recipient_name: "Jonathan",
+		intromsg: intromessages[person],
+		message: messages[person],
+		recipient_name: names[person],
 		name_collage: 1,		// handle name_collage in backend (based on what planner wants)
 		post: post,
+		fb_collage_id: collage_id,
 	};
 
 	res.render('index', basic_data);

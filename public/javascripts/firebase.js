@@ -6,11 +6,15 @@ var fb = new Firebase(fb_link);
 var fb_collage_id = '';
 var fb_tile_id = 'ka0thtihpvi';  
 var loadDirect = true;
+var recipient_name;
 
-var recipient_name = "JONATHAN";
+
 var name_collage = 1;
 
 $(document).ready(function(){
+  recipient_name = $("#recipient_name").html();
+  recipient_name.toUpperCase();
+  console.log(recipient_name)
   initialize_page();
 });
 
@@ -36,11 +40,9 @@ function initialize_collage() {
   }
   // var photoArray = ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg'];
 
-
-  // create new collage
-  
+  // create new collage  
   fb_collage_id = Math.random().toString(36).substring(7);
-  var shareLink = "Share this url with your friends to collaborate: "+ document.location.href+"#"+fb_collage_id;
+  var shareLink = "Share this url with your friends to collaborate: "+ document.location.href+"?collage_id="+fb_collage_id;
   console.log(shareLink);
   $("#shareLink").html(shareLink);
 

@@ -43,6 +43,8 @@
     setTimeout(function(){
       countdown.html("");
       // $(".cropper").addClass("border");
+      $("#start_recording").hide();
+      $("#stop_recording").show();
     }, 3100);
   }
   
@@ -118,8 +120,6 @@
 
         $("#audio_link").html("");        
         $("#video_link").html("");
-        $(this).hide();
-        $("#stop_recording").show();
       }else{
         $("#status").html("Need to enable both microphone and camera to record a message :)");
         $("#status").addClass("yellow");
