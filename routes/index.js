@@ -31,7 +31,7 @@ exports.index = function(req, res) {
 		post = 0;
 	}
 
-	var name_collage = 1;
+	var name_collage = 0;
 	
 	// identify which collage:
 	// in practice, we would search DB for collage_id
