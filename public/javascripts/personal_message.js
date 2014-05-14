@@ -45,6 +45,8 @@
       // $(".cropper").addClass("border");
       $("#start_recording").hide();
       $("#stop_recording").show();
+      $("#stat_container").addClass("recording");
+      $("#stat_container").removeClass("not-recording");      
     }, 3100);
   }
   
@@ -132,6 +134,8 @@
       // $(".cropper").removeClass("redborder");
       $(this).css("background-color", "orange")
       var textbox_text = $("#textbox").val();
+      $("#stat_container").removeClass("recording");
+      $("#stat_container").addClass("not-recording");
       recordRTC_Audio.stopRecording(function(audioURL) {
         //$("#audio_link").append("<a href='"+audioURL+"'' target='_blank'>"+audioURL+"</a>")
         // console.log('audio url '+audioURL);
@@ -140,6 +144,7 @@
         $("#status").html("Video message recorded!");
         $("#status").removeClass("yellow");
         $("#status").addClass("msg");
+
 
         // updating firebase
         datauri_to_blob(audioURL,function(blob){

@@ -1,6 +1,6 @@
 html {
 	background: #111111;
-	height: 100%;
+	height: 150%;
 	background: linear-gradient( #333, #000);
 }
 
@@ -52,6 +52,11 @@ canvas {
 	height: 160px;
 }
 
+.notes {
+	font-style: italic;
+	color: gray;
+}
+
 #video {
 	position: absolute;
 	left: 0px;
@@ -81,7 +86,7 @@ canvas {
 
 #countdown {
 	position: absolute;
-	top: 75px;
+	top: 40px;
 	left: 20px;
 	color: red;
 	font-weight: bold;
@@ -165,7 +170,7 @@ canvas {
 }
 
 .direction {
-	font-size: 20pt;
+	font-size: 16pt;
 	color: white;
 	font-style: italic;
 }
@@ -187,9 +192,6 @@ canvas {
 #replay{
 	width: 280px;
 	height: 210px;
-}
-
-#replay {
 	bottom: 195px;
 }
 
@@ -214,7 +216,7 @@ canvas {
 	overflow: hidden;
 }
 
-.cropper, .not-recording {
+.not-recording {
   border: 2px solid #dcc;
 }
 .recording {

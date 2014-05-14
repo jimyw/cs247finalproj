@@ -75,19 +75,20 @@
 
   function takepicture() {
     // setTimeout(takepicture(), 3000);
-    $("#photo").addClass('flip');
-    console.log('takepicture')
-    canvas.width = width;
-    canvas.height = height;
-    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-    data = canvas.toDataURL('image/png');
-    console.log(fb_tile_id)
-    photo.setAttribute('src', data);
 
-    filled = 1;
-    var json_data = {photo: data, filled: filled};
-    updateTile(fb, fb_collage_id, fb_tile_id, json_data)
-    startbutton.innerHTML="Retake photo";
+      $("#photo").addClass('flip');
+      console.log('takepicture')
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+      data = canvas.toDataURL('image/png');
+      console.log(fb_tile_id)
+      photo.setAttribute('src', data);
+
+      filled = 1;
+      var json_data = {photo: data, filled: filled};
+      updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+      startbutton.innerHTML="Retake photo";      
 
   }
 
@@ -123,7 +124,7 @@
       showCountDown();
       setTimeout(takepicture, 3000);
     } else {
-      status.html("You must first enable the webcam to take a picture.");
+      status.html("Enable the webcam to take a picture :)");
       status.addClass("yellow");
       status.removeClass("msg");
     }
