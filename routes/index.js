@@ -15,10 +15,11 @@ function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 var Jonathan_msg = "Jonathan's birthday is coming up soon. Choose a tile and upload a personal birthday wish for him!";
 var grandma_msg = "Grandma Zoia's birthday is coming up soon. Choose a tile and upload a personal birthday wish for her!";
 var ruth_msg = "Ruth is studying abroad. Choose a tile and tell her how you miss her!"
-var messages = ["Happy birthday,", "Happy birthday,", "We miss you,"];
-var intromessages = [Jonathan_msg, grandma_msg, ruth_msg];
-var names = ["Jonathan", "Zoia", "Ruth"];
-var collage_ids = ['5g6p65bqpvi','q6wq9z4cxr','l25y8ccjtt9', 'ryp2pt4kj4i','dmyjndvlsor','ps0wx5pzaor'];
+var ellen_msg = "Ellen's birthday is coming up soon. Choose a tile and upload a personal birthday wish for her!";
+var messages = ["Happy birthday,", "Happy birthday,", "We miss you,", "Happy birthday,"];
+var intromessages = [Jonathan_msg, grandma_msg, ruth_msg, ellen_msg];
+var names = ["Jonathan", "Zoia", "Ruth", "Ellen"];
+var collage_ids = ['5g6p65bqpvi','q6wq9z4cxr','l25y8ccjtt9', 'o366rpmn29', 'ryp2pt4kj4i','dmyjndvlsor','ps0wx5pzaor', '6c12imp9zfr'];
 	// first 3 are name collages, second 3 are heart collages
 // var collage_ids_hearts = [];
 
@@ -38,7 +39,7 @@ exports.index = function(req, res) {
 	var person = collage_ids.indexOf(collage_id);
 	if (person > 2) {
 		name_collage = 0;
-		person = person % 3;	// get the right person
+		person = person % 4;	// get the right person
 	} else if (person < 0) {
 		person = 0;	// default
 	}
