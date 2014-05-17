@@ -107,20 +107,24 @@ function initialize_collage() {
   // load_collage(numTiles);   
 }
 
-function loadPlannerVals(plannerSnap) {
-  console.log('planner vals')
-  var val = plannerSnap.val();
-  templateType = val.templateType;
-  direction = val.direction;
-  recipient_name = val.recipient_name;
-  $("#intromsg").html(direction);
-}
-
 // returns the list of tiles for a given collage id as JSON
 function load_collage(numTiles) {
   console.log('load_collage')
   var tile_list = new Array();
-  fb.child(fb_collage_id).child('planner').once('value', loadPlannerVals);
+
+  // load planner values
+  fb.child(fb_collage_id).child('planner').once('value', function(plannerSnap) {
+    var val = plannerSnap.val();
+    console.log(val)
+    direction = val.direction;
+    templateType = val.templateType;
+    
+    recipient_name = val.recipient_name;
+    console.log(direction)
+    console.log(recipient_name)
+    console.log(templateType)
+    $("#intromsg").html(direction);
+  });
 
   var tile_instance = fb.child(fb_collage_id).child('Tile');
   console.log(tile_instance);
