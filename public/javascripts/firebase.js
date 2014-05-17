@@ -4,17 +4,19 @@
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 var fb = new Firebase(fb_link);
 var fb_collage_id = '';
-var fb_tile_id = 'ka0thtihpvi';  
+var fb_new_collage; // FB instance of the new collage
+var fb_tile_id = '';  
 var loadDirect = true;
+var templateType;
 var recipient_name;
+var direction;
 
 var name_collage = 1;
 
 $(document).ready(function(){
-  name_collage = $("#name_collage").html();
-  recipient_name = $("#recipient_name").html();
-  recipient_name = recipient_name.toUpperCase();
-  console.log(recipient_name)
+  // name_collage = $("#name_collage").html();
+  // recipient_name = $("#recipient_name").html();
+  // recipient_name = recipient_name.toUpperCase();
   initialize_page();
 });
 
@@ -27,8 +29,38 @@ function initialize_page() {
     console.log('Collage ID in url is ' + fb_collage_id);
     load_collage();
   } else {
-    initialize_collage();
+    set_new_collage();
+    
   }
+}
+
+function set_new_collage() {
+  // create new collage  
+  fb_collage_id = Math.random().toString(36).substring(7);
+  var shareLink = document.location.href+"?collage_id="+fb_collage_id;
+  $("#shareLink").html("Share this url with your friends to collaborate: "+ shareLink);
+  $("#make_first_tile").click(function() {
+    direction = $("#directions").val();
+    recipient_name = $("#recipient_name").val();
+    templateType = $("#template_type").val();
+
+    console.log(templateType);
+    console.log(direction);
+    console.log(recipient_name);
+    fb_new_collage = fb.child(fb_collage_id);  
+
+    fb_new_collage.child('planner').set({
+      'direction': direction,
+      'templateType': templateType,
+      'recipient_name': recipient_name,
+    }, initialize_collage);   // initialize collage on complete
+  });
+}
+
+function onSucess() {
+  initialize_collage();
+  
+  console.log(recipient_name)
 }
 
 function initialize_collage() {
@@ -36,25 +68,18 @@ function initialize_collage() {
   var photoArray;
 
   // create simple design for M4
-  if (name_collage == 1) {
-    numTiles = recipient_name.length;
-    photoArray = new Array();
-    for (var i=0; i<numTiles; i++) {
-      photoArray.push(recipient_name[i]+'.jpg');
-    }
-  } else {
-    photoArray = ['Heart1.jpg','Heart3.jpg','Heart2.jpg','Heart4.jpg'];  
+  // if (name_collage == 1) {
+  //   numTiles = recipient_name.length;
+  //   photoArray = new Array();
+  //   for (var i=0; i<numTiles; i++) {
+  //     photoArray.push(recipient_name[i]+'.jpg');
+  //   }
+  // } else {
+
+    photoArray = ['Heart1.jpg','Heart2.jpg','Heart3.jpg','Heart4.jpg'];  
     numTiles = photoArray.length;
-  }
+  // }
   
-
-  // create new collage  
-  fb_collage_id = Math.random().toString(36).substring(7);
-  var shareLink = "Share this url with your friends to collaborate: "+ document.location.href+"?collage_id="+fb_collage_id;
-  console.log(shareLink);
-  $("#shareLink").html(shareLink);
-
-  var fb_new_collage = fb.child(fb_collage_id);
   for (var i=0; i<numTiles; i++) {
     var fb_tile_id = Math.random().toString(36).substring(7)
     var fb_new_tile = fb_new_collage.child('Tile').child(fb_tile_id);  // create numTiles
@@ -77,15 +102,26 @@ function initialize_collage() {
   }
 
   loadDirect = false;
-  load_collage(numTiles);  
-  
+
+  window.location = '/?collage_id='+fb_collage_id;    // redirect page
+  // load_collage(numTiles);   
+}
+
+function loadPlannerVals(plannerSnap) {
+  console.log('planner vals')
+  var val = plannerSnap.val();
+  templateType = val.templateType;
+  direction = val.direction;
+  recipient_name = val.recipient_name;
+  $("#intromsg").html(direction);
 }
 
 // returns the list of tiles for a given collage id as JSON
 function load_collage(numTiles) {
   console.log('load_collage')
   var tile_list = new Array();
-  var iter=0;
+  fb.child(fb_collage_id).child('planner').once('value', loadPlannerVals);
+
   var tile_instance = fb.child(fb_collage_id).child('Tile');
   console.log(tile_instance);
   tile_instance.on('value', function(tileIdSnap) {  // makes update to tile_list whenever changes happen
@@ -111,8 +147,6 @@ function load_collage(numTiles) {
 
         var tile_index = val.tile_index;
         tile_list[tile_index]=val;
-        console.log(iter)
-        iter+=1;
       });
 
       displayPage(tile_list);

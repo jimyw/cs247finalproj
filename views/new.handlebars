@@ -1,0 +1,36 @@
+<script src="/templates/hbt.js"></script>
+<script src="/javascripts/firebase.js"></script>
+
+
+
+<div>Template:
+<select id="template_type">
+  <option value="Heart">Heart</option>
+  <option value="Star">Star</option>
+  <option value="Flower">Flower</option>
+  <option value="Circle">Circle</option>
+  <option value="Task">Task</option>
+</select>
+</div>
+<div>Directions: <input type="textarea" name="directions" id="directions"><br></div>
+<div>Recipient name: <input type="text" name="recipient_name" id="recipient_name"><br></div>
+
+<p class="regtext" id="shareLink"></p>
+<div><input type="submit" id="make_first_tile" value="Make the first tile"></input></div>
+{{!-- <div><a id="make_first_tile">Make the first tile</a></div> --}}
+
+{{!-- <div id="recipient_name" style="display: none;">{{recipient_name}}</div> --}}
+{{!-- <div id="name_collage" style="display: none;">{{name_collage}}</div> --}}
+
+
+<table> 
+<tr id="row1">
+{{!-- Code is in template/tileItem.handlebars --}}
+</tr>
+<tr id="row2">
+
+</tr>
+
+</table>
+
+

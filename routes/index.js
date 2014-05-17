@@ -75,7 +75,12 @@ exports.index = function(req, res) {
 		fb_collage_id: collage_id,
 	};
 
+if (collage_id) {
+	console.log('collage_id')
 	res.render('index', basic_data);
+} else {
+	res.render('new', basic_data);
+}
 }
 
 exports.simplecam = function(req, res) {
