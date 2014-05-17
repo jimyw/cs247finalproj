@@ -33,7 +33,10 @@
       width = 320,
       height = 0;
 
-  var data = photo.getAttribute('src');
+  console.log('initial')
+  console.log(video);
+
+  var data;
 
   navigator.getMedia = ( navigator.getUserMedia || 
                          navigator.webkitGetUserMedia ||
