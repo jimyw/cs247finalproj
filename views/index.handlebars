@@ -1,9 +1,230 @@
-<script src="/templates/hbt.js"></script>
-<script src="/javascripts/firebase.js"></script>
-<script>
-ga('set', 'page', 'homepage');
-ga('send', 'pageview');
-</script>
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+	<head>
+		<title>Card Collage</title>
+		<meta charset="UTF-8" />
+	  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	  	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+		<meta name="format-detection" content="telephone=no">
+
+		<link rel="shortcut icon" href="/images/C.jpg" />
+
+		<!-- Style Sheets -->
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="/stylesheets/foundation.min.css">
+  		<link rel="stylesheet" href="/stylesheets/app.css">
+  		<link rel="stylesheet" href="/stylesheets/style.css">
+
+  		<!-- Include JS Libraries -->
+  		<script src="/javascripts/modernizr.foundation.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery-1.8.3.min.js"></script>
+		<script src="/javascripts/foundation.min.js"></script>
+		<script src="/javascripts/smoothscroll.js"></script>
+
+		<script type="text/javascript" src="/javascripts/main.js"></script>
+
+		<script src="/templates/hbt.js"></script>
+		<script src="/javascripts/firebase.js"></script>
+		<script>
+			// ga('set', 'page', 'homepage');
+			// ga('send', 'pageview');
+		</script>
+
+		<script src="/javascripts/simplecam.js"></script>
+		<script src='/javascripts/personal_message.js'></script>
+
+	</head>
+	<body>
+		<section id="intro" class="bg">
+			<div class="row">
+				<div class="six columns" id="header">
+					<h3>Welcome to</h3>
+					<h1>CARD COLLAGE</h1>
+					<div class="clear"></div>
+				</div>
+				<div class="six columns">
+					<p class="intro_text">
+						Make a fun collage with friends, attach your personal video message, and impress whomever receives it!
+					</p>
+				</div>
+			</div>
+			
+			<div class="nav">
+				<div class="row">
+					<div class="twelve columns">
+						<a href="#portfolio" class="smoothScroll">Templates</a>
+						<a href="#about" class="smoothScroll">Collage</a>
+						<a href="#contact" class="smoothScroll">Message</a>
+					</div>
+				</div>
+			</div>
+			<div class="nav_bg">
+			</div>
+		</section>
+
+		<section id="portfolio">
+			<div class="row">
+				<div class="twelve columns">
+					<h1>Please<span class="quote">choose an empty tile and make the shape on it :) </span></h1>
+				</div>
+			</div>
+
+			<div class="row">		
+				<div class="twelve columns">
+					<table> 
+						<tr id="row1">
+						{{!-- Code is in template/tileItem.handlebars --}}
+						</tr>
+						<tr id="row2">		
+					</table>
+					<ul class="works">
+						<li>
+							<a href="yogurt.html">
+								<div class="hover">
+									<h3>YOGURT</h3>
+									<h5 class="tags"><span>UI</span><span>UX</span><span>Data-vis</span><span>Interaction</span></h5>
+								</div>
+								<img src="images/heart1.jpg"/>
+							</a>
+						</li>
+						<li>
+							<a href="mobiata.html">
+								<div class="hover">
+									<h3>MOBIATA</h3>
+									<h5 class="tags"><span>UI</span><span>UX</span><span>Mobile</span></h5>
+								</div>
+								<img src="images/heart2.jpg"/>
+							</a>
+						</li>
+						<li>
+							<a href="echorus.html">
+								<div class="hover">
+									<h3>ECHORUS</h3>
+									<h5 class="tags"><span>Ideation</span><span>UI</span><span>UX</span><span>Strategy</span></h5>
+								</div>
+								<img src="images/heart3.jpg"/>
+							</a>
+						</li>
+						<li>
+							<a href="derive.html">
+								<div class="hover">
+									<h3>DÉRIVE</h3>
+									<h5 class="tags"><span>Interaction</span><span>Web</span><span>Gesture UI</span></h5>
+								</div>
+								<img src="images/heart4.jpg"/>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="album_wall" class="bg">
+			<div class="row">
+				<div class="twelve columns center">
+					<h1>Record a personal video message: </h1>
+				</div>
+			</div>
+		</section>
+
+		<section id="about">
+			<div class="row">
+				<div id="container">
+					<div class="direction" id="simplecammsg">Please take a photo to match the pattern on the left. <span class="msg" id="status">Allow your browser to use your video camera.</span></div>
+
+					<div class="border" id="videowrapper">
+						<video id="video"></video>
+						<img src="images/Heart1.jpg" width=320 id="overlay">
+					</div>
+					<button class="button" id="startbutton">Take photo</button>
+					<button class="button" id="donebutton">Done!</button>
+					<a href="/?collage_id={{fb_collage_id}}"><button class="button" id="cancelbutton">Cancel</button></a>
+					<canvas id="canvas"></canvas>
+	
+					<p id="countdown"></p>
+				</div>
+
+				<div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
+				<div id="fb_tile_id" style="display: none;">{{fb_tile_id}}</div>
+				<div id="fb_filled" style="display: none;">{{filled}}</div>
+			</div>
+		</section>
+
+		<section id="hire" class="bg">
+			<div class="row">
+				<div class="six columns offset-by-six">
+					<h1>NOW I'M BACK TO STANFORD, LOOKING FOR NEW OPPORTUNITIES!</h1>
+				</div>
+			</div>
+		</section>	
+
+		<section id="contact">
+			<div class="row">
+				<div class="twelve columns center">
+					<h4>If you're interested, feel free to contact me!</h4>
+					<h2 class="contact_link">
+						<a href="mailto: ningxia.z@gmail.com">
+						ningxia.z@gmail.com</a> / 
+						+1 (650) 704 - 0652
+					</h2>
+					<h4>Or connect with me on:</h4>
+				</div>
+			</div>
+			<div class="row social">
+				<div class="two columns center">
+					<a href="https://www.facebook.com/ningxia.zhang" target="_blank"><img class="social_icon" src="images/facebook.png"></a>
+				</div>
+				<div class="two columns center">
+					<a href="https://twitter.com/thmmrs" target="_blank"><img class="social_icon" src="images/twitter.png"></a>
+				</div>
+				<div class="two columns center">
+					<a href="http://www.linkedin.com/pub/ningxia-zhang/2a/953/520"  target="_blank"><img class="social_icon" src="images/linkedin.png"></a>
+				</div>
+				<div class="two columns center">
+					<a href="https://github.com/ningxiaz" target="_blank"><img class="social_icon" src="images/github.png"></a>
+				</div>
+				<div class="two columns center">
+					<a href="http://www.last.fm/user/thmmrs2298" target="_blank"><img class="social_icon" src="images/lastfm.png"></a>
+				</div>
+				<div class="two columns center">
+					<a href="http://ningxiaz.tumblr.com/" target="_blank"><img class="social_icon" src="images/tumblr.png"></a>
+				</div>
+			</div>
+			<div class="row credit">
+				<div class="eight columns">
+					<p class="contact_text">
+						This site is responsive, thanks to <a href="http://foundation.zurb.com/" target="_blank">Foundation</a> framework.
+					</p>
+					<p class="contact_text">
+						The fonts used on this site are <a href="http://www.cassannet.net/" target="_blank">Cassannet</a> (headers) and <a href="http://www.dotcolon.net/font/?id=vegur" href="_blank">Vegur</a> (body text).
+					</p>
+					<p class="contact_text">
+						The photographs of me (the background) and the thumbnail of Yogurt project are kindly provided by my good friend <a href="http://boruiwang.org/" target="_blank">Borui</a>.
+					</p>
+				</div>
+				<div class="four columns">
+					<p class="contact_text">
+						Made on the lovely Stanford campus.<br>
+						More stuff will be added soon.<br>
+					</p>
+					<p class="contact_text">
+						© 2013 Ningxia Zhang.<br>
+						All rights reserved.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+		</footer>
+	</body>
+</html>
+
+
+
 
 {{#if post}}
 <div class="alert alert-success">Thank you for contributing to the collage for {{recipient_name}}. We would appreciate you filling out a short survey about your experience: <a href="http://goo.gl/7HPDhv">http://goo.gl/7HPDhv</a></div>
