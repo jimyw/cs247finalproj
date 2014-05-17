@@ -101,6 +101,9 @@ canvas {
 
 #overlay {
 	opacity: 0.3;
+	z-index: 5;
+	height: 300;
+	width: 300;
 }
 
 .flip {

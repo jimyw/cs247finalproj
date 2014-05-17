@@ -1,20 +1,343 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: Arial;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #fafafa;
+	line-height: 1;
 }
-a {
-  color: #00B7FF;
+ol, ul {
+	list-style: none;
 }
-.rotate-right {
-  -webkit-transform: rotate(90deg);
+blockquote, q {
+	quotes: none;
 }
-.rotate-over {
-  -webkit-transform: rotate(180deg);
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
 }
-.rotate-left {
-  -webkit-transform: rotate(270deg);
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
-.regtext {
-  color: #fafafa;
+
+.clear{
+	clear: both;
 }
+
+/** 
+ * Ningxia Zhang's site customized style
+ **/ 
+
+/* Fonts */
+@font-face{
+	font-family: Cassannet;
+	src: url('../font/Cassannet Bold.otf');
+}
+
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Intro section */
+#intro{
+	background: url(/images/index_bg.jpg) no-repeat fixed;
+	width: 100%;
+	background-size: auto 100%;	
+	color: white;
+	padding-top: 14%;
+}
+
+#intro h1{
+	font-family: Cassannet;
+	font-size: 48px;
+	line-height: 60px;
+	opacity: 1;
+	color: white;
+}
+
+#intro h3{
+	font-family: 'Source Sans Pro';
+	font-size: 24px;
+	font-style: italic;
+	line-height: 36px;
+	opacity: 1;
+	color: white;
+	font-weight: 300;
+}
+
+#logo{
+	width: 60px;
+	float: left;
+}
+
+.intro_text{
+	font-size: 22px;
+	line-height: 32px;
+	font-family: 'Source Sans Pro';
+	opacity: 1;
+	margin-top: 28%;
+	margin-left: 5%;
+	color: white;
+	font-weight: 300;
+}
+
+.nav{
+	font-size: 16px;
+	line-height: 32px;
+	font-family: 'Source Sans Pro';
+	width: 100%;
+	position: absolute;
+	z-index: 3;
+}
+
+.nav a{
+	color: white;
+	opacity: 0.7;
+	font-style: italic;
+	padding-right: 15px;
+}
+
+.nav a:hover, .nav a:active{
+	opacity: 1;
+}
+
+.nav_bg{
+	background-color: #c969e0;
+	opacity: 0.4;
+	width: 100%;
+	position: absolute;
+}
+
+/* Portfolio Section */
+#portfolio{
+	background-color: white;
+	min-height: 720px;
+	padding: 30px 0;
+}
+
+#portfolio h1{
+	font-family: Cassannet;
+	font-size: 40px;
+	line-height: 60px;
+	opacity: 0.9;
+	color: #555;
+}
+
+span.quote{
+	font-family: 'Source Sans Pro';
+	font-size: 18px;
+	font-style: italic;
+	line-height: 36px;
+	opacity: 0.8;
+	color: #555;
+	padding-left: 10px;
+}
+
+ul.works{
+	width: 60%;
+	overflow: hidden;
+	margin-top: 10px;
+}
+
+ul.works li{
+	display: block;
+	float: left;
+	height: 200px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	position: relative;
+	width: 200px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+ul.works img{
+	width: 280px;
+}
+
+.hover{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	opacity: 0.9;
+	display: none;
+	text-align: center;
+}
+
+.hover h3{
+	color: #555;
+	font-family: Cassannet;
+	font-size: 24px;
+	line-height: 40px;
+	margin-top: 18%;
+}
+
+.tags{
+	font-family: 'Source Sans Pro';
+	font-size: 13px;
+	margin-top: 5px;
+}
+
+.tags span{
+	color: white;
+	background-color: #c969e0;
+	padding: 3px 6px;
+	margin: 0 2px;
+}
+
+/* Album Wall */
+#album_wall{
+	background: url(/images/album_wall.jpg) no-repeat fixed;
+	min-height: 240px;
+	width: 100%;
+	background-size: auto 100%;	
+}
+
+.center{
+	text-align: center;
+}
+
+#album_wall h1{
+	font-family: Cassannet;
+	font-size: 50px;
+	line-height: 60px;
+	opacity: 0.9;
+	color: white;
+	margin: 0 auto;
+	margin-top: 10%;
+}
+
+/* About Section */
+#about{
+	background-color: white;
+	min-height: 480px;
+	padding: 30px 0;
+}
+
+#profile{
+	width: 180px;
+}
+
+p.about_text{
+	font-size: 18px;
+	line-height: 24px;
+	font-family: 'Source Sans Pro';
+	opacity: 0.8;
+	color: #333;
+	margin-bottom: 18px;
+}
+
+#about a{
+	color: #8c17a9;
+	font-weight: 600;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+#about a:hover{
+	color: #c969e0;
+}
+
+/* Hire Section */
+#hire{
+	background: url(/images/hire_bg.jpg) no-repeat fixed;
+	min-height: 360px;
+	width: 100%;
+	background-size: auto 100%;	
+}
+
+#hire h1{
+	font-family: Cassannet;
+	font-size: 36px;
+	line-height: 50px;
+	opacity: 0.9;
+	color: white;
+	margin-top: 16%;
+}
+
+
+/* Contact Section */
+#contact{
+	background-color: #c969e0;
+	min-height: 300px;
+	opacity: 0.85;
+	color: white;
+	padding: 30px 0;
+}
+
+#contact a{
+	color: white;
+	text-decoration: underline;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+#contact a:hover{
+	color: white;
+}
+
+#contact h4{
+	font-size: 18px;
+	color: white;
+	font-family: 'Source Sans Pro';
+}
+
+.contact_link{
+	font-weight: 700;
+	font-size: 28px;
+	padding: 25px 0;
+	text-decoration: none;
+	color: white;
+	font-family: 'Source Sans Pro';
+}
+
+.social_icon{
+	height: 30px;
+}
+
+.social{
+	padding: 20px 0;
+}
+
+.credit{
+	padding-top: 10px;
+}
+
+p.contact_text{
+	font-size: 15px;
+	line-height: 22px;
+	padding-bottom: 8px;
+	font-family: 'Source Sans Pro';
+}
+
+
+
+
+
