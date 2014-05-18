@@ -1,4 +1,4 @@
-(function() {
+// (function() {
 
 /* Include your Firebase link here!*/
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
@@ -199,6 +199,9 @@ function playTile() {
       document.getElementById("audio"+fb_tile_id).play();
   }
   });
+
+  $(".tile").click(showCam);
+
 }
 
 function displayTwoRows(tile_list) {
@@ -267,4 +270,4 @@ function displayPage(tile_list) {
 }
 
 
-})();
+// })();
