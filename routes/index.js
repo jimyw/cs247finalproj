@@ -7,10 +7,6 @@ function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 	return fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
 }
 
-function loadCollage(fb_collage_id) {
-// load planner values
-
-}
 
 // exports.birthday = function(req, res) {
 // 	console.log('index')

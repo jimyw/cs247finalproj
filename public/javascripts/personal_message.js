@@ -1,19 +1,72 @@
 // Initial code by Borui Wang, updated by Graham Roth
 // For CS247, Spring 2014
 
+function setUpVideo() {
+
+    // record video
+    // navigator.getMedia({video: true}, function(mediaStream) {
+      console.log(video_stream_saved);
+      $("#status").html("Please also enable microphone :)");
+      window.recordRTC_Video = RecordRTC(video_stream_saved,{type:"video"});
+      //Number of media ready
+      // ready += 1;
+      // if(ready == 2){
+      //   $("#start_recording").show();
+      // }
+      //Add a video indicator to the upper right corner
+      var video_width= 160;
+      var video_height= 120;
+      var webcam_stream = document.getElementById('webcam_stream');
+      var video = document.createElement('video');
+      webcam_stream.innerHTML = "";
+      // adds these properties to the video
+      video = mergeProps(video, {
+          controls: false,
+          width: video_width,
+          height: video_height,
+          src: URL.createObjectURL(video_stream_saved)
+      });
+      video.play();
+      video.className = "not-recording";
+
+      webcam_stream.appendChild(video);
+
+    // },function(failure){
+    //   console.log(failure);
+    // });
+  }
+
+  function setUpAudio() {
+    
+    // record audio
+    // navigator.getMedia({audio: true}, function(mediaStream) {
+      $("#status").removeClass("yellow");
+      $("#status").addClass("msg");
+      $("#status").html("You can now start recording the video!");
+
+      window.recordRTC_Audio = RecordRTC(audio_stream_saved,{type:"audio"});
+      // ready += 1;
+      // if(ready == 2){
+      //   $("#start_recording").show();
+      // }
+    // },function(failure){
+    //   console.log(failure);
+    // });
+  }
+
 (function() {
 
-  var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
-  var fb = new Firebase(fb_link);
-  var fb_collage_id;
-  var fb_tile_id;
+  // var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
+  // var fb = new Firebase(fb_link);
+  // var fb_collage_id;
+  // var fb_tile_id;
 
 
   var cur_video_blob = null;
   // var fb_instance;
   var mediaRecorder;
   var filter_class = "none";
-  var ready = 0;
+  // var ready = 0;
 
   var starttime;
 
@@ -25,6 +78,8 @@
     recordRTC_Audio.startRecording();
     recordRTC_Video.startRecording();
   }
+
+
 
   function showCountDown() {
     console.log('showCountDown')
@@ -61,60 +116,25 @@
     $('input[name="my-checkbox"]').bootstrapSwitch('offText', 'Private');
     $('input[name="my-checkbox"]').bootstrapSwitch('size', 'large');
     $('input[name="my-checkbox"]').bootstrapSwitch('offColor', 'warning');
-    // record video
-    navigator.getUserMedia({video: true}, function(mediaStream) {
-      $("#status").html("Please also enable microphone :)");
-      window.recordRTC_Video = RecordRTC(mediaStream,{type:"video"});
-      //Number of media ready
-      ready += 1;
-      // if(ready == 2){
-      //   $("#start_recording").show();
-      // }
-      //Add a video indicator to the upper right corner
-      var video_width= 160;
-      var video_height= 120;
-      var webcam_stream = document.getElementById('webcam_stream');
-      var video = document.createElement('video');
-      webcam_stream.innerHTML = "";
-      // adds these properties to the video
-      video = mergeProps(video, {
-          controls: false,
-          width: video_width,
-          height: video_height,
-          src: URL.createObjectURL(mediaStream)
-      });
-      video.play();
-      video.className = "not-recording";
 
-      webcam_stream.appendChild(video);
+    finishButtonListener();
+    picCancelButtonListener();
 
-    },function(failure){
-      console.log(failure);
-    });
-
-    // record audio
-    navigator.getUserMedia({audio: true}, function(mediaStream) {
-      $("#status").removeClass("yellow");
-      $("#status").addClass("msg");
-      $("#status").html("You can now start recording the video!");
-
-      window.recordRTC_Audio = RecordRTC(mediaStream,{type:"audio"});
-      ready += 1;
-      // if(ready == 2){
-      //   $("#start_recording").show();
-      // }
-    },function(failure){
-      console.log(failure);
+    $("#vidcancelbutton").click(function(e){
+      e.preventDefault();
+      // $("#vmsg").addClass('hide_stuff');
+      scrollToAnchor('task1');
     });
 
     $("#stop_recording").hide();
     $("#start_recording").show();
     $("#replay_recording").hide();
-    $("#finish").hide();
+    // $("#finish").hide();
 
     //Start recording button touched
-    $("#start_recording").click(function (){  
-      if(ready == 2){
+    $("#start_recording").click(function (e){
+      e.preventDefault();  
+      if(video_ready == 1 && audio_ready == 1){
         // send google analytics
         ga('send', 'event', 'button', 'click', 'take video');
 
@@ -122,8 +142,8 @@
 
         $("#replay_recording").hide();
         // update ids here, because page loads too slowly
-        fb_collage_id = $("#fb_collage_id").html();
-        fb_tile_id = $("#fb_tile_id").html();
+        // fb_collage_id = $("#fb_collage_id").html();
+        // fb_tile_id = $("#fb_tile_id").html();
         // console.log(fb_tile_id);
 
         showCountDown();
@@ -140,7 +160,8 @@
     });
 
     //Stop recording button touched
-    $("#stop_recording").click(function (){
+    $("#stop_recording").click(function (e){
+      e.preventDefault();
       // $(".cropper").removeClass("redborder");
       $("#btn_record").attr("src","/images/record.jpg");
 
@@ -161,8 +182,13 @@
         // updating firebase
         datauri_to_blob(audioURL,function(blob){
           blob_to_base64(blob,function(base64){
-            var json_data = {audio: base64};
-            updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+            // var json_data = {audio: base64};
+            json_data.audio = base64;
+            console.log(json_data);
+            // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
+            // ignore below
+
             // $("#video_form").val(base64);
             // console.log(base64);
 
@@ -184,9 +210,6 @@
         //     //console.log(base64);
         //   });
         // });
-
-        
-
       });
 
       recordRTC_Video.stopRecording(function(videoURL) {
@@ -196,8 +219,15 @@
         datauri_to_blob(videoURL,function(blob){
           blob_to_base64(blob,function(base64){
             console.log('conversion')
-            var json_data = {video: base64};
-            updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+            // var json_data = {video: base64};
+            json_data.video = base64;
+            console.log(json_data);
+            // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+
+
+
+            // ignore below
+
             // $("#video_form").val(base64);
             // console.log(base64);
 
@@ -231,7 +261,7 @@
       //$("#start_recording").html("Retake the Video");
       $("#start_recording").show();
       $("#replay_recording").show();
-      $("#finish").show();
+      $("#finish").removeClass('disabled');
     });
 
     $("#replay_recording").click(function (){

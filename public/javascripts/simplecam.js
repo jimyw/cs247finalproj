@@ -1,32 +1,4 @@
-var ready = 0;
-var stream_saved;
 
-navigator.getMedia = ( navigator.getUserMedia || 
-                       navigator.webkitGetUserMedia ||
-                       navigator.mozGetUserMedia ||
-                       navigator.msGetUserMedia);
-
-navigator.getMedia(
-    { 
-      video: true, 
-      audio: false 
-    },
-    function(stream) {
-      ready += 1;
-      stream_saved = stream;
-      console.log(ready);
-      // if (navigator.mozGetUserMedia) { 
-      //   video.mozSrcObject = stream;
-      // } else {
-      //   var vendorURL = window.URL || window.webkitURL;
-      //   video.src = vendorURL.createObjectURL(stream);
-      // }
-      // video.play();
-    },
-    function(err) {
-      console.log("An error occured! " + err);
-    }
-);
 
 // passes the JQuery object of the tile Clicked
 function simpleCam() {
@@ -44,7 +16,7 @@ function simpleCam() {
   // var filled = $("#fb_filled").html();
   var status = $("#status");
   // console.log(fb_tile_id);
-  console.log(stream_saved);
+  console.log(video_stream_saved);
   
 
   // var fb_tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
@@ -55,9 +27,12 @@ function simpleCam() {
       cover        = document.querySelector('#cover'),
       canvas       = document.querySelector('#canvas'),
       // photo        = document.querySelector('#photo'),
-      photo        = document.querySelector('#img_'+fb_tile_id),
-      startbutton  = document.querySelector('#picstartbutton'),
-      donebutton  = document.querySelector('#picdonebutton'),
+      // photo        = document.querySelector('#img_'+fb_tile_id),
+      photo = $("#img_"+fb_tile_id);
+      videowrapper = $("#videowrapper");
+      startbutton  = document.querySelector('#camera_icon'),
+      donebutton = $("#picdonebutton");
+      // donebutton  = document.querySelector('#picdonebutton'),
       countdown  = document.querySelector('#countdown'),
       // width = 320,
       // height = 0;
@@ -73,10 +48,10 @@ function simpleCam() {
 
   // playing the video
   if (navigator.mozGetUserMedia) { 
-    video.mozSrcObject = stream_saved;
+    video.mozSrcObject = video_stream_saved;
   } else {
     var vendorURL = window.URL || window.webkitURL;
-    video.src = vendorURL.createObjectURL(stream_saved);
+    video.src = vendorURL.createObjectURL(video_stream_saved);
   }
   video.play();
 
@@ -103,17 +78,24 @@ function simpleCam() {
       canvas.getContext('2d').drawImage(video, 0, 0, width, height);
       data = canvas.toDataURL('image/png');
       console.log(fb_tile_id)
-      photo.setAttribute('src', data);
+      photo.attr('src', data);
 
-      filled = 1;
-      var json_data = {photo: data, filled: filled};
+      console.log(json_data);
+      json_data.photo = data;   // update photo data
+      console.log(json_data);
       // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
-      donebutton.removeClass('disabled')
+      
+
+      photo.removeClass('hide_stuff');
+      photo.removeClass('overlay');
+      videowrapper.addClass('hide_stuff');
+      donebutton.removeClass('disabled');
+      // donebutton.className = "next";  // removes 'disabled'
   }
 
   function showCountDown() {
-    $("#videowrapper").addClass("redborder");
-    $("#videowrapper").removeClass("border");
+    videowrapper.addClass("redborder");
+    videowrapper.removeClass("border");
     countdown.innerHTML = "3";
     setTimeout(function(){
       countdown.innerHTML = "2";
@@ -126,20 +108,22 @@ function simpleCam() {
     }, 3000);
     setTimeout(function(){
       countdown.innerHTML = "";
-      $("#videowrapper").addClass("border");
-      $("#videowrapper").removeClass("redborder");
+      videowrapper.addClass("border");
+      videowrapper.removeClass("redborder");
     }, 3100);
   }
 
   startbutton.addEventListener('click', function(ev){
   	ev.preventDefault();
-    if (ready == 1) {
+    if (video_ready == 1) {
       // send google analytics
       ga('send', 'event', 'button', 'click', 'take photo');
       status.removeClass("yellow");
       status.addClass("msg");
       status.html("");
 
+      photo.addClass('hide_stuff');
+      videowrapper.removeClass('hide_stuff');
       showCountDown();
       setTimeout(takepicture, 3000);
     } else {
@@ -149,30 +133,48 @@ function simpleCam() {
     }
   }, false);
 
-  donebutton.addEventListener('click', function(ev){
+
+
+  donebutton.click(function(ev){
     // if (filled == 1) {
-      ga('send', 'event', 'button', 'click', 'done photo');
-      console.log("Done taking photo");
-      $.ajax({
-        url: '/personalmsg',
-        type: 'get',
-        success: function(response) {
-          //Do Something
-          // window.location = "/personalmsg?fb_collage_id="+fb_collage_id+"&fb_tile_id="+fb_tile_id
-          console.log('ajax get success')
-        },
-        error: function(xhr) {
-          //Do Something to handle error
-          console.log('ajax get error')
-        }
-      });
-    // } else {
-    //   console.log(filled)
-    //   status.html("You haven't taken a photo yet.")
-    //   status.addClass("yellow");
-    //   status.removeClass("msg");
-    // }
-  }, false);
+      if (!donebutton.hasClass('disabled')) {
+        $("#vmsg").removeClass('hide_stuff');
+        // ga('send', 'event', 'button', 'click', 'done photo');
+        console.log("Done taking photo");
+
+
+        
+
+       scrollToAnchor('vmsg');
+
+
+
+
+        // $.ajax({
+        //   url: '/personalmsg',
+        //   type: 'get',
+        //   success: function(response) {
+        //     //Do Something
+        //     // window.location = "/personalmsg?fb_collage_id="+fb_collage_id+"&fb_tile_id="+fb_tile_id
+        //     console.log('ajax get success')
+        //   },
+        //   error: function(xhr) {
+        //     //Do Something to handle error
+        //     console.log('ajax get error')
+        //   }
+        // });
+
+
+
+
+      // } else {
+      //   console.log(filled)
+      //   status.html("You haven't taken a photo yet.")
+      //   status.addClass("yellow");
+      //   status.removeClass("msg");
+      // }
+    }
+  });
 
 }
 // })();

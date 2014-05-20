@@ -13,15 +13,7 @@ function program1(depth0,data) {
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" ontouchstart=\"this.classList.toggle('hover');\">\n        <div class=\"flipper\">\n          <a href=\"/simplecam?fb_collage_id=";
-  if (helper = helpers.fb_collage_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.fb_collage_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "&fb_tile_id=";
-  if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\">\n            <div class=\"front crop\" id=\"front\">\n              <div class=\"wrapper tile\" id=\"photo";
+    + "\" ontouchstart=\"this.classList.toggle('hover');\">\n        <div class=\"flipper\">\n          \n            <div class=\"front crop\" id=\"front\">\n              <div class=\"wrapper tile\" id=\"photo";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -57,7 +49,7 @@ function program1(depth0,data) {
   if (helper = helpers.text) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.text); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n            </div>\n          </a>\n        </div>\n      </div>\n\n    ";
+    + "</p>\n            </div>\n          \n        </div>\n      </div>\n\n    ";
   return buffer;
   }
 

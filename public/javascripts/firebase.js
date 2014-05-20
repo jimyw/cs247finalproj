@@ -1,17 +1,6 @@
 // (function() {
 
-/* Include your Firebase link here!*/
-var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
-var fb = new Firebase(fb_link);
-var fb_collage_id = '';
-var fb_new_collage; // FB instance of the new collage
-var fb_tile_id = '';  
-var loadDirect = true;
-var templateType;
-var recipient_name;
-var direction;
 
-var name_collage = 1;
 
 $(document).ready(function(){
   // name_collage = $("#name_collage").html();
@@ -23,7 +12,7 @@ $(document).ready(function(){
 function initialize_page() {
   // var url_segments = document.location.href.split("/#");
   fb_collage_id = getParameterByName('collage_id');
-  // console.log(url_segments);
+  // console.log(url_segments);fb_tile_id
   if (fb_collage_id) {
     // fb_collage_id = url_segments[1];  // get collage_id from url
     console.log('Collage ID in url is ' + fb_collage_id);
@@ -81,8 +70,8 @@ function initialize_collage() {
   // }
   
   for (var i=0; i<numTiles; i++) {
-    var fb_tile_id = Math.random().toString(36).substring(7)
-    var fb_new_tile = fb_new_collage.child('Tile').child(fb_tile_id);  // create numTiles
+    var _fb_tile_id = Math.random().toString(36).substring(7)
+    var fb_new_tile = fb_new_collage.child('Tile').child(_fb_tile_id);  // create numTiles
 
     var j = i % (photoArray.length);
     console.log(photoArray[j])
@@ -95,7 +84,8 @@ function initialize_collage() {
       'audio':'',
       'text':'',
       'filled': 0,
-      'tile_index': i
+      'tile_index': i,
+      'is_public': true,
     });
 
     console.log('initialize_collage, var='+i);
@@ -137,6 +127,9 @@ function load_collage(numTiles) {
 
         var tile_index = val.tile_index;
         tile_list[tile_index]=val;
+
+        console.log(val.fb_tile_id)
+        tile_dictionary[val.fb_tile_id] = val;
       });
 
       displayPage(tile_list);
@@ -152,8 +145,8 @@ function load_collage(numTiles) {
 }
 
 // returns true if tile is already filled (i.e. has valid photo)
-function tileIsDone(fb_tile_id) {
-  var tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+function tileIsDone(_fb_tile_id) {
+  var tile_instance = fb.child(fb_collage_id).child('Tile').child(_fb_tile_id);
   tile_instance.once('value', function(snap) {
     var tile = snap.val();  // dictionary
     console.log(tile);
@@ -173,21 +166,30 @@ function show(snap) {
 
 function playTile() {
   console.log('tileListener');
-  console.log($(".tile"));
+  // console.log($(".tile"));
   
-
   $(".tile").mouseenter(function(e) {
-    fb_tile_id = $(this).attr("id");
-    console.log(fb_tile_id);
-    var replay = document.getElementById("replay"+fb_tile_id);
+    var _fb_tile_id = $(this).attr("id");
+    console.log(_fb_tile_id+' hovered');
+    var replay = document.getElementById("replay"+_fb_tile_id);
     if (replay) {
       replay.play();
-      document.getElementById("audio"+fb_tile_id).play();
+      document.getElementById("audio"+_fb_tile_id).play();
   }
   });
 
   $(".tile").click(showCam);
 
+}
+
+function renderTwoRowTemplates() {
+  // Retrieve templates from template file
+  var template = Collage.Templates["templates/tileList.handlebars"];
+  Handlebars.registerPartial('tileItem', Collage.Templates["templates/tileItem.handlebars"]);
+  $("#row1").html(template(data1));
+  $("#row2").html(template(data2));
+
+  playTile();
 }
 
 function displayTwoRows(tile_list) {
@@ -214,19 +216,18 @@ function displayTwoRows(tile_list) {
     }
   }
 
-  var data1 = {tile_list:tile_list1};
-  var data2 = {tile_list:tile_list2};
+  data1 = {tile_list:tile_list1};
+  data2 = {tile_list:tile_list2};
+  console.log(data1);
+  renderTwoRowTemplates();
+
 
   // var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flip"> {{else}} <img src="{{photo}}" class="overlay"> {{/if}} </a> </div> </td>';
   // var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> ';
   // includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")
   // includeHandlebarsTemplate(partial, wrapper, "tileItem",  data2, "#row2")
 
-  // Retrieve templates from template file
-  var template = Collage.Templates["templates/tileList.handlebars"];
-  Handlebars.registerPartial('tileItem', Collage.Templates["templates/tileItem.handlebars"]);
-  $("#row1").html(template(data1));
-  $("#row2").html(template(data2));
+
 
 }
 
@@ -240,16 +241,17 @@ function displayName(tile_list) {
 
 function displayPage(tile_list) {
   console.log('displayPage')
-  // console.log(tile_list);
+  console.log(tile_dictionary)
   var numTiles = tile_list.length;
-  if (numTiles <= 2 && name_collage == 1) {
-      displayName(tile_list);  
-  } else {
-    displayTwoRows(tile_list);
-  }
+  // if (numTiles <= 2 && name_collage == 1) {
+  //     displayName(tile_list);  
+  // } else {
+
+  displayTwoRows(tile_list);
+  // }
   
 
-  playTile();
+  
 
 
 

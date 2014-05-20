@@ -21,7 +21,7 @@ function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 }
 
 // update firebase with new tile
-function updateTile(fb, fb_collage_id, fb_tile_id, json_data) {
+function updateTile(fb, fb_collage_id, fb_tile_id, json_data, onComplete) {
   console.log('updateTile');
   console.log(fb.child(fb_collage_id));
   var tile_instance = getTileInstance(fb, fb_collage_id, fb_tile_id);
@@ -29,9 +29,9 @@ function updateTile(fb, fb_collage_id, fb_tile_id, json_data) {
   tile_instance.update(json_data, onComplete);
 }
 
-function onComplete() {
-	console.log('update complete')
-}
+// function onComplete() {
+// 	console.log('update complete')
+// }
 
 function getTilePhoto(fb, fb_collage_id, fb_tile_id) {
   console.log('getTilePhoto');
@@ -101,3 +101,13 @@ function getParameterByName(name) {
         results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+
+// scroll to an anchor tag
+// source: http://stackoverflow.com/questions/8579643/simple-jquery-scroll-to-anchor-up-or-down-the-page
+function scrollToAnchor(aid){
+    var aTag = $("a[name='"+ aid +"']");
+    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
+

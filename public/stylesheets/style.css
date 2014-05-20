@@ -136,13 +136,13 @@ body{
 }
 
 /* Portfolio Section */
-#portfolio{
+.portfolio #portfolio{
 	background-color: white;
 	min-height: 720px;
 	padding: 30px 0;
 }
 
-#portfolio h1{
+.portfolio h1{
 	font-family: Cassannet;
 	font-size: 40px;
 	line-height: 60px;

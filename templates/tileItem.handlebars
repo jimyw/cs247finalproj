@@ -2,7 +2,7 @@
     {{#if filled}}
       <div class="flip-container wrapper tile" id="wrapper{{fb_tile_id}}" ontouchstart="this.classList.toggle('hover');">
         <div class="flipper">
-          <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}">
+          {{!-- <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> --}}
             <div class="front crop" id="front">
               <div class="wrapper tile" id="photo{{fb_tile_id}}">
                     <img id="img_{{fb_tile_id}}" src="{{photo}}" class="flip stretch">            
@@ -15,7 +15,7 @@
                 </div>  
                 <p class="textMSG">{{text}}</p>
             </div>
-          </a>
+          {{!-- </a> --}}
         </div>
       </div>
 

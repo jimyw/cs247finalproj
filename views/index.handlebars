@@ -27,15 +27,27 @@
 			</div>
 		</section>
 
-		<section id="portfolio">
+		{{!-- <section id="album_wall" class="bg">
+			<div class="row">
+				<div class="twelve columns center">
+					<h1>{{direction}}</h1>
+				</div>
+			</div>
+		</section> --}}
+
+		<section class="portfolio">
 			<div class="row">
 				<div class="twelve columns">
 					<h2>{{direction}}</h2>
 				</div>
 			</div>
+			<a name="task1"></a>
 			<div class="row">
 				<div class="twelve columns">
-					<h1>Task 1: <span class="quote" id="task1">Click on an empty tile to contribute to the collage for {{recipient_name}} </span></h1>
+					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile for {{recipient_name}}&#39;s collage. Hover over your tile to preview, or click on another unfinished tile to repeat.</span></h1>
+					<h1 id="task1_msg1">Task 1: Click<span class="quote" id="task1"> on an empty tile to contribute to the collage for {{recipient_name}} </span></h1>
+
+					<h1 id="task1_msg2" class="hide_stuff">Task 1: Take a picture<span class="quote" id="task1"> that matches the outlined shape. </span></h1>
 				</div>
 			</div>
 
@@ -44,8 +56,8 @@
 					
 					<p id="countdown"></p>
 					<div id="outerbuttongrp">
-						<div id="picstartbutton">
-							<img src='images/camera.jpg'/>
+						<div class="hide_stuff" id="picstartbutton" >
+							<img id="camera_icon" src='images/camera.jpg'/>
 						</div>
 					</div>
 
@@ -61,16 +73,11 @@
 					<canvas id="canvas"></canvas>
 
 				<ul class="pager">
-				  <li class="previous" id="piccancelbutton"><a href="/?collage_id={{fb_collage_id}}">Cancel Picture</a></li>
+				  <li class="previous hide_stuff" id="piccancelbutton"><a>&larr; Back</a></li>
 				  <li class="next disabled" id="picdonebutton"><a>Next &rarr;</a></li>
-
 				</ul>
-				<ul class="pager">
-					<li class="previous" id="piccancelbutton"><a href="/?collage_id={{fb_collage_id}}">Reset Tile</a></li>
-				</ul>
-
 				
-
+				<a name="task1_bottom"></a>
 					
 {{!-- 
 					<ul class="works">
@@ -115,13 +122,61 @@
 			</div>
 		</section>
 
-		<section id="album_wall" class="bg">
+		
+
+
+{{!-- 		<section id="hire" class="bg">
 			<div class="row">
-				<div class="twelve columns center">
-					<h1>Record a personal video message: </h1>
+				<div class="six columns offset-by-six">
+					<h1>Now please also record a personal message!</h1>
 				</div>
 			</div>
+		</section>	 --}}
+
+		<section id="vmsg" class="portfolio hide_stuff">
+			<a name="vmsg"></a>
+			<div class="row">
+				<div class="twelve columns">
+					<h1 id="task2_msg">Task 2: Great! <span class="quote" id="task1">Now leave a personal video message for {{recipient_name}} </span></h1>
+				</div>
+			</div>
+			<div class="row">
+				{{!-- <div class="direction">Don't forget to leave a personal video and/or text message :) <span class="msg" id="status"></span></div> --}}
+				<div class="centered" ><input id="privacy_checkbox" type="checkbox" name="my-checkbox" checked></div>
+
+				<div class="wrapper_helper">
+					<div class="cropper not-recording" id="record_container" ><div id="webcam_stream"></div></div>
+					<div class="cropper not-recording" id="play_container" ><div id="video_container"></div></div>
+					<div id="audio_link"></div>
+					<div class="cropper not-recording" id="stat_container" ><div id="video_link"></div></div>
+					<div id="start_recording"><img src="/images/record.jpg" id="btn_record"/><span id="videocountdown"></span></div>
+					<div id="stop_recording"><img src="/images/stop.jpg" id="btn_record2"/></div>
+					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
+				</div>
+				<div>
+					<ul class="pager">
+					  <li class="previous" id="vidcancelbutton"><a>&larr; Back</a></li>
+					  <li class="next disabled" id="finish"><a>Finish</a></li>
+					</ul>
+				</div>
+
+				<div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
+				<div id="fb_tile_id" style="display: none;">{{fb_tile_id}}</div>
+			</div>
 		</section>
+
+		<footer>
+		</footer>
+
+    <script src="/javascripts/bootstrap-switch.js"></script>
+    {{!-- Our own javascripts --}}
+
+    <script src='/javascripts/personal_message.js'></script>
+    <script src='/javascripts/readyVideoAndAudio.js'></script>
+    <script src="/javascripts/simplecam.js"></script>
+    <script src="/javascripts/camOnTemplate.js"></script>
+    <script src="/javascripts/firebase.js"></script>
+
 {{!-- 
 		<section id="about">
 			<div class="row">
@@ -146,51 +201,12 @@
 			</div>
 		</section>
  --}}
-		<section id="hire" class="bg">
-			<div class="row">
-				<div class="six columns offset-by-six">
-					<h1>Now please also record a personal message!</h1>
-				</div>
-			</div>
-		</section>	
 
-		<section id="vmsg">
-			<div class="row">
-				<div class="direction">Don't forget to leave a personal video and/or text message :) <span class="msg" id="status"></span></div>
-				<div class="centered" ><input type="checkbox" name="my-checkbox" checked></div>
 
-				<div>
-				<form name="input" id="submission" action="/postVideo" method="post">
+ {{!-- 				<form name="input" id="submission" action="/postVideo" method="post">
 					<input type="hidden" name="fb_collage_id" value="{{fb_collage_id}}">
 					<input type="hidden" name="fb_tile_id" value="{{fb_tile_id}}">
 					<input type="hidden" id="video_form" name="video" value="">
 					<input type="hidden" id="audio_form" name="audio" value="">
 					<button type="submit" class="button" id="finish">Finish!</button>
-				</form>
-				</div>
-				<div class="wrapper_helper">
-					<div class="cropper not-recording" id="record_container" ><div id="webcam_stream"></div></div>
-					<div class="cropper not-recording" id="play_container" ><div id="video_container"></div></div>
-					<div id="audio_link"></div>
-					<div class="cropper not-recording" id="stat_container" ><div id="video_link"></div></div>
-					<div id="start_recording"><img src="/images/record.jpg" id="btn_record"/><span id="videocountdown"></span></div>
-					<div id="stop_recording"><img src="/images/stop.jpg" id="btn_record2"/></div>
-					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
-
-				</div>
-				<div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
-				<div id="fb_tile_id" style="display: none;">{{fb_tile_id}}</div>
-			</div>
-		</section>
-
-		<footer>
-		</footer>
-
-
-
-    <script src="/javascripts/bootstrap-switch.js"></script>
-    <script src='/javascripts/personal_message.js'></script>
-{{!-- Our own javascripts --}}
-    <script src="/javascripts/simplecam.js"></script>
-    <script src="/javascripts/camOnTemplate.js"></script>
-    <script src="/javascripts/firebase.js"></script>
+				</form> --}}
