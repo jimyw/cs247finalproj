@@ -1,23 +1,51 @@
-(function() {
+var ready = 0;
+var stream_saved;
+
+navigator.getMedia = ( navigator.getUserMedia || 
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
+navigator.getMedia(
+    { 
+      video: true, 
+      audio: false 
+    },
+    function(stream) {
+      ready += 1;
+      stream_saved = stream;
+      console.log(ready);
+      // if (navigator.mozGetUserMedia) { 
+      //   video.mozSrcObject = stream;
+      // } else {
+      //   var vendorURL = window.URL || window.webkitURL;
+      //   video.src = vendorURL.createObjectURL(stream);
+      // }
+      // video.play();
+    },
+    function(err) {
+      console.log("An error occured! " + err);
+    }
+);
+
+// passes the JQuery object of the tile Clicked
+function simpleCam() {
+  var td_height = $("td").height();
+  var td_width = $("td").width();
+
+// (function() {
 
   // Connect to firebase
-  var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
-  var fb = new Firebase(fb_link);
-  var fb_collage_id = $("#fb_collage_id").html();
-  var fb_tile_id = $("#fb_tile_id").html();
-  var ready = 0;
-  var filled = $("#fb_filled").html();
+  // var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
+  // var fb = new Firebase(fb_link);
+  // var fb_collage_id = $("#fb_collage_id").html();
+  // var fb_tile_id = $("#fb_tile_id").html();
   
+  // var filled = $("#fb_filled").html();
   var status = $("#status");
   // console.log(fb_tile_id);
-
-  // var photo_json = getTilePhoto(fb, fb_collage_id, fb_tile_id);
-
-  // setTimeout(function(){
-  //   console.log(photo_json);
-  //   $("#overlay").attr('src', photo_json.photo);
-  // },3000);
-
+  console.log(stream_saved);
+  
 
   // var fb_tile_instance = fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
   // console.log(fb_tile_instance)
@@ -26,48 +54,37 @@
       video        = document.querySelector('#video'),
       cover        = document.querySelector('#cover'),
       canvas       = document.querySelector('#canvas'),
-      photo        = document.querySelector('#photo'),
-      startbutton  = document.querySelector('#startbutton'),
-      donebutton  = document.querySelector('#donebutton'),
+      // photo        = document.querySelector('#photo'),
+      photo        = document.querySelector('#img_'+fb_tile_id),
+      startbutton  = document.querySelector('#picstartbutton'),
+      donebutton  = document.querySelector('#picdonebutton'),
       countdown  = document.querySelector('#countdown'),
-      width = 320,
-      height = 0;
+      // width = 320,
+      // height = 0;
+      width = td_width;
+      height = td_height;
 
   console.log('initial')
   console.log(video);
+  console.log('photo: ')
+  console.log(photo)
 
   var data;
 
-  navigator.getMedia = ( navigator.getUserMedia || 
-                         navigator.webkitGetUserMedia ||
-                         navigator.mozGetUserMedia ||
-                         navigator.msGetUserMedia);
+  // playing the video
+  if (navigator.mozGetUserMedia) { 
+    video.mozSrcObject = stream_saved;
+  } else {
+    var vendorURL = window.URL || window.webkitURL;
+    video.src = vendorURL.createObjectURL(stream_saved);
+  }
+  video.play();
 
-  navigator.getMedia(
-    { 
-      video: true, 
-      audio: false 
-    },
-    function(stream) {
-
-      ready += 1;
-      console.log(ready);
-      if (navigator.mozGetUserMedia) { 
-        video.mozSrcObject = stream;
-      } else {
-        var vendorURL = window.URL || window.webkitURL;
-        video.src = vendorURL.createObjectURL(stream);
-      }
-      video.play();
-    },
-    function(err) {
-      console.log("An error occured! " + err);
-    }
-  );
+  
 
   video.addEventListener('canplay', function(ev){
     if (!streaming) {
-      height = video.videoHeight / (video.videoWidth/width);
+      // height = video.videoHeight / (video.videoWidth/width);
       video.setAttribute('width', width);
       video.setAttribute('height', height);
       canvas.setAttribute('width', width);
@@ -90,9 +107,8 @@
 
       filled = 1;
       var json_data = {photo: data, filled: filled};
-      updateTile(fb, fb_collage_id, fb_tile_id, json_data)
-      startbutton.innerHTML="Retake photo";      
-
+      // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+      donebutton.removeClass('disabled')
   }
 
   function showCountDown() {
@@ -134,7 +150,7 @@
   }, false);
 
   donebutton.addEventListener('click', function(ev){
-    if (filled == 1) {
+    // if (filled == 1) {
       ga('send', 'event', 'button', 'click', 'done photo');
       console.log("Done taking photo");
       $.ajax({
@@ -142,7 +158,7 @@
         type: 'get',
         success: function(response) {
           //Do Something
-          window.location = "/personalmsg?fb_collage_id="+fb_collage_id+"&fb_tile_id="+fb_tile_id
+          // window.location = "/personalmsg?fb_collage_id="+fb_collage_id+"&fb_tile_id="+fb_tile_id
           console.log('ajax get success')
         },
         error: function(xhr) {
@@ -150,12 +166,13 @@
           console.log('ajax get error')
         }
       });
-    } else {
-      console.log(filled)
-      status.html("You haven't taken a photo yet.")
-      status.addClass("yellow");
-      status.removeClass("msg");
-    }
+    // } else {
+    //   console.log(filled)
+    //   status.html("You haven't taken a photo yet.")
+    //   status.addClass("yellow");
+    //   status.removeClass("msg");
+    // }
   }, false);
 
-})();
+}
+// })();

@@ -1,4 +1,4 @@
-(function() {
+// (function() {
 
 /* Include your Firebase link here!*/
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
@@ -112,20 +112,6 @@ function load_collage(numTiles) {
   console.log('load_collage')
   var tile_list = new Array();
 
-  // load planner values
-  fb.child(fb_collage_id).child('planner').once('value', function(plannerSnap) {
-    var val = plannerSnap.val();
-    console.log(val)
-    direction = val.direction;
-    templateType = val.templateType;
-    
-    recipient_name = val.recipient_name;
-    console.log(direction)
-    console.log(recipient_name)
-    console.log(templateType)
-    $("#intromsg").html(direction);
-  });
-
   var tile_instance = fb.child(fb_collage_id).child('Tile');
   console.log(tile_instance);
   tile_instance.on('value', function(tileIdSnap) {  // makes update to tile_list whenever changes happen
@@ -199,6 +185,9 @@ function playTile() {
       document.getElementById("audio"+fb_tile_id).play();
   }
   });
+
+  $(".tile").click(showCam);
+
 }
 
 function displayTwoRows(tile_list) {
@@ -267,4 +256,4 @@ function displayPage(tile_list) {
 }
 
 
-})();
+// })();

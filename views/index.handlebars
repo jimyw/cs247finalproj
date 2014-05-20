@@ -30,13 +30,26 @@
 		<section id="portfolio">
 			<div class="row">
 				<div class="twelve columns">
-					<h1>Please<span class="quote">choose an empty tile and make the shape on it :) </span></h1>
+					<h2>{{direction}}</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="twelve columns">
+					<h1>Task 1: <span class="quote" id="task1">Click on an empty tile to contribute to the collage for {{recipient_name}} </span></h1>
 				</div>
 			</div>
 
 			<div class="row">		
 				<div class="twelve columns">
-					<table> 
+					
+					<p id="countdown"></p>
+					<div id="outerbuttongrp">
+						<div id="picstartbutton">
+							<img src='images/camera.jpg'/>
+						</div>
+					</div>
+
+					<table class="centering"> 
 						<tr id="row1">
 						{{!-- Code is in template/tileItem.handlebars --}}
 						</tr>
@@ -45,6 +58,21 @@
 						</tr>	
 					</table>
 
+					<canvas id="canvas"></canvas>
+
+				<ul class="pager">
+				  <li class="previous" id="piccancelbutton"><a href="/?collage_id={{fb_collage_id}}">Cancel Picture</a></li>
+				  <li class="next disabled" id="picdonebutton"><a>Next &rarr;</a></li>
+
+				</ul>
+				<ul class="pager">
+					<li class="previous" id="piccancelbutton"><a href="/?collage_id={{fb_collage_id}}">Reset Tile</a></li>
+				</ul>
+
+				
+
+					
+{{!-- 
 					<ul class="works">
 						<li>
 							<a href="yogurt.html">
@@ -82,7 +110,7 @@
 								<img src="images/heart4.jpg"/>
 							</a>
 						</li>
-					</ul>
+					</ul> --}}
 				</div>
 			</div>
 		</section>
@@ -94,7 +122,7 @@
 				</div>
 			</div>
 		</section>
-
+{{!-- 
 		<section id="about">
 			<div class="row">
 				<div id="container">
@@ -117,7 +145,7 @@
 				<div id="fb_filled" style="display: none;">{{filled}}</div>
 			</div>
 		</section>
-
+ --}}
 		<section id="hire" class="bg">
 			<div class="row">
 				<div class="six columns offset-by-six">
@@ -148,6 +176,7 @@
 					<div id="start_recording"><img src="/images/record.jpg" id="btn_record"/><span id="videocountdown"></span></div>
 					<div id="stop_recording"><img src="/images/stop.jpg" id="btn_record2"/></div>
 					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
+
 				</div>
 				<div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
 				<div id="fb_tile_id" style="display: none;">{{fb_tile_id}}</div>
@@ -160,5 +189,8 @@
 
 
     <script src="/javascripts/bootstrap-switch.js"></script>
-    <script src="/javascripts/simplecam.js"></script>
     <script src='/javascripts/personal_message.js'></script>
+{{!-- Our own javascripts --}}
+    <script src="/javascripts/simplecam.js"></script>
+    <script src="/javascripts/camOnTemplate.js"></script>
+    <script src="/javascripts/firebase.js"></script>

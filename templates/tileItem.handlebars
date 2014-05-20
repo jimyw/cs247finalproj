@@ -1,11 +1,11 @@
-  <td>
+  <td class="template_art">
     {{#if filled}}
       <div class="flip-container wrapper tile" id="wrapper{{fb_tile_id}}" ontouchstart="this.classList.toggle('hover');">
         <div class="flipper">
           <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}">
             <div class="front crop" id="front">
               <div class="wrapper tile" id="photo{{fb_tile_id}}">
-                    <img src="{{photo}}" class="flip stretch">            
+                    <img id="img_{{fb_tile_id}}" src="{{photo}}" class="flip stretch">            
                 </div>
             </div>
             <div class="back">
@@ -20,10 +20,8 @@
       </div>
 
     {{else}}
-      <div class="wrapper tile" id="{{fb_tile_id}}">
-        <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}">          
-            <img src="{{photo}}" class="overlay">
-        </a>
+      <div class="wrapper tile" id="{{fb_tile_id}}"> 
+            <img id="img_{{fb_tile_id}}" src="{{photo}}" class="overlay">
       </div>
     {{/if}}
   </td>

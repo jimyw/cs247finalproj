@@ -7,19 +7,24 @@ function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 	return fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
 }
 
+function loadCollage(fb_collage_id) {
+// load planner values
+
+}
+
 // exports.birthday = function(req, res) {
 // 	console.log('index')
 // 	res.render('index', { title: 'Card Collage' });
 // }
 
-var Jonathan_msg = "Jonathan's birthday is coming up soon. Choose a tile and upload a personal birthday wish for him!";
-var grandma_msg = "Grandma Zoia's birthday is coming up soon. Choose a tile and upload a personal birthday wish for her!";
-var ruth_msg = "Ruth is studying abroad. Choose a tile and tell her how you miss her!"
-var ellen_msg = "Ellen's birthday is coming up soon. Choose a tile and upload a personal birthday wish for her!";
-var messages = ["Happy birthday,", "Happy birthday,", "We miss you,", "Happy birthday,"];
-var intromessages = [Jonathan_msg, grandma_msg, ruth_msg, ellen_msg];
-var names = ["Jonathan", "Zoia", "Ruth", "Ellen"];
-var collage_ids = ['5g6p65bqpvi','q6wq9z4cxr','l25y8ccjtt9', 'o366rpmn29', 'ryp2pt4kj4i','dmyjndvlsor','ps0wx5pzaor', '6c12imp9zfr'];
+// var Jonathan_msg = "Jonathan's birthday is coming up soon. Choose a tile and upload a personal birthday wish for him!";
+// var grandma_msg = "Grandma Zoia's birthday is coming up soon. Choose a tile and upload a personal birthday wish for her!";
+// var ruth_msg = "Ruth is studying abroad. Choose a tile and tell her how you miss her!"
+// var ellen_msg = "Ellen's birthday is coming up soon. Choose a tile and upload a personal birthday wish for her!";
+// var messages = ["Happy birthday,", "Happy birthday,", "We miss you,", "Happy birthday,"];
+// var intromessages = [Jonathan_msg, grandma_msg, ruth_msg, ellen_msg];
+// var names = ["Jonathan", "Zoia", "Ruth", "Ellen"];
+// var collage_ids = ['5g6p65bqpvi','q6wq9z4cxr','l25y8ccjtt9', 'o366rpmn29', 'ryp2pt4kj4i','dmyjndvlsor','ps0wx5pzaor', '6c12imp9zfr'];
 	// first 3 are name collages, second 3 are heart collages
 // var collage_ids_hearts = [];
 
@@ -27,59 +32,71 @@ exports.index = function(req, res) {
 	console.log('index');
 	console.log(req.query);
 	var post = req.query.post;
-	var collage_id = req.query.collage_id;
+	var fb_collage_id = req.query.collage_id;
 	if (!post) {
 		post = 0;
 	}
 
-	var name_collage = 0;
-	
 	// identify which collage:
+	// var name_collage = 0;
 	// in practice, we would search DB for collage_id
-	var person = collage_ids.indexOf(collage_id);
-	if (person > 2) {
-		name_collage = 0;
-		person = person % 4;	// get the right person
-	} else if (person < 0) {
-		person = 0;	// default
-	}
+	// var person = collage_ids.indexOf(collage_id);
+	// if (person > 2) {
+	// 	name_collage = 0;
+	// 	person = person % 4;	// get the right person
+	// } else if (person < 0) {
+	// 	person = 0;	// default
+	// }
 
+	// var message;
+	// if (name_collage == 1) {	// spell out name
+	// 	message = messages[person];
+	// } else {
+	// 	message = messages[person] + ' '+names[person];
+	// }
 	
-	var message;
-	
-	if (name_collage == 1) {	// spell out name
-		// if (collage_id == collage_ids[1]) {
-		// 	person = 1;
-		// } else if (collage_id == collage_ids[2]) {
-		// 	person = 2;
-		// }
-		message = messages[person];
-	} else {
-		// if (collage_id == collage_ids_hearts[1]) {
-		// 	person = 1;
-		// } else if (collage_id == collage_ids_hearts[2]) {
-		// 	person = 2;
-		// }	
-		message = messages[person] + ' '+names[person];
-	}
 
 
 	console.log(post);
-	var basic_data = { 
-		title: 'Card Collage',  
-		intromsg: intromessages[person],
-		message: message,
-		recipient_name: names[person],
-		name_collage: name_collage,		// handle name_collage in backend (based on what planner wants)
-		post: post,
-		fb_collage_id: collage_id,
-	};
+	// var basic_data = { 
+	// 	title: 'Card Collage',  
+	// 	intromsg: intromessages[person],
+	// 	message: message,
+	// 	recipient_name: names[person],
+	// 	name_collage: name_collage,		// handle name_collage in backend (based on what planner wants)
+	// 	post: post,
+	// 	fb_collage_id: collage_id,
+	// };
 
-if (collage_id) {
+if (fb_collage_id) {
 	console.log('collage_id')
-	res.render('index', basic_data);
+
+  var fb = new Firebase(fb_link);
+  fb.child(fb_collage_id).child('planner').once('value', function(plannerSnap) {
+    var val = plannerSnap.val();
+    console.log(val)
+    direction = val.direction;
+    templateType = val.templateType;
+    
+    recipient_name = val.recipient_name;
+    console.log(direction)
+    console.log(recipient_name)
+    console.log(templateType)
+
+    var basic_data = {
+    	direction: direction,
+    	templateType: templateType,
+    	recipient_name: recipient_name,
+    }
+    // $("#intromsg").html(direction);
+
+    res.render('index', basic_data);
+  });
+
+
+
 } else {
-	res.render('new', basic_data);
+	res.render('new');
 }
 }
 
