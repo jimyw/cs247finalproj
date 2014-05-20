@@ -237,10 +237,14 @@ ul.works img{
 }
 
 /* About Section */
-#about{
+#about, #vmsg{
 	background-color: white;
-	min-height: 480px;
+	min-height: 700px;
 	padding: 30px 0;
+}
+
+#vmsg {
+	position: relative;
 }
 
 #profile{

@@ -1,3 +1,4 @@
+<link href="/stylesheets/bootstrap-switch.css" rel="stylesheet">
 
 		<section id="intro" class="bg">
 			<div class="row">
@@ -120,65 +121,36 @@
 		<section id="hire" class="bg">
 			<div class="row">
 				<div class="six columns offset-by-six">
-					<h1>NOW I'M BACK TO STANFORD, LOOKING FOR NEW OPPORTUNITIES!</h1>
+					<h1>Now please also record a personal message!</h1>
 				</div>
 			</div>
 		</section>	
 
-		<section id="contact">
+		<section id="vmsg">
 			<div class="row">
-				<div class="twelve columns center">
-					<h4>If you're interested, feel free to contact me!</h4>
-					<h2 class="contact_link">
-						<a href="mailto: ningxia.z@gmail.com">
-						ningxia.z@gmail.com</a> / 
-						+1 (650) 704 - 0652
-					</h2>
-					<h4>Or connect with me on:</h4>
+				<div class="direction">Don't forget to leave a personal video and/or text message :) <span class="msg" id="status"></span></div>
+				<div class="centered" ><input type="checkbox" name="my-checkbox" checked></div>
+
+				<div>
+				<form name="input" id="submission" action="/postVideo" method="post">
+					<input type="hidden" name="fb_collage_id" value="{{fb_collage_id}}">
+					<input type="hidden" name="fb_tile_id" value="{{fb_tile_id}}">
+					<input type="hidden" id="video_form" name="video" value="">
+					<input type="hidden" id="audio_form" name="audio" value="">
+					<button type="submit" class="button" id="finish">Finish!</button>
+				</form>
 				</div>
-			</div>
-			<div class="row social">
-				<div class="two columns center">
-					<a href="https://www.facebook.com/ningxia.zhang" target="_blank"><img class="social_icon" src="images/facebook.png"></a>
+				<div class="wrapper_helper">
+					<div class="cropper not-recording" id="record_container" ><div id="webcam_stream"></div></div>
+					<div class="cropper not-recording" id="play_container" ><div id="video_container"></div></div>
+					<div id="audio_link"></div>
+					<div class="cropper not-recording" id="stat_container" ><div id="video_link"></div></div>
+					<div id="start_recording"><img src="/images/record.jpg" id="btn_record"/><span id="videocountdown"></span></div>
+					<div id="stop_recording"><img src="/images/stop.jpg" id="btn_record2"/></div>
+					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
 				</div>
-				<div class="two columns center">
-					<a href="https://twitter.com/thmmrs" target="_blank"><img class="social_icon" src="images/twitter.png"></a>
-				</div>
-				<div class="two columns center">
-					<a href="http://www.linkedin.com/pub/ningxia-zhang/2a/953/520"  target="_blank"><img class="social_icon" src="images/linkedin.png"></a>
-				</div>
-				<div class="two columns center">
-					<a href="https://github.com/ningxiaz" target="_blank"><img class="social_icon" src="images/github.png"></a>
-				</div>
-				<div class="two columns center">
-					<a href="http://www.last.fm/user/thmmrs2298" target="_blank"><img class="social_icon" src="images/lastfm.png"></a>
-				</div>
-				<div class="two columns center">
-					<a href="http://ningxiaz.tumblr.com/" target="_blank"><img class="social_icon" src="images/tumblr.png"></a>
-				</div>
-			</div>
-			<div class="row credit">
-				<div class="eight columns">
-					<p class="contact_text">
-						This site is responsive, thanks to <a href="http://foundation.zurb.com/" target="_blank">Foundation</a> framework.
-					</p>
-					<p class="contact_text">
-						The fonts used on this site are <a href="http://www.cassannet.net/" target="_blank">Cassannet</a> (headers) and <a href="http://www.dotcolon.net/font/?id=vegur" href="_blank">Vegur</a> (body text).
-					</p>
-					<p class="contact_text">
-						The photographs of me (the background) and the thumbnail of Yogurt project are kindly provided by my good friend <a href="http://boruiwang.org/" target="_blank">Borui</a>.
-					</p>
-				</div>
-				<div class="four columns">
-					<p class="contact_text">
-						Made on the lovely Stanford campus.<br>
-						More stuff will be added soon.<br>
-					</p>
-					<p class="contact_text">
-						© 2013 Ningxia Zhang.<br>
-						All rights reserved.
-					</p>
-				</div>
+				<div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
+				<div id="fb_tile_id" style="display: none;">{{fb_tile_id}}</div>
 			</div>
 		</section>
 
@@ -187,4 +159,6 @@
 
 
 
+    <script src="/javascripts/bootstrap-switch.js"></script>
     <script src="/javascripts/simplecam.js"></script>
+    <script src='/javascripts/personal_message.js'></script>

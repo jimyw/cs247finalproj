@@ -28,6 +28,9 @@
 
   function showCountDown() {
     console.log('showCountDown')
+    $("#btn_record").attr("src","/images/stop.jpg");
+    $("#btn_record").hide();
+
     // $(".cropper").addClass("redborder");
     var countdown = $("#videocountdown")
     countdown.html("3");
@@ -42,6 +45,8 @@
     }, 3000);
     setTimeout(function(){
       countdown.html("");
+      $("#btn_record").show();
+      $('#stop_recording').show();
       // $(".cropper").addClass("border");
       $("#start_recording").hide();
       $("#stop_recording").show();
@@ -51,7 +56,11 @@
   }
   
   $(document).ready(function() {
-
+    $("input[name='my-checkbox']").bootstrapSwitch();
+    $('input[name="my-checkbox"]').bootstrapSwitch('onText', 'Public');
+    $('input[name="my-checkbox"]').bootstrapSwitch('offText', 'Private');
+    $('input[name="my-checkbox"]').bootstrapSwitch('size', 'large');
+    $('input[name="my-checkbox"]').bootstrapSwitch('offColor', 'warning');
     // record video
     navigator.getUserMedia({video: true}, function(mediaStream) {
       $("#status").html("Please also enable microphone :)");
@@ -101,14 +110,15 @@
     $("#stop_recording").hide();
     $("#start_recording").show();
     $("#replay_recording").hide();
+    $("#finish").hide();
 
     //Start recording button touched
-    $("#start_recording").click(function (){   
+    $("#start_recording").click(function (){  
       if(ready == 2){
         // send google analytics
         ga('send', 'event', 'button', 'click', 'take video');
 
-        $("#stop_recording").css("background-color", "red")
+        //$("#stop_recording").css("background-color", "red")
 
         $("#replay_recording").hide();
         // update ids here, because page loads too slowly
@@ -132,7 +142,9 @@
     //Stop recording button touched
     $("#stop_recording").click(function (){
       // $(".cropper").removeClass("redborder");
-      $(this).css("background-color", "orange")
+      $("#btn_record").attr("src","/images/record.jpg");
+
+      //$(this).css("background-color", "orange")
       var textbox_text = $("#textbox").val();
       $("#stat_container").removeClass("recording");
       $("#stat_container").addClass("not-recording");
@@ -216,9 +228,10 @@
       playVideo('');
 
       $(this).hide();
-      $("#start_recording").html("Retake the Video");
+      //$("#start_recording").html("Retake the Video");
       $("#start_recording").show();
       $("#replay_recording").show();
+      $("#finish").show();
     });
 
     $("#replay_recording").click(function (){
