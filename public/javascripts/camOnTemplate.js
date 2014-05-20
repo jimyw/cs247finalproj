@@ -12,9 +12,12 @@ function showCam(e) {
 		tileClicked.prepend('<video id="video"></video>')
 
 		$("#picstartbutton").removeClass('hide_stuff');
-		$("#picdonebutton").removeClass('hide_stuff');
-		$("#piccancelbutton").removeClass('hide_stuff');
+		// $("#picdonebutton").removeClass('');
+		// $("#piccancelbutton").removeClass('hide_stuff');
 
+		var dir = 'Take a picture that matches the outlined shape. ';
+		var counter_dir = 'Pressing the camera button will start a 10 second countdown before a picture is taken.';
+		$("#task1").html(dir)
 		simpleCam();
 	}
 	

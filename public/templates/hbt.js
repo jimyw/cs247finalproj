@@ -80,7 +80,7 @@ function program3(depth0,data) {
   return buffer;
   }
 
-  buffer += "  <td>\n    ";
+  buffer += "  <td class=\"template_art\">\n    ";
   stack1 = helpers['if'].call(depth0, (depth0 && depth0.filled), {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n  </td>";

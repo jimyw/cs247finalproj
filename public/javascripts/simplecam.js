@@ -28,7 +28,11 @@ navigator.getMedia(
     }
 );
 
+// passes the JQuery object of the tile Clicked
 function simpleCam() {
+  var td_height = $("td").height();
+  var td_width = $("td").width();
+
 // (function() {
 
   // Connect to firebase
@@ -55,11 +59,15 @@ function simpleCam() {
       startbutton  = document.querySelector('#picstartbutton'),
       donebutton  = document.querySelector('#picdonebutton'),
       countdown  = document.querySelector('#countdown'),
-      width = 320,
-      height = 0;
+      // width = 320,
+      // height = 0;
+      width = td_width;
+      height = td_height;
 
   console.log('initial')
   console.log(video);
+  console.log('photo: ')
+  console.log(photo)
 
   var data;
 
@@ -76,7 +84,7 @@ function simpleCam() {
 
   video.addEventListener('canplay', function(ev){
     if (!streaming) {
-      height = video.videoHeight / (video.videoWidth/width);
+      // height = video.videoHeight / (video.videoWidth/width);
       video.setAttribute('width', width);
       video.setAttribute('height', height);
       canvas.setAttribute('width', width);
@@ -99,9 +107,8 @@ function simpleCam() {
 
       filled = 1;
       var json_data = {photo: data, filled: filled};
-      updateTile(fb, fb_collage_id, fb_tile_id, json_data)
-      startbutton.innerHTML="Retake photo";      
-
+      // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
+      donebutton.removeClass('disabled')
   }
 
   function showCountDown() {
@@ -143,7 +150,7 @@ function simpleCam() {
   }, false);
 
   donebutton.addEventListener('click', function(ev){
-    if (filled == 1) {
+    // if (filled == 1) {
       ga('send', 'event', 'button', 'click', 'done photo');
       console.log("Done taking photo");
       $.ajax({
@@ -151,7 +158,7 @@ function simpleCam() {
         type: 'get',
         success: function(response) {
           //Do Something
-          window.location = "/personalmsg?fb_collage_id="+fb_collage_id+"&fb_tile_id="+fb_tile_id
+          // window.location = "/personalmsg?fb_collage_id="+fb_collage_id+"&fb_tile_id="+fb_tile_id
           console.log('ajax get success')
         },
         error: function(xhr) {
@@ -159,12 +166,12 @@ function simpleCam() {
           console.log('ajax get error')
         }
       });
-    } else {
-      console.log(filled)
-      status.html("You haven't taken a photo yet.")
-      status.addClass("yellow");
-      status.removeClass("msg");
-    }
+    // } else {
+    //   console.log(filled)
+    //   status.html("You haven't taken a photo yet.")
+    //   status.addClass("yellow");
+    //   status.removeClass("msg");
+    // }
   }, false);
 
 }

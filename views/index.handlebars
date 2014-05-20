@@ -29,17 +29,26 @@
 		<section id="portfolio">
 			<div class="row">
 				<div class="twelve columns">
-					<h1>Please<span class="quote">choose an empty tile and make the shape on it :) </span></h1>
+					<h2>{{direction}}</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="twelve columns">
+					<h1>Task 1: <span class="quote" id="task1">Click on an empty tile to contribute to the collage for {{recipient_name}} </span></h1>
 				</div>
 			</div>
 
 			<div class="row">		
 				<div class="twelve columns">
-					<button class="button hide_stuff" id="picstartbutton">Take photo</button>
-					<button class="button hide_stuff" id="picdonebutton">Next</button>
-					<a href="/?collage_id={{fb_collage_id}}"><button class="button hide_stuff" id="piccancelbutton">Cancel</button></a>
+					
 					<p id="countdown"></p>
-					<table> 
+					<div id="outerbuttongrp">
+						<div id="picstartbutton">
+							<img src='images/camera.jpg'/>
+						</div>
+					</div>
+
+					<table class="centering"> 
 						<tr id="row1">
 						{{!-- Code is in template/tileItem.handlebars --}}
 						</tr>
@@ -47,8 +56,22 @@
 							{{!-- <td>hi</td> --}}
 						</tr>	
 					</table>
+
 					<canvas id="canvas"></canvas>
 
+				<ul class="pager">
+				  <li class="previous" id="piccancelbutton"><a href="/?collage_id={{fb_collage_id}}">Cancel Picture</a></li>
+				  <li class="next disabled" id="picdonebutton"><a>Next &rarr;</a></li>
+
+				</ul>
+				<ul class="pager">
+					<li class="previous" id="piccancelbutton"><a href="/?collage_id={{fb_collage_id}}">Reset Tile</a></li>
+				</ul>
+
+				
+
+					
+{{!-- 
 					<ul class="works">
 						<li>
 							<a href="yogurt.html">
@@ -86,7 +109,7 @@
 								<img src="images/heart4.jpg"/>
 							</a>
 						</li>
-					</ul>
+					</ul> --}}
 				</div>
 			</div>
 		</section>
