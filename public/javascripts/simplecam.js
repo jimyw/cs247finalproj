@@ -79,6 +79,7 @@ function simpleCam() {
       data = canvas.toDataURL('image/png');
       console.log(fb_tile_id)
       photo.attr('src', data);
+      photo.addClass('flip')
 
       console.log(json_data);
       json_data.photo = data;   // update photo data
