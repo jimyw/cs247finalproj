@@ -1,26 +1,124 @@
 <script src="/templates/hbt.js"></script>
 <script src="/javascripts/firebase.js"></script>
 
+		<section id="intro" class="bg relative">
+			<div class="row">
+				<div class="six columns" id="header">
+					<h3>Welcome to</h3>
+					<h1>CARD COLLAGE</h1>
+					<div class="clear"></div>
+				</div>
+				<div class="six columns">
+					<p class="intro_text">
+						Make a fun collage with friends, attach your personal video message, and impress whomever receives it!
+					</p>
+				</div>
+			</div>
+
+			<table id="heart-example">
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/hr1.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/hr2.png"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/hr4.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/hr3.png"></div>
+					</td>				
+				</tr>
+			</table>
 
 
-<div>Template:
-<select id="template_type">
-  <option value="Heart">Heart</option>
-  <option value="Star">Star</option>
-  <option value="Flower">Flower</option>
-  <option value="Circle">Circle</option>
-  <option value="Task">Task</option>
-</select>
-</div>
-<div>Directions: <input type="text" name="directions" id="directions"><br></div>
-<div>Recipient name: <input type="textarea" name="recipient_name" id="recipient_name"><br></div>
+			<table id="love-example">
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/lv1.jpg"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/lv2.jpg"></div>
+					</td>				
+					<td class="thin">
+						<div class="example"><img src="/images/lv3.jpg"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/lv4.jpg"></div>
+					</td>				
+				</tr>
+			</table>
 
-<p class="regtext" id="shareLink"></p>
-<div><input type="submit" id="make_first_tile" value="Make the first tile"></input></div>
-{{!-- <div><a id="make_first_tile">Make the first tile</a></div> --}}
 
-{{!-- <div id="recipient_name" style="display: none;">{{recipient_name}}</div> --}}
-{{!-- <div id="name_collage" style="display: none;">{{name_collage}}</div> --}}
+			<table id="face-example">
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/fc1.jpg"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/fc2.jpg"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/fc3.jpg"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/fc4.jpg"></div>
+					</td>				
+				</tr>
+			</table>						
+			<div class="nav">
+				<div class="row">
+					<div class="twelve columns">
+						<a href="#portfolio" class="smoothScroll">Choose a template or task</a>
+					</div>
+				</div>
+			</div>
+			<div class="nav_bg">
+			</div>
+		</section>
+
+		{{!-- <section id="album_wall" class="bg">
+			<div class="row">
+				<div class="twelve columns center">
+					<h1>{{direction}}</h1>
+				</div>
+			</div>
+		</section> --}}
+
+		<section id="portfolio">
+			<div class="row">
+				<div class="twelve columns">
+					<h2>{{direction}}</h2>
+				</div>
+			</div>
+			<a name="task1"></a>
+			<div class="row">
+				<div>Template:
+				<select id="template_type">
+				  <option value="Heart">Heart</option>
+				  <option value="Star">Star</option>
+				  <option value="Flower">Flower</option>
+				  <option value="Circle">Circle</option>
+				  <option value="Task">Task</option>
+				</select>
+				</div>
+				<div>Directions: <input type="text" name="directions" id="directions"><br></div>
+				<div>Recipient name: <input type="textarea" name="recipient_name" id="recipient_name"><br></div>
+
+				<p class="regtext" id="shareLink"></p>
+				<div><input type="submit" id="make_first_tile" value="Make the first tile"></input></div>
+				{{!-- <div><a id="make_first_tile">Make the first tile</a></div> --}}
+
+				{{!-- <div id="recipient_name" style="display: none;">{{recipient_name}}</div> --}}
+				{{!-- <div id="name_collage" style="display: none;">{{name_collage}}</div> --}}
+			</div>
+		</section>
+
 
 
 <table> 
