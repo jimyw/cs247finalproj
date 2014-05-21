@@ -397,4 +397,34 @@ canvas {
     height: 80%;*/
 }
 
+.example {
+	width:80px;
+	height:80px;
+}
 
+.thin {
+	padding: 2px;
+}
+
+.relative {
+	position: relative;
+}
+
+#heart-example, #love-example, #face-example {
+	position: absolute;
+}
+
+#heart-example {
+	top: 450px;
+	left: 100px;
+}
+
+#love-example {
+	top: 500px;
+	left: 530px;
+}
+
+#face-example {
+	top: 450px;
+	left: 1100px;
+}
