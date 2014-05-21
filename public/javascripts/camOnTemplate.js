@@ -20,6 +20,10 @@ function showCam(e) {
 		var val = tile_dictionary[fb_tile_id];	// get all the 		values of this tile
 		console.log(fb_tile_id+ ' clicked');
 
+		if (audio_ready > 0) {
+			$("#mic_alert").addClass('hide_stuff');
+		}
+
 		console.log(val);
 		if (val.filled == 0) {
 			tileIsSelected = true;	// global variable to be set to false upon post

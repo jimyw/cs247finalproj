@@ -25,11 +25,20 @@ function program1(depth0,data) {
   if (helper = helpers.photo) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.photo); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"flip stretch\">            \n                </div>\n            </div>\n            <div class=\"back\">\n                <div class=\"wrapper tile crop\" id=\"";
+    + "\" class=\"flip stretch\">            \n                </div>\n            </div>\n            <div class=\"back\">\n              \n                <div class=\"wrapper tile crop\" id=\"";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">\n                    <audio id=\"audio";
+    + "\">\n                  ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.is_public), {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "    \n                </div>  \n              \n                \n            </div>\n          \n        </div>\n      </div>\n\n    ";
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                    <audio id=\"audio";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -45,15 +54,22 @@ function program1(depth0,data) {
   if (helper = helpers.video) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.video); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\"></video>\n                </div>  \n                <p class=\"textMSG\">";
-  if (helper = helpers.text) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.text); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</p>\n            </div>\n          \n        </div>\n      </div>\n\n    ";
+    + "\"></video>\n                  ";
   return buffer;
   }
 
-function program3(depth0,data) {
+function program4(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                    <img id=\"lock_";
+  if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" src=\"/images/lock_icon.png\">\n                  ";
+  return buffer;
+  }
+
+function program6(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n      <div class=\"wrapper tile\" id=\"";
@@ -73,7 +89,7 @@ function program3(depth0,data) {
   }
 
   buffer += "  <td class=\"template_art\">\n    ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.filled), {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.filled), {hash:{},inverse:self.program(6, program6, data),fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n  </td>";
   return buffer;

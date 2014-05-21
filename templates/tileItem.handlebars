@@ -9,11 +9,17 @@
                 </div>
             </div>
             <div class="back">
+              
                 <div class="wrapper tile crop" id="{{fb_tile_id}}">
+                  {{#if is_public}}
                     <audio id="audio{{fb_tile_id}}" src="{{audio}}"></audio>
                     <video class="videoMSG flip" id="replay{{fb_tile_id}}" src="{{video}}"></video>
+                  {{else}}
+                    <img id="lock_{{fb_tile_id}}" src="/images/lock_icon.png">
+                  {{/if}}    
                 </div>  
-                <p class="textMSG">{{text}}</p>
+              
+                {{!-- <p class="textMSG">{{text}}</p> --}}
             </div>
           {{!-- </a> --}}
         </div>
