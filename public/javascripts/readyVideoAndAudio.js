@@ -17,7 +17,7 @@ navigator.getMedia(
       $("#webcam_alert").addClass("hide_stuff");
       $("#mic_alert").removeClass("hide_stuff");
       video_stream_saved = stream;
-      console.log(video_ready);
+      console.log('video_ready');
       // if (navigator.mozGetUserMedia) { 
       //   video.mozSrcObject = stream;
       // } else {

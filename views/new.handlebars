@@ -14,7 +14,7 @@
 					</p>
 				</div>
 			</div>
-
+{{!-- 
 			<table id="heart-example">
 				<tr>
 					<td class="thin">
@@ -70,11 +70,12 @@
 						<div class="example"><img src="/images/fc4.jpg"></div>
 					</td>				
 				</tr>
-			</table>						
+			</table>				 --}}		
 			<div class="nav">
 				<div class="row">
 					<div class="twelve columns">
-						<a href="#portfolio" class="smoothScroll">Choose a template or task</a>
+						<a href="#portfolio" class="smoothScroll">Start your own CardCollage</a>
+						<a href="#contribute" class="smoothScroll">Contribute to existing CardCollage</a>
 					</div>
 				</div>
 			</div>
@@ -91,110 +92,63 @@
 		</section> --}}
 
 		<section id="portfolio" class="relative">
-			<div class="row">
-				<div class="twelve columns">
-					<h2>{{direction}}</h2>
-				</div>
-			</div>
 			<a name="task1"></a>
-			<div class="row full-height">
-				<div>
+			<div class="row full-height pad-left">
 
-					<h1 class="planner-msg">Template:</h1>
+					<h1 class="planner-msg">Task 1: <span class="quote" id="task1">Choose a template. </span></h1>
+						<ul class="works">
+							<li>
+								<div>
+									<div class="hover">
+										<h3>Heart</h3>
+									</div>
+									<img src="images/raw/heart.png"/>
+								</div>
+							</li>
+							<li>
 
-
-			<table id="heart-temp">
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/heart 1.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/heart 2.png"></div>
-					</td>				
-				</tr>
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/heart 3.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/heart 4.png"></div>
-					</td>				
-				</tr>
-			</table>
-
-
-			<table id="square-temp">
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/square 1.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/square 2.png"></div>
-					</td>				
-				</tr>
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/square 3.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/square 4.png"></div>
-					</td>				
-				</tr>
-			</table>
-
-
-			<table id="circle-temp">
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/circle 1.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/circle 2.png"></div>
-					</td>				
-				</tr>
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/circle 3.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/circle 4.png"></div>
-					</td>		
-				</tr>
-			</table>	
-
-			<table id="star-temp">
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/star 1.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/star 2.png"></div>
-					</td>				
-				</tr>
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/star 3.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/star 4.png"></div>
-					</td>				
-				</tr>
-			</table>	
-				</div>
-
-				<div class ="other-fields">
-				<div><h1 class="planner-msg">Directions: </h1><input type="text" name="directions" id="directions"><br></div>
-				<div><h1 class="planner-msg">Recipient name: </h1><input type="textarea" name="recipient_name" id="recipient_name"><br></div>
-
-				<br/>
-
-				<p class="sharelink" id="shareLink"></p>
-				<div><input type="submit" id="make_first_tile" value="Make the first tile"></input></div>
-				{{!-- <div><a id="make_first_tile">Make the first tile</a></div> --}}
-
-				{{!-- <div id="recipient_name" style="display: none;">{{recipient_name}}</div> --}}
-				{{!-- <div id="name_collage" style="display: none;">{{name_collage}}</div> --}}
+								<div class="hover">
+									<h3>Star</h3>
+								</div>
+								<img src="images/raw/star.png"/>
+							</li>
+							<li>
+								<div class="hover">
+									<h3>Circle</h3>
+								</div>
+								<img src="images/raw/circle.png"/>
+							</li>
+							<li>
+								<div class="hover">
+									<h3>Square</h3>
+								</div>
+								<img src="images/raw/square.png"/>
+							</li>
+						</ul>
 			</div>
+
+
+			<div class="row full-height">
+				<div class="twelve columns">
+					<h1 class="planner-msg">Task 2: <span class="quote" id="task1">Write instructions for the friends you will invite to collaborate on this collage.</span></h1>
+					<textarea class="form-control" type="text" name="directions" id="directions"></textarea><br>
+				</div>
+			</div>
+			<div class="row full-height">
+				<div class="twelve columns">
+					<h1 class="planner-msg">Optional: <span class="quote" id="task2">If you have a collage recipient in mind, enter his or her name.</span></h1>
+					<input type="text" class="form-control" name="recipient_name" id="recipient_name"><br>
+				</div>
+			</div>
+			<div class="row full-height">
+				<div class="twelve columns">
+					<h1 class="planner-msg">Task 3: <span class="quote shareLink" id="shareLink"></span></h1>
+					<div><span class="quote">Then click on button below to make the first tile.</span></div>
+					<div><span class="quote">You can always hit back on your browser if you'd like to change your design </span>
+				</div>
+			</div>
+			<div class="row full-height pad-left">
+					<div><input class="button" type="submit" id="make_first_tile" value="Make the first tile" style="margin-bottom: 50px; margin-top: 50px; border-radius: 0px; float: right;"></input></div>
 			</div>
 		</section>
 

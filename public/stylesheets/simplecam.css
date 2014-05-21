@@ -1,7 +1,10 @@
-html {
+/*html {
 	background: #111111;
 	height: 150%;
 	background: linear-gradient( #333, #000);
+}*/
+.pad-left {
+	padding: 0 15px;
 }
 
 canvas {
@@ -437,7 +440,7 @@ canvas {
 	left: 1000px;
 }
 
-#heart-temp, #square-temp, #circle-temp, #star-temp {
+/*#heart-temp, #square-temp, #circle-temp, #star-temp {
 	position: absolute;
 	top: 70px;
 }
@@ -456,7 +459,7 @@ canvas {
 
 #star-temp {
 	left: 1000px;
-}
+}*/
 
 .planner-msg {
 	font-family: Cassannet;
@@ -468,7 +471,6 @@ canvas {
 
 .other-fields {
 	position: relative;
-	top: 200px;
 }
 
 .sharelink {
@@ -480,5 +482,5 @@ canvas {
 }
 
 .full-height {
-	height: 730px;
+	height: 100%;
 }
