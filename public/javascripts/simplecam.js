@@ -77,9 +77,10 @@ function simpleCam() {
       canvas.height = height;
       canvas.getContext('2d').drawImage(video, 0, 0, width, height);
       data = canvas.toDataURL('image/png');
-      console.log(fb_tile_id)
+      console.log(fb_tile_id);
       photo.attr('src', data);
-      photo.addClass('flip')
+      photo.addClass('flip');
+      photo.addClass('stretch');
 
       console.log(json_data);
       json_data.photo = data;   // update photo data

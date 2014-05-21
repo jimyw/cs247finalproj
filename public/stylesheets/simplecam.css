@@ -44,24 +44,33 @@ canvas {
 	/*position: absolute;*/
 	position: relative;
 	left: 0px;
-	/*width: 320px;*/
-	/*height: 313px;*/
+	width: 160px;
+	height: 160px;
 	overflow: hidden;
 }
 
+#videowrapper video{
+	width: 205px;
+	height: 154px;
+}
+
 .border {
-	border: 10px solid #fff;
-	border-radius: 10px;
+	border: 3px solid #fff;
+	border-radius: 3px;
 }
 
 .redborder {
-	border: 10px solid red;
-	border-radius: 10px;
+	border: 3px solid red;
+	border-radius: 3px;
 }
 
 .stretch {
 	width: 210px;
 	height: 160px;
+}
+
+.tile .stretch {
+	max-width: 133%;
 }
 
 .notes {
@@ -237,12 +246,11 @@ canvas {
 	height: 500px;	
 }
 
-.crop {
+.crop, td .tile {
 	width: 160px;
 	height:160px;
 	overflow: hidden;
 }
-	
 
 .cropper {
 	position: absolute;
