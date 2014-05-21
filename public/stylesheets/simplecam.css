@@ -434,5 +434,51 @@ canvas {
 
 #face-example {
 	top: 450px;
-	left: 1100px;
+	left: 1000px;
+}
+
+#heart-temp, #square-temp, #circle-temp, #star-temp {
+	position: absolute;
+	top: 70px;
+}
+
+#heart-temp {
+	left: 250px;
+}
+
+#square-temp {
+	left: 500px;
+}
+
+#circle-temp {
+	left: 750px;
+}
+
+#star-temp {
+	left: 1000px;
+}
+
+.planner-msg {
+	font-family: Cassannet;
+	font-size: 40px;
+	line-height: 60px;
+	opacity: 0.9;
+	color: #555;
+}
+
+.other-fields {
+	position: relative;
+	top: 200px;
+}
+
+.sharelink {
+	font-family: Cassannet;
+	font-size: 20px;
+	line-height: 30px;
+	opacity: 0.9;
+	color: #555;
+}
+
+.full-height {
+	height: 730px;
 }
