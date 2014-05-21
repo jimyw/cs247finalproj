@@ -12,6 +12,13 @@ canvas {
 	display: none !important;
 }
 
+/*fixes alert box to upper right corner*/
+.fixed-div {
+    position: fixed !important;
+    top: 1em;
+    right: 1em;
+}
+
 #photo, #overlay {
 	position: relative;
 	left: 0px;

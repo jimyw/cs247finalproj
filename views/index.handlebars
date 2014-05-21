@@ -36,6 +36,15 @@
 		</section> --}}
 
 		<section class="portfolio">
+			<div data-alert class="fixed-div alert-box alert radius" id="webcam_alert">
+			  You need to enable your webcam.
+			  <a href="#" class="close">&times;</a>
+			</div>
+			<div data-alert class="fixed-div alert-box info radius hide_stuff" id="mic_alert">
+			  Also enable your microphone :)
+			  <a href="#" class="close">&times;</a>
+			</div>
+
 			<div class="row">
 				<div class="twelve columns">
 					<h2>{{direction}}</h2>
@@ -44,7 +53,7 @@
 			<a name="task1"></a>
 			<div class="row">
 				<div class="twelve columns">
-					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile for {{recipient_name}}&#39;s collage. Hover over your tile to preview, or click on another unfinished tile to repeat.</span></h1>
+					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile for {{recipient_name}}&#39;s collage. Hover over your tile to preview. Like Card Collage? You can start your own at <a href="cardcollage.herokuapp.com"></a></span></h1>
 					<h1 id="task1_msg1">Task 1: Click<span class="quote" id="task1"> on an empty tile to contribute to the collage for {{recipient_name}} </span></h1>
 
 					<h1 id="task1_msg2" class="hide_stuff">Task 1: Take a picture<span class="quote" id="task1"> that matches the outlined shape. </span></h1>
