@@ -90,32 +90,111 @@
 			</div>
 		</section> --}}
 
-		<section id="portfolio">
+		<section id="portfolio" class="relative">
 			<div class="row">
 				<div class="twelve columns">
 					<h2>{{direction}}</h2>
 				</div>
 			</div>
 			<a name="task1"></a>
-			<div class="row">
-				<div>Template:
-				<select id="template_type">
-				  <option value="Heart">Heart</option>
-				  <option value="Star">Star</option>
-				  <option value="Flower">Flower</option>
-				  <option value="Circle">Circle</option>
-				  <option value="Task">Task</option>
-				</select>
-				</div>
-				<div>Directions: <input type="text" name="directions" id="directions"><br></div>
-				<div>Recipient name: <input type="textarea" name="recipient_name" id="recipient_name"><br></div>
+			<div class="row full-height">
+				<div>
 
-				<p class="regtext" id="shareLink"></p>
+					<h1 class="planner-msg">Template:</h1>
+
+
+			<table id="heart-temp">
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/heart 1.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/heart 2.png"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/heart 3.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/heart 4.png"></div>
+					</td>				
+				</tr>
+			</table>
+
+
+			<table id="square-temp">
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/square 1.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/square 2.png"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/square 3.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/square 4.png"></div>
+					</td>				
+				</tr>
+			</table>
+
+
+			<table id="circle-temp">
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/circle 1.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/circle 2.png"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/circle 3.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/circle 4.png"></div>
+					</td>		
+				</tr>
+			</table>	
+
+			<table id="star-temp">
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/star 1.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/star 2.png"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="thin">
+						<div class="example"><img src="/images/star 3.png"></div>
+					</td>
+					<td class="thin">
+						<div class="example"><img src="/images/star 4.png"></div>
+					</td>				
+				</tr>
+			</table>	
+				</div>
+
+				<div class ="other-fields">
+				<div><h1 class="planner-msg">Directions: </h1><input type="text" name="directions" id="directions"><br></div>
+				<div><h1 class="planner-msg">Recipient name: </h1><input type="textarea" name="recipient_name" id="recipient_name"><br></div>
+
+				<br/>
+
+				<p class="sharelink" id="shareLink"></p>
 				<div><input type="submit" id="make_first_tile" value="Make the first tile"></input></div>
 				{{!-- <div><a id="make_first_tile">Make the first tile</a></div> --}}
 
 				{{!-- <div id="recipient_name" style="display: none;">{{recipient_name}}</div> --}}
 				{{!-- <div id="name_collage" style="display: none;">{{name_collage}}</div> --}}
+			</div>
 			</div>
 		</section>
 
