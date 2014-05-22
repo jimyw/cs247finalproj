@@ -283,12 +283,10 @@
         return event.data.option.clicked();
       });
 
-      value = this.option.data("value");
-      console.log('value = ' + value);
-      console.log(this.option.data)
+      value = this.label();
 
       // hacked here
-      hover = '<div class="hover"> <h3>Heart</h3> </div>';
+      hover = '<div class="hover"> <h3>'+value+'</h3> </div>';
       thumbnail.append(hover);
       thumbnail.append(image);
       //
