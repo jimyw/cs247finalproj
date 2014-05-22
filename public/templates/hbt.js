@@ -9,11 +9,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n      <div class=\"flip-container wrapper tile\" id=\"wrapper";
+  buffer += "\n    <div class=\"edit-tile\">\n      <img class=\"edit\" src=\"/images/edit_icon.png\"/>\n      <img class=\"trash\" src=\"/images/trash_icon.png\"/>  \n    </div>    \n    <div class=\"flip-container wrapper tile\" id=\"wrapper";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" ontouchstart=\"this.classList.toggle('hover');\">\n        <div class=\"flipper\">\n          \n            <div class=\"front crop\" id=\"front\">\n              <div class=\"wrapper tile\" id=\"photo";
+    + "\" ontouchstart=\"this.classList.toggle('hover');\">\n        <div class=\"flipper\">\n          \n            <div class=\"front crop\" id=\"front\">\n              <div class=\"wrapper tile relative\" id=\"photo";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -88,7 +88,7 @@ function program6(depth0,data) {
   return buffer;
   }
 
-  buffer += "  <td class=\"template_art\">\n    ";
+  buffer += "\n  <td class=\"template_art relative\">\n\n    ";
   stack1 = helpers['if'].call(depth0, (depth0 && depth0.filled), {hash:{},inverse:self.program(6, program6, data),fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n  </td>";

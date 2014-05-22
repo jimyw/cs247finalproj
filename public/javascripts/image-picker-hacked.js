@@ -276,25 +276,40 @@
       this.node = jQuery("<li/>");
       image = jQuery("<img class='image_picker_image preview-tile custom-hover'/>");
       image.attr("src", this.option.data("img-src"));
-      thumbnail = jQuery("<div class='thumbnail'>");
+      value = this.label();
+
+      if (value === "Choice"){
+        thumbnail = jQuery("<div class='thumbnail' id='choice-template'>");
+      } else {
+        thumbnail = jQuery("<div class='thumbnail'>");
+      }
       thumbnail.click({
         option: this
       }, function(event) {
         return event.data.option.clicked();
       });
 
-      value = this.label();
+
+      text = value;
+      if (text === "Choice"){
+        text = "Your Own Choice with Directions";
+      } else if (text === "Faces") {
+        text = "Funny Faces";
+      }
+      text = jQuery("<p class='template-text'>" + text + "</p>");
 
       // hacked here
-      hover = '<div class="hover"> <h3>'+value+'</h3> </div>';
-      thumbnail.append(hover);
+      hover = '<div class="hover"> <table class="example"> <tr> <td class="thin"> <div class="example"><img src="/images/' + value + '1.png"></div> </td> <td class="thin"> <div class="example"><img src="/images/' + value + '2.png"></div> </td> </tr> <tr> <td class="thin"> <div class="example"><img src="/images/' + value + '3.png"></div> </td> <td class="thin"> <div class="example"><img src="/images/' + value + '4.png"></div> </td> </tr> </table> </div>'; thumbnail.append(hover);
       thumbnail.append(image);
+      thumbnail.append(text);
       //
 
       if (this.opts.show_label) {
         thumbnail.append(jQuery("<p/>").html(this.label()));
       }
       this.node.append(thumbnail);
+
+
       return this.node;
     };
 

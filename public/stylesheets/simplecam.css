@@ -484,3 +484,42 @@ canvas {
 .full-height {
 	height: 100%;
 }
+
+.example {
+	width: 94px;
+	height: 94px;
+	opacity: 0.8;
+}
+
+.template-text {
+	color: #555;
+	font-family: Cassannet;
+	font-size: 24px;
+	line-height: 30px;
+	margin-top: 10%;
+}
+
+.trash, .edit {
+	position: absolute;
+	z-index: 5;
+	top: 10px;
+	width: 25px;
+	height: 25px;
+}
+
+.trash {
+	right: 10px;
+}
+
+.edit {
+	right: 40px;
+}
+
+.priority {
+	position: absolute;
+	z-index: 4;
+	top: 0px;
+	left: 0px;
+	width: 160px;
+	height: 160px;
+}
