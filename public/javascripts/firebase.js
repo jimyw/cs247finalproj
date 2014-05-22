@@ -245,6 +245,7 @@ function displayName(tile_list) {
 function displayPage(tile_list) {
   console.log('displayPage')
   console.log(tile_dictionary)
+  $("#collage_loading_msg").addClass('hide_stuff');
   var numTiles = tile_list.length;
   // if (numTiles <= 2 && name_collage == 1) {
   //     displayName(tile_list);  

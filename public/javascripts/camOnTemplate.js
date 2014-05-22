@@ -3,6 +3,7 @@ function showCam(e) {
 	console.log('showCam')
 	console.log('tileIsSelected: '+tileIsSelected)
 	if (!tileIsSelected) {
+		$("#picdonebutton").removeClass('hide_stuff');
 		if (video_ready > 0) {
 			
 			console.log(tile_dictionary)
@@ -87,6 +88,8 @@ function finishButtonListener() {
 			console.log(json_data);
 			console.log('fb_collage_id='+fb_collage_id);
 			console.log('fb_tile_id='+fb_tile_id);
+			$("#finish_waiting").removeClass('hide_stuff');
+			$("#finish").addClass('disabled');
 
 			updateTile(fb,fb_collage_id,fb_tile_id,json_data,onComplete);
 
@@ -101,13 +104,13 @@ function reset(completed) {
 	$("#piccancelbutton").addClass('hide_stuff');
 	$("#task1_msg2").addClass('hide_stuff');
 	$("#picdonebutton").addClass('disabled');
-	$("#picdonebutton").addClass('disabled');
-	$("#finish").addClass('disabled');
-
+	$("#finish_waiting").addClass('hide_stuff');
+	
 	if (completed==1) {
 		$("#vmsg").addClass('hide_stuff');
 		$("#finish_msg").removeClass('hide_stuff');
 		$("#direction").addClass('hide_stuff');
+		$("#picdonebutton").addClass('hide_stuff');
 	} else {
 		$("#task1_msg1").removeClass('hide_stuff');
 

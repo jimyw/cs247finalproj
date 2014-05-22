@@ -117,7 +117,7 @@ function simpleCam() {
 
   startbutton.addEventListener('click', function(ev){
   	ev.preventDefault();
-    if (video_ready == 1) {
+    if (video_ready > 0) {
       // send google analytics
       ga('send', 'event', 'button', 'click', 'take photo');
       status.removeClass("yellow");

@@ -37,7 +37,7 @@
 			  <a href="#" class="close">&times;</a>
 			</div>
 
-			<div class="row">
+			<div class="row" style="margin-top: 25px;">
 				<div class="twelve columns" id="direction">
 					<h2>{{direction}}</h2>
 				</div>
@@ -73,7 +73,7 @@
 							<img id="camera_icon" src='images/camera.jpg'/>
 						</div>
 					</div>
-
+					<div id="collage_loading_msg"><h1 style="color: red; text-align: center;">Loading...</h1></div>
 					<table class="centering"> 
 						<tr id="row1">
 						{{!-- Code is in template/tileItem.handlebars --}}
@@ -166,6 +166,7 @@
 					<div id="stop_recording"><img src="/images/stop.jpg" id="btn_record2"/></div>
 					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
 				</div>
+				<p class="hide_stuff" id="finish_waiting" style="color: red; float: right;">Waiting ... </p>
 				<div>
 					<ul class="pager">
 					  <li class="previous" id="vidcancelbutton"><a>Back</a></li>
