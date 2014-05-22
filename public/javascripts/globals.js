@@ -29,5 +29,5 @@ var photoDictionary = {
 	'Square': ['square1.png','square2.png','square3.png', 'square4.png'],
 	'Star': ['star1.png','star2.png','star3.png', 'star4.png'],
 	'Faces': ['emotion1.png','emotion2.png','emotion3.png', 'emotion4.png'],
-	'Choice': ['heart1.png','heart2.png','heart3.png', 'heart4.png'],
+	'Choice': ['empty.png','empty.png','empty.png', 'empty.png'],
 }
