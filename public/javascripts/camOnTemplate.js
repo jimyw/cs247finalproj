@@ -59,6 +59,8 @@ function showCam(e) {
 				simpleCam();
 			}
 		} else {
+			console.log('video_ready not')
+			console.log(video_ready)
 			getVideo();
 		}
 	}
