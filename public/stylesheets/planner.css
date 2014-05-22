@@ -1,3 +1,9 @@
-.tile-selected{
-	border: 8px solid blue;
+
+
+#existing_collage {
+	display: inline;
+	margin: 0 0 0 0;
+	padding: 0px;
+	height: auto !important;
+	width: auto !important;
 }

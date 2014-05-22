@@ -27,26 +27,7 @@ function set_new_collage() {
   // create new collage  
   fb_collage_id = Math.random().toString(36).substring(7);
   var shareLink = document.location.href+"?collage_id="+fb_collage_id;
-  $("#shareLink").html("Share this url with your friends to collaborate: "+ shareLink);
-
-  // making first tile
-  $("#make_first_tile").click(function() {
-    // getting values from the form elements
-    direction = $("#directions").val();
-    recipient_name = $("#recipient_name").val();
-    templateType = $("#template_type").val();
-
-    console.log(templateType);
-    console.log(direction);
-    console.log(recipient_name);
-    fb_new_collage = fb.child(fb_collage_id);  
-
-    fb_new_collage.child('planner').set({
-      'direction': direction,
-      'templateType': templateType,
-      'recipient_name': recipient_name,
-    }, initialize_collage);   // initialize collage on complete
-  });
+  $("#shareLink").html(shareLink);
 }
 
 function onSucess() {

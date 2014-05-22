@@ -1,5 +1,6 @@
 <script src="/templates/hbt.js"></script>
 <script src="/javascripts/firebase.js"></script>
+<link rel="stylesheet" href="/stylesheets/planner.css">
 
 		<section id="intro" class="bg relative">
 			<div class="row">
@@ -75,7 +76,10 @@
 				<div class="row">
 					<div class="twelve columns">
 						<a href="#portfolio" class="smoothScroll">Start your own Collage</a>
-						<a href="#contribute" class="smoothScroll">Contribute to existing Collage</a>
+						<span href="#contribute" class="smoothScroll">Contribute to existing Collage
+							<input type="text" name="existing_collage" id="existing_collage">
+							<button type="button" onclick="GoToCollageID()">Go!</button>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -103,6 +107,7 @@
 				</select> --}}
 
 				<h1 class="planner-msg">Task 1: <span class="quote" id="task1">Choose a template. </span></h1>
+
 				<select class="image-picker show-html show-label works" id="template_type">
 				  <option value=""></option>
 				  <option data-img-src="images/raw/heart.png" value="Heart">Heart</option>
@@ -169,7 +174,11 @@
 			<div class="row full-height">
 				<div class="twelve columns">
 					<h1 class="planner-msg">Task 2: <span class="quote" id="task2-text">Write instructions for the friends you will invite to collaborate on this collage.</span></h1>
-					<textarea class="form-control" type="text" name="directions" id="directions"></textarea><br>
+					<div class="control-group" id="task2-val">
+				      {{!-- <label class="control-label" for="inputError">Input with error</label> --}}
+				      <textarea class="form-control" type="text" name="directions" id="directions"></textarea><br>  
+				    </div>
+					
 				</div>
 			</div>
 			<div class="row full-height">
@@ -180,18 +189,22 @@
 			</div>
 			<div class="row full-height">
 				<div class="twelve columns">
-					<h1 class="planner-msg">Task 3: <span class="quote shareLink" id="shareLink"></span></h1>
+					<h1 class="planner-msg">Task 3: <span class="quote">Share this url with your friends to invite them to collaborate on this collage: </span></h1>
+					<div><span class="quote shareLink" id="shareLink"></span></div>
 					<div><span class="quote">Then click on button below to make the first tile.</span></div>
-					<div><span class="quote">You can always hit back on your browser if you want to change your design </span>
+					{{!-- <div><span class="quote">You can always hit back on your browser if you want to change your design </span> --}}
 				</div>
 			</div>
 			<div class="row full-height pad-left">
 					<div><input class="button" type="submit" id="make_first_tile" value="Make the first tile" style="margin-bottom: 50px; margin-top: 50px; border-radius: 0px; float: right;"></input></div>
 			</div>
+
+			
 		</section>
 
-<script src="/javascripts/planner.js"></script>
+
 <script src="/javascripts/firebase.js"></script>
+<script src="/javascripts/planner.js"></script>
 {{!-- 
 <table> 
 <tr id="row1">
