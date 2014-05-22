@@ -274,7 +274,7 @@
     ImagePickerOption.prototype.create_node = function() {
       var image, thumbnail, value, hover;
       this.node = jQuery("<li/>");
-      image = jQuery("<img class='image_picker_image'/>");
+      image = jQuery("<img class='image_picker_image preview-tile custom-hover'/>");
       image.attr("src", this.option.data("img-src"));
       thumbnail = jQuery("<div class='thumbnail'>");
       thumbnail.click({
@@ -301,5 +301,6 @@
     return ImagePickerOption;
 
   })();
+
 
 }).call(this);
