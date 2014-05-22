@@ -28,6 +28,8 @@ function set_new_collage() {
   fb_collage_id = Math.random().toString(36).substring(7);
   var shareLink = document.location.href+"?collage_id="+fb_collage_id;
   $("#shareLink").html("Share this url with your friends to collaborate: "+ shareLink);
+
+  // making first tile
   $("#make_first_tile").click(function() {
     direction = $("#directions").val();
     recipient_name = $("#recipient_name").val();
@@ -64,7 +66,7 @@ function initialize_collage() {
   //     photoArray.push(recipient_name[i]+'.jpg');
   //   }
   // } else {
-
+  
     photoArray = ['Heart1.jpg','Heart2.jpg','Heart3.jpg','Heart4.jpg'];  
     numTiles = photoArray.length;
   // }
