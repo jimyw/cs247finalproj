@@ -115,6 +115,7 @@ function reset(completed) {
 		$("#picdonebutton").addClass('hide_stuff');
 	} else {
 		$("#task1_msg1").removeClass('hide_stuff');
+		$("#finish_msg").addClass('hide_stuff');
 
 		// removes video cam:
 		// $("#videowrapper").remove();

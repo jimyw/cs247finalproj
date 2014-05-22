@@ -173,7 +173,8 @@ function renderTwoRowTemplates() {
   $("#row1").html(template(data1));
   $("#row2").html(template(data2));
 
-  playTile();
+  playTile();   // bind listeners for clicking on tiles
+  listenToEditAndTrash();   // bind listeners for edit and trash icons
 }
 
 function displayTwoRows(tile_list) {
@@ -235,11 +236,61 @@ function displayPage(tile_list) {
   displayTwoRows(tile_list);
   // }
   
-
-
-
-
 }
 
+function listenToEditAndTrash() {
+  var tile_id;
+  $(".edit").click(function(e){
+    console.log('edit');
+    tile_id = $(this).attr('id').substring(4);
+    console.log(tile_id);
+  })
+
+  $(".trash").click(function(e){
+    console.log('trash');
+    tile_id = $(this).attr('id').substring(5);
+    resetTile(tile_id);
+    console.log(tile_id);
+  })
+}
+
+function resetTile(tile_id) {
+  console.log('resetTile');
+  var default_photo;
+  getTileDefaultPhoto(fb,fb_collage_id, tile_id, proceed); // gets photos
+
+  // get the default tile photo and proceed to reset
+  function getTileDefaultPhoto(fb_db, collage_id, tile_id,successcallback) {
+    console.log('getTileDefaultPhoto');
+    var tile_instance = getTileInstance(fb_db, collage_id, tile_id) ;
+    console.log(tile_instance);
+    tile_instance.once('value', function(snap) {
+      console.log('tile_instance');
+      var tile = snap.val();  // dictionary
+      console.log(tile.default_photo);
+      default_photo = tile.default_photo;
+      successcallback();
+    });
+  }
+
+  // proceed after getting the default_photo
+  function proceed() {
+    console.log('proceed')
+    console.log(default_photo);
+    var reset_data = {
+      photo: default_photo,
+      video: '',
+      audio: '',
+      text: '',
+      filled: 0,
+      is_public: true,
+    }
+    updateTile(fb,fb_collage_id, tile_id, reset_data, resetCallBack);
+  }
+}
+
+function resetCallBack() {
+  reset(0);
+}
 
 // })();
