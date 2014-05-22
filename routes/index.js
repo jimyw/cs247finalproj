@@ -32,6 +32,9 @@ exports.index = function(req, res) {
 	if (!post) {
 		post = 0;
 	}
+	var direction, templateType, recipient_name;
+	var faces = 0;
+	var choice = 0;
 
 	// identify which collage:
 	// var name_collage = 0;
@@ -50,8 +53,6 @@ exports.index = function(req, res) {
 	// } else {
 	// 	message = messages[person] + ' '+names[person];
 	// }
-	
-
 
 	console.log(post);
 	// var basic_data = { 
@@ -79,10 +80,20 @@ if (fb_collage_id) {
     console.log(recipient_name)
     console.log(templateType)
 
+    if (templateType == 'Faces') {
+	    console.log('faces')
+	    faces = 1;
+	  }
+	  if (templateType == 'Choice') {
+	    choice = 1;
+	  }
+
     var basic_data = {
     	direction: direction,
     	templateType: templateType,
     	recipient_name: recipient_name,
+    	faces: faces,
+    	choice: choice,
     }
     // $("#intromsg").html(direction);
 

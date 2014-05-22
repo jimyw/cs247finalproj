@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="six columns" id="header">
 					<h3>Welcome to</h3>
-					<h1>CARD COLLAGE</h1>
+					<h1>COLLAGE WITH FRIENDS</h1>
 					<div class="clear"></div>
 				</div>
 				<div class="six columns">
@@ -17,23 +17,15 @@
 			<div class="nav">
 				<div class="row">
 					<div class="twelve columns">
-						<a href="#portfolio" class="smoothScroll">Templates</a>
-						<a href="#about" class="smoothScroll">Collage</a>
-						<a href="#contact" class="smoothScroll">Message</a>
+						<a href="#portfolio" class="smoothScroll"></a>
+						{{!-- <a href="#about" class="smoothScroll">Collage</a>
+						<a href="#contact" class="smoothScroll">Message</a> --}}
 					</div>
 				</div>
 			</div>
 			<div class="nav_bg">
 			</div>
 		</section>
-
-		{{!-- <section id="album_wall" class="bg">
-			<div class="row">
-				<div class="twelve columns center">
-					<h1>{{direction}}</h1>
-				</div>
-			</div>
-		</section> --}}
 
 		<section class="portfolio">
 			<div data-alert class="fixed-div alert-box alert radius" id="webcam_alert">
@@ -46,17 +38,28 @@
 			</div>
 
 			<div class="row">
-				<div class="twelve columns">
+				<div class="twelve columns" id="direction">
 					<h2>{{direction}}</h2>
 				</div>
 			</div>
 			<a name="task1"></a>
 			<div class="row">
 				<div class="twelve columns">
-					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile for {{recipient_name}}&#39;s collage. Hover over your tile to preview. Like Card Collage? You can start your own at <a href="cardcollage.herokuapp.com"></a></span></h1>
-					<h1 id="task1_msg1">Task 1: Click<span class="quote" id="task1"> on an empty tile to contribute to the collage for {{recipient_name}} </span></h1>
+					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. <br/>Like Collage With Friends? You can start your own at <a href="collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></h1>
+					<h1 id="task1_msg1">Task 1: Click<span class="quote" id="task1a"> on an empty tile to contribute to the collage {{#if recipient_name}}for {{recipient_name}} {{/if}}</span></h1>
 
-					<h1 id="task1_msg2" class="hide_stuff">Task 1: Take a picture<span class="quote" id="task1"> that matches the outlined shape. </span></h1>
+					<h1 id="task1_msg2" class="hide_stuff">Task 1: Take a picture
+						{{#if faces}}
+							<span class="quote" id="task1b"> with a funny face. </span>
+						{{else}} 
+							{{#if choice}}
+								<span class="quote" id="task1b"> to follow the instructions given above. </span>
+							{{else}}
+								<span class="quote" id="task1b"> that matches the outlined shape. </span>	
+							{{/if}}
+						{{/if}}
+						
+					</h1>
 				</div>
 			</div>
 
@@ -83,8 +86,8 @@
 					<canvas id="canvas"></canvas>
 
 				<ul class="pager">
-				  <li class="previous hide_stuff" id="piccancelbutton"><a>&larr; Back</a></li>
-				  <li class="next disabled" id="picdonebutton"><a>Next &rarr;</a></li>
+				  <li class="previous hide_stuff" id="piccancelbutton"><a>Back</a></li>
+				  <li class="next disabled" id="picdonebutton"><a>Next</a></li>
 				</ul>
 				
 				<a name="task1_bottom"></a>
@@ -147,7 +150,7 @@
 			<a name="vmsg"></a>
 			<div class="row">
 				<div class="twelve columns">
-					<h1 id="task2_msg">Task 2: Great! <span class="quote" id="task1">Now leave a personal video message for {{recipient_name}} </span></h1>
+					<h1 id="task2_msg">Task 2: Great! <span class="quote">Now leave a personal video message{{#if recipient_name}} for {{recipient_name}} {{/if}}</span></h1>
 				</div>
 			</div>
 			<div class="row">
@@ -165,7 +168,7 @@
 				</div>
 				<div>
 					<ul class="pager">
-					  <li class="previous" id="vidcancelbutton"><a>&larr; Back</a></li>
+					  <li class="previous" id="vidcancelbutton"><a>Back</a></li>
 					  <li class="next disabled" id="finish"><a>Finish</a></li>
 					</ul>
 				</div>

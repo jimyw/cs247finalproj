@@ -67,8 +67,7 @@ function initialize_collage() {
   //     photoArray.push(recipient_name[i]+'.jpg');
   //   }
   // } else {
-
-    // photoArray = ['Heart1.jpg','Heart2.jpg','Heart3.jpg','Heart4.jpg'];  
+    
     photoArray = photoDictionary[templateType];
     numTiles = photoArray.length;
   // }
