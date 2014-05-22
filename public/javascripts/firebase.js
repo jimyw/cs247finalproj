@@ -67,8 +67,7 @@ function initialize_collage() {
   //     photoArray.push(recipient_name[i]+'.jpg');
   //   }
   // } else {
-
-    // photoArray = ['Heart1.jpg','Heart2.jpg','Heart3.jpg','Heart4.jpg'];  
+    
     photoArray = photoDictionary[templateType];
     numTiles = photoArray.length;
   // }
@@ -246,6 +245,7 @@ function displayName(tile_list) {
 function displayPage(tile_list) {
   console.log('displayPage')
   console.log(tile_dictionary)
+  $("#collage_loading_msg").addClass('hide_stuff');
   var numTiles = tile_list.length;
   // if (numTiles <= 2 && name_collage == 1) {
   //     displayName(tile_list);  

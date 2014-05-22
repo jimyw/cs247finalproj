@@ -134,7 +134,7 @@ function setUpVideo() {
     //Start recording button touched
     $("#start_recording").click(function (e){
       e.preventDefault();  
-      if(video_ready == 1 && audio_ready == 1){
+      if(video_ready > 0 && audio_ready > 0){
         // send google analytics
         ga('send', 'event', 'button', 'click', 'take video');
 
