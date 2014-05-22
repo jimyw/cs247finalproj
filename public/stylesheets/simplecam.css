@@ -130,7 +130,7 @@ canvas {
 	width: 300;
 }
 
-.flip {
+.flipping {
 	-moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);

@@ -36,7 +36,7 @@ function showCam(e) {
 
 				console.log(fb_tile_id);
 
-				tileClicked.prepend('<div class="border" id="videowrapper"> <video id="video" class="flip tile-video"></video> <img src="'+val.default_photo+ '" width=320 id="overlay"> </div>')
+				tileClicked.prepend('<div class="border" id="videowrapper"> <video id="video" class="flipping tile-video"></video> <img src="'+val.default_photo+ '" width=320 id="overlay"> </div>')
 
 				$("#img_"+fb_tile_id).addClass('hide_stuff');
 				

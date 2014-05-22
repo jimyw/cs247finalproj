@@ -62,11 +62,12 @@
 					</h1>
 				</div>
 			</div>
-
+			{{!-- <div class="your-clock"></div> --}}
 			<div class="row">		
 				<div class="twelve columns">
 					
-					<div class="your-clock"></div>
+					
+
 					<p id="countdown"></p>
 					<div id="outerbuttongrp">
 						<div class="hide_stuff" id="picstartbutton" >
@@ -183,6 +184,7 @@
 		</footer>
 
     <script src="/javascripts/bootstrap-switch.js"></script>
+    <script src="/javascripts/flipclock.min.js"></script>
     {{!-- Our own javascripts --}}
 
     <script src='/javascripts/personal_message.js'></script>
@@ -190,6 +192,27 @@
     <script src="/javascripts/simplecam.js"></script>
     <script src="/javascripts/camOnTemplate.js"></script>
     <script src="/javascripts/firebase.js"></script>
+
+    <script type="text/javascript">
+		var clock = $('.your-clock').FlipClock(10, {
+			countdown: true,
+			autoStart: false,
+			clockFace: 'MinuteCounter'
+		});
+		$(".minutes").addClass('hide_stuff');
+		$(".seconds").addClass('hide_stuff');
+		$(".minutes").next().addClass('hide_stuff');
+		$(".minutes").next().next().addClass('hide_stuff');
+		console.log('increment');
+		$("#picdonebutton").click(function(e) {
+			e.preventDefault();
+			clock.start(function() {
+			// this (optional) callback will fire each time the clock flips
+			});
+		});
+		
+		
+	</script>
 
 {{!-- 
 		<section id="about">
