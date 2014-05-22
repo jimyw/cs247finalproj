@@ -31,6 +31,7 @@ function set_new_collage() {
 
   // making first tile
   $("#make_first_tile").click(function() {
+    // getting values from the form elements
     direction = $("#directions").val();
     recipient_name = $("#recipient_name").val();
     templateType = $("#template_type").val();
@@ -66,8 +67,9 @@ function initialize_collage() {
   //     photoArray.push(recipient_name[i]+'.jpg');
   //   }
   // } else {
-  
-    photoArray = ['Heart1.jpg','Heart2.jpg','Heart3.jpg','Heart4.jpg'];  
+
+    // photoArray = ['Heart1.jpg','Heart2.jpg','Heart3.jpg','Heart4.jpg'];  
+    photoArray = photoDictionary[templateType];
     numTiles = photoArray.length;
   // }
   
@@ -80,8 +82,8 @@ function initialize_collage() {
     fb_new_tile.set({
       'name': '', 
       'email': '', 
-      'photo':'/images/'+photoArray[j],
-      'default_photo':'/images/'+photoArray[j],
+      'photo':'/images/templates/'+photoArray[j],
+      'default_photo':'/images/templates/'+photoArray[j],
       'video':'',
       'audio':'',
       'text':'',

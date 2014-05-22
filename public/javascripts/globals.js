@@ -22,3 +22,12 @@ var audio_stream_saved;
 // two rows of data for collage
 var data1;
 var data2;
+
+var photoDictionary = {
+	'Heart': ['heart1.png','heart2.png','heart3.png', 'heart4.png'],
+	'Circle': ['circle1.png','circle2.png','circle3.png', 'circle4.png'],
+	'Square': ['square1.png','square2.png','square3.png', 'square4.png'],
+	'Star': ['star1.png','star2.png','star3.png', 'star4.png'],
+	'Faces': ['emotion1.png','emotion2.png','emotion3.png', 'emotion4.png'],
+	'Choice': ['heart1.png','heart2.png','heart3.png', 'heart4.png'],
+}
