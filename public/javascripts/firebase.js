@@ -225,7 +225,7 @@ function displayTwoRows(tile_list) {
   renderTwoRowTemplates();
 
 
-  // var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flip"> {{else}} <img src="{{photo}}" class="overlay"> {{/if}} </a> </div> </td>';
+  // var partial = '<td> <div class="wrapper tile" id="{{fb_tile_id}}"> <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> {{#if filled}} <img src="{{photo}}" class="flipping"> {{else}} <img src="{{photo}}" class="overlay"> {{/if}} </a> </div> </td>';
   // var wrapper = '<div class="tile_list"> {{#each tile_list}} {{> tileItem}} {{/each}} </div> ';
   // includeHandlebarsTemplate(partial, wrapper, "tileItem",  data1, "#row1")
   // includeHandlebarsTemplate(partial, wrapper, "tileItem",  data2, "#row2")

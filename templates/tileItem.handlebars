@@ -5,7 +5,7 @@
           {{!-- <a href="/simplecam?fb_collage_id={{fb_collage_id}}&fb_tile_id={{fb_tile_id}}"> --}}
             <div class="front crop" id="front">
               <div class="wrapper tile" id="photo{{fb_tile_id}}">
-                    <img id="img_{{fb_tile_id}}" src="{{photo}}" class="flip stretch">            
+                    <img id="img_{{fb_tile_id}}" src="{{photo}}" class="flipping stretch">            
                 </div>
             </div>
             <div class="back">
@@ -13,7 +13,7 @@
                 <div class="wrapper tile crop" id="{{fb_tile_id}}">
                   {{#if is_public}}
                     <audio id="audio{{fb_tile_id}}" src="{{audio}}"></audio>
-                    <video class="videoMSG flip" id="replay{{fb_tile_id}}" src="{{video}}"></video>
+                    <video class="videoMSG flipping" id="replay{{fb_tile_id}}" src="{{video}}"></video>
                   {{else}}
                     <img id="lock_{{fb_tile_id}}" src="/images/lock_icon.png">
                   {{/if}}    

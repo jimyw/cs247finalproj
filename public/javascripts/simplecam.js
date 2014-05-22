@@ -71,7 +71,7 @@ function simpleCam() {
   function takepicture() {
     // setTimeout(takepicture(), 3000);
 
-      $("#photo").addClass('flip');
+      $("#photo").addClass('flipping');
       console.log('takepicture')
       canvas.width = width;
       canvas.height = height;
@@ -79,7 +79,7 @@ function simpleCam() {
       data = canvas.toDataURL('image/png');
       console.log(fb_tile_id);
       photo.attr('src', data);
-      photo.addClass('flip');
+      photo.addClass('flipping');
       photo.addClass('stretch');
 
       console.log(json_data);
@@ -96,6 +96,10 @@ function simpleCam() {
   }
 
   function showCountDown() {
+
+
+
+
     videowrapper.addClass("redborder");
     videowrapper.removeClass("border");
     countdown.innerHTML = "3";

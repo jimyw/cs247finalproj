@@ -25,7 +25,7 @@ function program1(depth0,data) {
   if (helper = helpers.photo) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.photo); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"flip stretch\">            \n                </div>\n            </div>\n            <div class=\"back\">\n              \n                <div class=\"wrapper tile crop\" id=\"";
+    + "\" class=\"flipping stretch\">            \n                </div>\n            </div>\n            <div class=\"back\">\n              \n                <div class=\"wrapper tile crop\" id=\"";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -46,7 +46,7 @@ function program2(depth0,data) {
   if (helper = helpers.audio) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.audio); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\"></audio>\n                    <video class=\"videoMSG flip\" id=\"replay";
+    + "\"></audio>\n                    <video class=\"videoMSG flipping\" id=\"replay";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
