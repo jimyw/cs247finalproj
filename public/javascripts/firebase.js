@@ -251,7 +251,6 @@ function displayPage(tile_list) {
   // }
   
 
-  
 
 
 
