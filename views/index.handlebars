@@ -37,9 +37,20 @@
 			  <a href="#" class="close">&times;</a>
 			</div>
 
+
+
+	{{!-- <a data-reveal-id="tile-delete-warning-msg">Button</a>  --}}
+    {{!-- Tile warning message, for deleting --}}
+    <div class="reveal-modal xlarge" id="tile-delete-warning-msg" data-reveal="">
+      <h2>Are you sure you want to delete your work on this tile?</h2>
+      {{!--  <div class="button close-reveal-modal" href="#" style="margin-top: 10px">Cancel</div> --}}
+       <a class="alert button close trash-confirm-btn" href="#" style="float: right; margin-top: 50px">Delete</a>
+       <a class="close-reveal-modal">×</a>
+    </div>
+
 			<div class="row" style="margin-top: 25px;">
 				<div class="twelve columns" id="direction">
-					<h2>{{direction}}</h2>
+					<h2 style="color: purple">{{direction}}</h2>
 				</div>
 			</div>
 			<a name="task1"></a>
@@ -65,12 +76,12 @@
 			{{!-- <div class="your-clock"></div> --}}
 			<div class="row">		
 				<div class="twelve columns">
-					
-					
 
 					<p id="countdown"></p>
+
 					<div id="outerbuttongrp">
 						<div class="hide_stuff" id="picstartbutton" >
+							<div class="" ><input id="timer-checkbox" type="checkbox" name="my-checkbox" checked></div>
 							<img id="camera_icon" src='images/camera.jpg'/>
 						</div>
 					</div>
@@ -156,7 +167,7 @@
 			</div>
 			<div class="row">
 				{{!-- <div class="direction">Don't forget to leave a personal video and/or text message :) <span class="msg" id="status"></span></div> --}}
-				<div class="centered" ><input id="privacy_checkbox" type="checkbox" name="my-checkbox" checked></div>
+				
 
 				<div class="wrapper_helper">
 					<div class="cropper not-recording" id="record_container" ><div id="webcam_stream"></div></div>
@@ -167,7 +178,7 @@
 					<div id="stop_recording"><img src="/images/stop.jpg" id="btn_record2"/></div>
 					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
 				</div>
-				<p class="hide_stuff" id="finish_waiting" style="color: red; float: right;">Waiting ... </p>
+				<p class="hide_stuff" id="finish_waiting" style="color: red; float: right;">Saving ... </p>
 				<div>
 					<ul class="pager">
 					  <li class="previous" id="vidcancelbutton"><a>Back</a></li>

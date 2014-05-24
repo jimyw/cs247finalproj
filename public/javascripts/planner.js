@@ -7,7 +7,7 @@ $(document).ready(function() {
 			$(this).children().eq(0).hide();
 			$('#task2-text').html("Write instructions for the friends you will invite to collaborate on this collage.");
             $('#task2-text').css('color', '#555');
-            $('#directions').html("");
+            $('#directions').attr('placeholder', "");
 		}		
 	});
 
@@ -26,13 +26,71 @@ $(document).ready(function() {
 	$('#choice-template').click(function(e){
         console.log("Choice clicked");
         if($(this).hasClass('selected') === true){
-          $('#task2-text').html("You've chosen to make your own template, so write some instructions for your own collage tasks :)");
+          $('#task2-text').html("You chose to describe a task instead of using a default template, so write the task for your friends:");
           $('#task2-text').css('color', 'purple');
-          $('#directions').html("ex: Take a photo of scared face");
+          $('#directions').attr('placeholder', "Examples: Take a photo while making scary faces, Take a photo that communicates a shared memory with Ellie, etc.");
         }else{
           $('#task2-text').html("Write instructions for the friends you will invite to collaborate on this collage.");
           $('#task2-text').css('color', '#555');
-          $('#directions').html("");
+          $('#directions').attr('placeholder', "");
         }
     });
+
+    // making first tile
+	  $("#make_first_tile").click(function() {
+	    // getting values from the form elements
+	    direction = $("#directions").val();
+	    recipient_name = $("#recipient_name").val();
+	    templateType = $("#template_type").val();
+	    console.log('click')
+	    fb_new_collage = fb.child(fb_collage_id); 
+
+	    if (!recipient_name) {
+	    	console.log('recipient_name empty')
+	    	recipient_name = '';
+	    }
+
+	    // reset alerts
+	    if (templateType) {
+	    	$("#task1").css('color','');
+	    }
+
+	    if (direction) {
+	    	$("#task2-val").removeClass('error');
+	    }
+
+	    if (!templateType || !direction) {
+	    	if (!templateType) {
+	    		$("#task1").css('color','#C60F13');
+	    		console.log('templateType empty')
+	    	} 
+	    	if (!direction) {
+	    		$("#task2-val").addClass('error')
+	    		console.log('direction empty')
+	    	}
+	    } else {
+	    	console.log(templateType);
+		    console.log(direction);
+		    console.log(recipient_name);
+		    $("#task2-val").removeClass('error');
+
+	    	fb_new_collage.child('planner').set({
+		      'direction': direction,
+		      'templateType': templateType,
+		      'recipient_name': recipient_name,
+		    }, initialize_collage);   // initialize collage on complete
+	    }
+	  });
+	$("#directions").keyup(function(e) {
+		if ($("#directions").val()) {
+			$("#task2-val").removeClass('error');
+		}
+	})
 });
+
+function GoToCollageID() {
+	var id = $("#existing_collage").val();
+	if (id) {
+		window.location = '/?collage_id='+id;	
+	}
+}

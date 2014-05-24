@@ -19,6 +19,9 @@ var audio_ready = 0;
 var video_stream_saved;
 var audio_stream_saved;
 
+var finishedTileIDs = new Array();	// keeps track of the tile ID that the current user finished
+// var fb_tile_id_to_delete = '';
+
 // two rows of data for collage
 var data1;
 var data2;
@@ -29,5 +32,5 @@ var photoDictionary = {
 	'Square': ['square1.png','square2.png','square3.png', 'square4.png'],
 	'Star': ['star1.png','star2.png','star3.png', 'star4.png'],
 	'Faces': ['emotion1.png','emotion2.png','emotion3.png', 'emotion4.png'],
-	'Choice': ['heart1.png','heart2.png','heart3.png', 'heart4.png'],
+	'Choice': ['empty.png','empty.png','empty.png', 'empty.png'],
 }

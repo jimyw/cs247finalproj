@@ -277,7 +277,7 @@ canvas {
   border: 2px solid #dcc;
 }
 .recording {
-  border: 2px solid red;
+  border: 10px solid red;
 }
 
 #conversation {

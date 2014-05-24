@@ -2,6 +2,23 @@ var Firebase = require('firebase');
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 
 
+// check if instance exist
+function checkFBExistance(fb_collage_id) {
+	console.log('checkFBExistance '+fb_collage_id)
+	fb.once('value', function(ss) {
+		console.log(ss)
+    if( ss.val() === null ) { 
+    	console.log('false')
+    	return false;
+    } else { 
+    	console.log('true')
+    	return true;
+    }
+
+	});
+}
+
+
 // get firebase tile instance
 function getTileInstance(fb, fb_collage_id, fb_tile_id) {
 	return fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
@@ -66,42 +83,46 @@ exports.index = function(req, res) {
 	// };
 
 if (fb_collage_id) {
-	console.log('collage_id')
+	// if (checkFBExistance(fb_collage_id)) {
 
-  var fb = new Firebase(fb_link);
-  fb.child(fb_collage_id).child('planner').once('value', function(plannerSnap) {
-    var val = plannerSnap.val();
-    console.log(val)
-    direction = val.direction;
-    templateType = val.templateType;
-    
-    recipient_name = val.recipient_name;
-    console.log(direction)
-    console.log(recipient_name)
-    console.log(templateType)
+	  console.log('collage_id')
 
-    if (templateType == 'Faces') {
-	    console.log('faces')
-	    faces = 1;
-	  }
-	  if (templateType == 'Choice') {
-	    choice = 1;
-	  }
+	  var fb = new Firebase(fb_link);
+	  fb.child(fb_collage_id).child('planner').once('value', function(plannerSnap) {
+	    var val = plannerSnap.val();
+	    console.log(val)
+	    if (val == null) {
+	    	console.log('error')
+	    	res.render('error', {fb_collage_id: fb_collage_id});
+	    } else {
+	    	direction = val.direction;
+		    templateType = val.templateType;
+		    
+		    recipient_name = val.recipient_name;
+		    console.log(direction)
+		    console.log(recipient_name)
+		    console.log(templateType)
 
-    var basic_data = {
-    	direction: direction,
-    	templateType: templateType,
-    	recipient_name: recipient_name,
-    	faces: faces,
-    	choice: choice,
-    }
-    // $("#intromsg").html(direction);
+		    if (templateType == 'Faces') {
+			    console.log('faces')
+			    faces = 1;
+			  }
+			  if (templateType == 'Choice') {
+			    choice = 1;
+			  }
 
-    res.render('index', basic_data);
-  });
+		    var basic_data = {
+		    	direction: direction,
+		    	templateType: templateType,
+		    	recipient_name: recipient_name,
+		    	faces: faces,
+		    	choice: choice,
+		    }
+		    res.render('index', basic_data);
+	    }
 
-
-
+	    
+	  });
 } else {
 	res.render('new');
 }

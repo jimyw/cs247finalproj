@@ -27,26 +27,7 @@ function set_new_collage() {
   // create new collage  
   fb_collage_id = Math.random().toString(36).substring(7);
   var shareLink = document.location.href+"?collage_id="+fb_collage_id;
-  $("#shareLink").html("Share this url with your friends to collaborate: "+ shareLink);
-
-  // making first tile
-  $("#make_first_tile").click(function() {
-    // getting values from the form elements
-    direction = $("#directions").val();
-    recipient_name = $("#recipient_name").val();
-    templateType = $("#template_type").val();
-
-    console.log(templateType);
-    console.log(direction);
-    console.log(recipient_name);
-    fb_new_collage = fb.child(fb_collage_id);  
-
-    fb_new_collage.child('planner').set({
-      'direction': direction,
-      'templateType': templateType,
-      'recipient_name': recipient_name,
-    }, initialize_collage);   // initialize collage on complete
-  });
+  $("#shareLink").html(shareLink);
 }
 
 function onSucess() {
@@ -192,7 +173,8 @@ function renderTwoRowTemplates() {
   $("#row1").html(template(data1));
   $("#row2").html(template(data2));
 
-  playTile();
+  playTile();   // bind listeners for clicking on tiles
+  listenToEditAndTrash();   // bind listeners for edit and trash icons
 }
 
 function displayTwoRows(tile_list) {
@@ -254,11 +236,111 @@ function displayPage(tile_list) {
   displayTwoRows(tile_list);
   // }
   
-
-
-
-
 }
 
+function listenToEditAndTrash() {
+  console.log('listenToEditAndTrash');
+  console.log(finishedTileIDs.length);
+  for (var i=0; i<finishedTileIDs.length; i++) {
+    console.log('happened');
+    $("#trash"+finishedTileIDs[i]).removeClass('hide_stuff');
+  }
+
+  var tile_id;
+  $(".edit").click(function(e){
+    console.log('edit');
+    tile_id = $(this).attr('id').substring(4);
+    console.log(tile_id);
+  })
+
+  $(".trash").click(function(e) {
+    console.log('trash')
+    tile_id = $(this).attr('id').substring(5);
+    $('.trash-confirm-btn').attr('id','button'+tile_id);  // set id for trashing confirm button
+    console.log(finishedTileIDs);
+  })
+
+  $(".trash-confirm-btn").click(function(e){
+    console.log('button');
+    console.log(finishedTileIDs);
+    var _tile_id = $(this).attr('id').substring(6);
+    // console.log(_tile_id);
+    $('a.close-reveal-modal').trigger('click');
+    resetTile(_tile_id);
+  })
+}
+
+
+// function editTile() {
+//   tileIsSelected = true;  // global variable to be set to false upon post
+        
+//   $("#piccancelbutton").removeClass('hide_stuff');
+//   $("#finish_msg").addClass('hide_stuff');
+//   scrollToAnchor('task1_bottom');
+
+//   console.log(fb_tile_id);
+
+//   tileClicked.prepend('<div class="border" id="videowrapper"> <video id="video" class="flipping tile-video"></video> <img src="'+val.default_photo+ '" width=320 id="overlay"> </div>')
+
+//   $("#img_"+fb_tile_id).addClass('hide_stuff');
+
+//   $("#picstartbutton").removeClass('hide_stuff');
+
+//   // change directions
+//   $("#task1_msg1").addClass('hide_stuff');
+//   $("#task1_msg2").removeClass('hide_stuff');
+//   simpleCam();
+// }
+
+function resetTile(tile_id) {
+  console.log('resetTile');
+  console.log(finishedTileIDs);
+  var default_photo;
+  var i = finishedTileIDs.indexOf(tile_id);
+  getTileDefaultPhoto(fb,fb_collage_id, tile_id, proceed); // gets photos
+
+  if (i>=0) {
+    console.log('spliced')
+    finishedTileIDs.splice(i,1);  // removes element at i
+  } else {
+    console.log('error: cannot find tile_id')
+  }
+
+  // get the default tile photo and proceed to reset
+  function getTileDefaultPhoto(fb_db, collage_id, tile_id,successcallback) {
+    console.log('getTileDefaultPhoto');
+    console.log(tile_id);
+    var tile_instance = getTileInstance(fb_db, collage_id, tile_id) ;
+    console.log(tile_instance);
+    tile_instance.once('value', function(snap) {
+      console.log('tile_instance');
+      var tile = snap.val();  // dictionary
+      console.log(tile.default_photo);
+      default_photo = tile.default_photo;
+      successcallback();
+    });
+  }
+
+  // proceed after getting the default_photo
+  function proceed() {
+
+    console.log('proceed')
+    console.log(default_photo);
+    var reset_data = {
+      photo: default_photo,
+      video: '',
+      audio: '',
+      text: '',
+      filled: 0,
+      is_public: true,
+    }
+    updateTile(fb,fb_collage_id, tile_id, reset_data, resetCallBack);
+  }
+}
+
+function resetCallBack() {
+  $(".trash-confirm-btn").attr('id','');  // reset the id
+  reset(0);
+}
 
 // })();
