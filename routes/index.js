@@ -129,13 +129,13 @@ if (fb_collage_id) {
 		    	choice: choice,
 		    	admin: false,
 		    }
-		    if (true_admin_id == admin_id) {
+		    if (admin_id && true_admin_id == admin_id) {
 		    		console.log('admin!')
 		    		basic_data.admin = true;
 	    	}
 
 
-		    if (true_recipient_id == recipient_id) {
+		    if (recipient_id && true_recipient_id == recipient_id) {
 		    	res.render('recipient', basic_data);
 		    } else {
 	    		res.render('index', basic_data);

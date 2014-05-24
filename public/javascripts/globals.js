@@ -12,7 +12,7 @@ var tileIsSelected = false;  // boolean for whether a tile has been clicked
 var json_data = {filled: 0};
 var admin_id;
 var recipient_id;
-
+var isAdmin;
 
 var name_collage = 1;
 var tile_dictionary = {};

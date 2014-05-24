@@ -11,6 +11,7 @@ function initialize_page() {
   // var url_segments = document.location.href.split("/#");
   fb_collage_id = getParameterByName('collage_id');
   recipient_id = getParameterByName('recipient_id');
+  isAdmin = $("#isAdmin").html();
   // console.log(url_segments);fb_tile_id
   if (fb_collage_id) {
     // fb_collage_id = url_segments[1];  // get collage_id from url
@@ -86,6 +87,7 @@ function load_collage(numTiles) {
         var val = childSnap.val();
         val.fb_tile_id = childSnap.name();
         val.fb_collage_id = fb_collage_id;
+        val.isAdmin = isAdmin;
 
         if (val.audio) {  // convert back to blob
           console.log('audio');
