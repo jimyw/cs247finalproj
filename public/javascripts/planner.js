@@ -1,5 +1,20 @@
-$(document).ready(function() {
+// $(document).ready(function() {
+function planner() {
 	$("select").imagepicker();
+
+
+	// create new collage  
+	fb_collage_id = Math.random().toString(36).substring(7);
+	var shareLink = document.location.href+"?collage_id="+fb_collage_id;
+	admin_id = Math.random().toString(36).substring(7);
+	recipient_id = Math.random().toString(36).substring(7);
+	var adminLink = shareLink+"&admin_id="+admin_id;
+	var recipientLink = shareLink+"&recipient_id_"+recipient_id;
+	
+	$("#shareLink").html(shareLink);
+	$("#adminLink").html(adminLink);
+	$("#recipientLink").html(recipientLink);
+
 
 	$(".preview-tile").parent().click(function(e) {
 		e.preventDefault();
@@ -78,6 +93,8 @@ $(document).ready(function() {
 		      'direction': direction,
 		      'templateType': templateType,
 		      'recipient_name': recipient_name,
+		      'recipient_id': recipient_id,
+		      'admin_id': admin_id,
 		    }, initialize_collage);   // initialize collage on complete
 	    }
 	  });
@@ -86,7 +103,7 @@ $(document).ready(function() {
 			$("#task2-val").removeClass('error');
 		}
 	})
-});
+}
 
 function GoToCollageID() {
 	var id = $("#existing_collage").val();

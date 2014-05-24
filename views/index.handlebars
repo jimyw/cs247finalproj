@@ -57,7 +57,10 @@
 					<h2 style="color: purple">{{direction}}</h2>
 				</div>
 			</div>
-			<a name="task1"></a>
+			<a name="task1">{{admin}}</a>
+			{{#unless admin}}
+			<p>{{admin}}</p>
+			{{/unless}}
 			<div class="row">
 				<div class="twelve columns">
 					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. <br/>Like Collage With Friends? You can start your own at <a href="collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></h1>

@@ -46,6 +46,8 @@ exports.index = function(req, res) {
 	console.log(req.query);
 	var post = req.query.post;
 	var fb_collage_id = req.query.collage_id;
+	var admin_id = req.query.admin_id;
+	var recipient_id = req.query.recipient_id;
 	if (!post) {
 		post = 0;
 	}
@@ -91,6 +93,8 @@ if (fb_collage_id) {
 	  fb.child(fb_collage_id).child('planner').once('value', function(plannerSnap) {
 	    var val = plannerSnap.val();
 	    console.log(val)
+
+	    // checks if this fb_collage_id exists
 	    if (val == null) {
 	    	console.log('error')
 	    	res.render('error', {fb_collage_id: fb_collage_id});
@@ -103,13 +107,19 @@ if (fb_collage_id) {
 		    console.log(recipient_name)
 		    console.log(templateType)
 
+		    var true_recipient_id = val.recipient_id;
+		    var true_admin_id = val.admin_id;
+
+		    console.log("true_admin_id "+true_admin_id);
+		    console.log("true_recipient_id "+true_recipient_id)
+
 		    if (templateType == 'Faces') {
 			    console.log('faces')
 			    faces = 1;
-			  }
-			  if (templateType == 'Choice') {
+			}
+			if (templateType == 'Choice') {
 			    choice = 1;
-			  }
+			}
 
 		    var basic_data = {
 		    	direction: direction,
@@ -117,8 +127,19 @@ if (fb_collage_id) {
 		    	recipient_name: recipient_name,
 		    	faces: faces,
 		    	choice: choice,
+		    	admin: false,
 		    }
-		    res.render('index', basic_data);
+		    if (true_admin_id == admin_id) {
+		    		console.log('admin!')
+		    		basic_data.admin = true;
+	    	}
+
+
+		    if (true_recipient_id == recipient_id) {
+		    	res.render('recipient', basic_data);
+		    } else {
+	    		res.render('index', basic_data);
+		    }
 	    }
 
 	    
