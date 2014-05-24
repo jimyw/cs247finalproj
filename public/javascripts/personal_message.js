@@ -101,7 +101,6 @@ function setUpAudio() {
     setTimeout(function(){
       countdown.html("");
       // $("#btn_record").show();
-      $('#stop_recording').show();
       // $(".cropper").addClass("border");
       $("#start_recording").hide();
       $("#stop_recording").show();
@@ -112,8 +111,8 @@ function setUpAudio() {
   
   $(document).ready(function() {
     $("input[name='my-checkbox']").bootstrapSwitch();
-    $('input[name="my-checkbox"]').bootstrapSwitch('onText', 'Public');
-    $('input[name="my-checkbox"]').bootstrapSwitch('offText', 'Private');
+    $('input[name="my-checkbox"]').bootstrapSwitch('onText', '&nbsp&nbsp No Timer &nbsp&nbsp');
+    $('input[name="my-checkbox"]').bootstrapSwitch('offText', '10-sec Timer');
     $('input[name="my-checkbox"]').bootstrapSwitch('size', 'large');
     $('input[name="my-checkbox"]').bootstrapSwitch('offColor', 'warning');
 
@@ -152,17 +151,17 @@ function setUpAudio() {
         // send google analytics
         ga('send', 'event', 'button', 'click', 'take video');
 
-        //$("#stop_recording").css("background-color", "red")
-
         $("#replay_recording").hide();
-        // update ids here, because page loads too slowly
-        // fb_collage_id = $("#fb_collage_id").html();
-        // fb_tile_id = $("#fb_tile_id").html();
-        // console.log(fb_tile_id);
 
-        showCountDown();
-        setTimeout(record_audio_and_video,3000);
-        // record_audio_and_video();
+        // Timer - take out
+        // showCountDown();
+        // setTimeout(record_audio_and_video,3000);
+
+        record_audio_and_video();
+        $("#start_recording").hide();
+        $("#stop_recording").show();
+        $("#stat_container").addClass("recording");
+        $("#stat_container").removeClass("not-recording"); 
 
         $("#audio_link").html("");        
         $("#video_link").html("");
