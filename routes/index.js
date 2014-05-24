@@ -46,6 +46,8 @@ exports.index = function(req, res) {
 	console.log(req.query);
 	var post = req.query.post;
 	var fb_collage_id = req.query.collage_id;
+	var admin_id = req.query.admin_id;
+	var recipient_id = req.query.recipient_id;
 	if (!post) {
 		post = 0;
 	}
@@ -106,10 +108,10 @@ if (fb_collage_id) {
 		    if (templateType == 'Faces') {
 			    console.log('faces')
 			    faces = 1;
-			  }
-			  if (templateType == 'Choice') {
+			}
+			if (templateType == 'Choice') {
 			    choice = 1;
-			  }
+			}
 
 		    var basic_data = {
 		    	direction: direction,
@@ -118,7 +120,12 @@ if (fb_collage_id) {
 		    	faces: faces,
 		    	choice: choice,
 		    }
-		    res.render('index', basic_data);
+
+		    if (recipient_id) {
+		    	res.render('recipient', basic_data);
+		    } else {
+		    	res.render('index', basic_data);
+		    }
 	    }
 
 	    

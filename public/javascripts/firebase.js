@@ -1,7 +1,5 @@
 // (function() {
 
-
-
 $(document).ready(function(){
   // name_collage = $("#name_collage").html();
   // recipient_name = $("#recipient_name").html();
@@ -12,22 +10,15 @@ $(document).ready(function(){
 function initialize_page() {
   // var url_segments = document.location.href.split("/#");
   fb_collage_id = getParameterByName('collage_id');
+  recipient_id = getParameterByName('recipient_id');
   // console.log(url_segments);fb_tile_id
   if (fb_collage_id) {
     // fb_collage_id = url_segments[1];  // get collage_id from url
     console.log('Collage ID in url is ' + fb_collage_id);
     load_collage();
   } else {
-    set_new_collage();
-    
+    planner();
   }
-}
-
-function set_new_collage() {
-  // create new collage  
-  fb_collage_id = Math.random().toString(36).substring(7);
-  var shareLink = document.location.href+"?collage_id="+fb_collage_id;
-  $("#shareLink").html(shareLink);
 }
 
 function onSucess() {
@@ -162,8 +153,9 @@ function playTile() {
   }
   });
 
-  $(".tile").click(showCam);
-
+  if (!recipient_id) {
+    $(".tile").click(showCam);
+  }
 }
 
 function renderTwoRowTemplates() {
