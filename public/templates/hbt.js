@@ -9,7 +9,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n    <div class=\"edit-tile\">\n      <img class=\"edit\" src=\"/images/edit_icon.png\"/>\n      <img class=\"trash\" src=\"/images/trash_icon.png\"/>  \n    </div>    \n    <div class=\"flip-container wrapper tile\" id=\"wrapper";
+  buffer += "\n    <div class=\"edit-tile\">\n\n    </div>    \n    <div class=\"flip-container wrapper tile\" id=\"wrapper";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
