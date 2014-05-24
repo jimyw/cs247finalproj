@@ -9,15 +9,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n    <div class=\"edit-tile\" >\n      <img class=\"edit\" id=\"edit";
+  buffer += "\n    <div class=\"edit-tile\" >\n      <img class=\"edit hide_stuff\" id=\"edit";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" src=\"/images/edit_icon.png\"/>\n      <img class=\"trash\" id=\"trash";
+    + "\" src=\"/images/edit_icon.png\"/>\n      <a data-reveal-id=\"tile-delete-warning-msg\"><img class = \"trash hide_stuff\" id=\"trash";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" src=\"/images/trash_icon.png\"/>  \n    </div>    \n    <div class=\"flip-container wrapper tile\" id=\"wrapper";
+    + "\" src=\"/images/trash_icon.png\"/></a>  \n    </div>    \n    <div class=\"flip-container wrapper tile\" id=\"wrapper";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)

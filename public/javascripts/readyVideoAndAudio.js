@@ -29,7 +29,6 @@ function getVideo() {
         //   video.src = vendorURL.createObjectURL(stream);
         // }
         // video.play();
-
         setUpVideo(); // in personalmsg
       },
       function(err) {

@@ -37,6 +37,17 @@
 			  <a href="#" class="close">&times;</a>
 			</div>
 
+
+
+	{{!-- <a data-reveal-id="tile-delete-warning-msg">Button</a>  --}}
+    {{!-- Tile warning message, for deleting --}}
+    <div class="reveal-modal xlarge" id="tile-delete-warning-msg" data-reveal="">
+      <h2>Are you sure you want to delete your work on this tile?</h2>
+      {{!--  <div class="button close-reveal-modal" href="#" style="margin-top: 10px">Cancel</div> --}}
+       <a class="alert button close trash-confirm-btn" href="#" style="float: right; margin-top: 50px">Delete</a>
+       <a class="close-reveal-modal">×</a>
+    </div>
+
 			<div class="row" style="margin-top: 25px;">
 				<div class="twelve columns" id="direction">
 					<h2 style="color: purple">{{direction}}</h2>

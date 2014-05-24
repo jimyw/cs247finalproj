@@ -19,6 +19,9 @@ var audio_ready = 0;
 var video_stream_saved;
 var audio_stream_saved;
 
+var finishedTileIDs = new Array();	// keeps track of the tile ID that the current user finished
+// var fb_tile_id_to_delete = '';
+
 // two rows of data for collage
 var data1;
 var data2;
