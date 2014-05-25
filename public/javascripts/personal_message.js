@@ -225,7 +225,7 @@ function setUpAudio() {
       });
 
       recordRTC_Video.stopRecording(function(videoURL) {
-        $("#video_link").append("<video id='replay' src='"+videoURL+"'></video>")
+        $("#video_link").append("<video id='replay' class='flipping' src='"+videoURL+"'></video>")
 
         // updating firebase
         datauri_to_blob(videoURL,function(blob){
