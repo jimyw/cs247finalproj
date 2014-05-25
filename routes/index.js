@@ -135,7 +135,7 @@ if (fb_collage_id) {
 	    	}
 
 
-		    if (recipient_id && true_recipient_id == recipient_id) {
+		    if (recipient_id) {
 		    	res.render('recipient', basic_data);
 		    } else {
 	    		res.render('index', basic_data);
