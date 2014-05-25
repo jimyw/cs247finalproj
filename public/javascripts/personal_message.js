@@ -111,7 +111,7 @@ function setUpAudio() {
   
   $(document).ready(function() {
     $("input[name='my-checkbox']").bootstrapSwitch();
-    $('input[name="my-checkbox"]').bootstrapSwitch('onText', '&nbsp&nbsp No Timer &nbsp&nbsp');
+    $('input[name="my-checkbox"]').bootstrapSwitch('onText', '&nbsp&nbsp 3-sec Timer &nbsp');
     $('input[name="my-checkbox"]').bootstrapSwitch('offText', '10-sec Timer');
     $('input[name="my-checkbox"]').bootstrapSwitch('size', 'large');
     $('input[name="my-checkbox"]').bootstrapSwitch('offColor', 'warning');

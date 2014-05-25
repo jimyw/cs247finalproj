@@ -114,7 +114,7 @@ if (fb_collage_id) {
 		    console.log("true_recipient_id "+true_recipient_id)
 
 		    if (templateType == 'Faces') {
-			    console.log('faces')
+			    console.log('faces');
 			    faces = 1;
 			}
 			if (templateType == 'Choice') {
@@ -129,7 +129,10 @@ if (fb_collage_id) {
 		    	choice: choice,
 		    	admin: false,
 		    	recipient: false,
+		    	recipient_id: recipient_id,
+		    	collage_id: fb_collage_id,
 		    }
+
 		    if (admin_id && true_admin_id == admin_id) {
 		    		console.log('admin!')
 		    		basic_data.admin = true;

@@ -37,3 +37,5 @@ var photoDictionary = {
 	'Faces': ['emotion1.png','emotion2.png','emotion3.png', 'emotion4.png'],
 	'Choice': ['empty.png','empty.png','empty.png', 'empty.png'],
 }
+
+var clock;

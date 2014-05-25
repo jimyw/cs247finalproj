@@ -273,11 +273,20 @@ canvas {
 	height: 600px;
 }
 
+.your-clock{
+	zoom: 0.5;
+	-moz-transform: scale(0.5);
+	margin-left: 47% !important;
+}
+
 .not-recording {
   border: 2px solid #dcc;
 }
 .recording {
-  border: 10px solid red;
+  border: 10px solid red !important;
+}
+.picrecording {
+  border: 5px solid red !important;
 }
 
 #conversation {
@@ -303,8 +312,12 @@ canvas {
 
 #row1 {
 	width: 100%;
+	background: #FFFFFF !important;
 }
 
+#row2 {
+	background: #FFFFFF !important;
+}
 
 /* entire container, keeps perspective */
 .flip-container {
@@ -488,7 +501,7 @@ canvas {
 .example {
 	width: 94px;
 	height: 94px;
-	opacity: 0.8;
+	/*opacity: 0.8;*/
 }
 
 .template-text {
@@ -616,4 +629,29 @@ background:#F7EFDB;
 border-color: #E0D5BB;
 border-width:10px;
 border-style:solid;
+}
+
+
+#fullhearttemplate{
+	transform:rotate(7deg);	/* IE 9 */
+	-ms-transform:rotate(7deg); /* IE 9 */
+	-webkit-transform:rotate(-20deg); /* Opera, Chrome, and Safari */
+}
+
+#fullheart{
+	transform:rotate(7deg);	/* IE 9 */
+	-ms-transform:rotate(7deg); /* IE 9 */
+	-webkit-transform:rotate(36deg); /* Opera, Chrome, and Safari */
+}
+
+#fullsmileytemplate{
+	transform:rotate(7deg);	/* IE 9 */
+	-ms-transform:rotate(7deg); /* IE 9 */
+	-webkit-transform:rotate(-33deg); /* Opera, Chrome, and Safari */
+}
+
+#fullsmiley{
+	transform:rotate(7deg);	/* IE 9 */
+	-ms-transform:rotate(7deg); /* IE 9 */
+	-webkit-transform:rotate(15deg); /* Opera, Chrome, and Safari */
 }

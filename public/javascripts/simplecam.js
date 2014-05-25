@@ -1,5 +1,3 @@
-
-
 // passes the JQuery object of the tile Clicked
 function simpleCam() {
   var td_height = $("td").height();
@@ -64,7 +62,7 @@ function simpleCam() {
   }, false);
 
   function takepicture() {
-    // setTimeout(takepicture(), 3000);
+    $("#"+fb_tile_id).removeClass('picrecording');
 
       $("#photo").addClass('flipping');
       console.log('takepicture')
@@ -125,8 +123,25 @@ function simpleCam() {
 
       photo.addClass('hide_stuff');
       videowrapper.removeClass('hide_stuff');
-      showCountDown();
-      setTimeout(takepicture, 3000);
+
+      // 3 second timer
+      clock.setTime(3);
+
+      $("#"+fb_tile_id).addClass('picrecording');
+
+
+      clock.start(function() {
+      // this (optional) callback will fire each time the clock flips
+      });
+      setTimeout(takepicture, 5000);  // flipclock has 2 sec lag
+
+
+      // if ($('#timer-checkbox').is(":checked")) {
+      // } else {
+      //   // 10 second timer
+      //   showCountDown();
+        
+      // }
     } else {
       status.html("Enable the webcam to take a picture :)");
       status.addClass("yellow");

@@ -145,7 +145,7 @@ body{
 .portfolio h1{
 	font-family: Cassannet;
 	font-size: 40px;
-	line-height: 60px;
+	/*line-height: 60px;*/
 	opacity: 0.9;
 	color: #555;
 }
@@ -154,7 +154,7 @@ span.quote{
 	font-family: 'Source Sans Pro';
 	font-size: 18px;
 	font-style: italic;
-	line-height: 36px;
+	/*line-height: 36px;*/
 	opacity: 0.8;
 	color: #555;
 	padding-left: 10px;
@@ -189,7 +189,7 @@ ul.works img{
 	height: 100%;
 	width: 100%;
 	background-color: white;
-	opacity: 0.9;
+	/*opacity: 0.9;*/
 	display: none;
 	text-align: center;
 }

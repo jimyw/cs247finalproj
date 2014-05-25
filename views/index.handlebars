@@ -62,24 +62,25 @@
 			{{/if}}
 			<div class="row">
 				<div class="twelve columns">
-					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. <br/>Like Collage With Friends? You can start your own at <a href="http://collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></h1>
-					<h1 id="task1_msg1">Task 1: Click<span class="quote" id="task1a"> on an empty tile to contribute to the collage {{#if recipient_name}}for {{recipient_name}} {{/if}}</span></h1>
+					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. You can checkout the recepient view at <a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&amp;recipient_id={{recipient_id}}</a> <br/>Like Collage With Friends? You can start your own at <a href="http://collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></h1>
+					<h1 id="task1_msg1">Task 1: <span class="quote" id="task1a"> Click on an empty tile to contribute to the collage {{#if recipient_name}}for {{recipient_name}} {{/if}}</span></h1>
 
-					<h1 id="task1_msg2" class="hide_stuff">Task 1: Take a picture
+					<h1 id="task1_msg2" class="hide_stuff">Task 1: 
 						{{#if faces}}
-							<span class="quote" id="task1b"> with a funny face. </span>
+							<span class="quote" id="task1b"> Take a picture with a funny face. 
 						{{else}} 
 							{{#if choice}}
-								<span class="quote" id="task1b"> to follow the instructions given above. </span>
+								<span class="quote" id="task1b">Take a picture to follow the instructions given above. 
 							{{else}}
-								<span class="quote" id="task1b"> that matches the outlined shape. </span>	
+								<span class="quote" id="task1b"> Take a picture that matches the outlined shape. 	
 							{{/if}}
 						{{/if}}
+						There is a 3-second timer once you press the camera icon</span>
 						
 					</h1>
 				</div>
 			</div>
-			{{!-- <div class="your-clock"></div> --}}
+			
 			<div class="row">		
 				<div class="twelve columns">
 
@@ -88,7 +89,8 @@
 					<div id="outerbuttongrp">
 						<div class="hide_stuff" id="picstartbutton" >
 							{{!-- <div class="" ><input id="timer-checkbox" type="checkbox" name="my-checkbox" checked></div> --}}
-							<img id="camera_icon" src='images/camera.jpg'/>
+							<div class="your-clock"></div>
+							<div><img id="camera_icon" src='images/camera.jpg'/></div>
 						</div>
 					</div>
 					<div id="collage_loading_msg"><h1 style="color: red; text-align: center;">Loading...</h1></div>
@@ -211,22 +213,23 @@
     <script src="/javascripts/firebase.js"></script>
 
     <script type="text/javascript">
-		var clock = $('.your-clock').FlipClock(10, {
-			countdown: true,
-			autoStart: false,
-			clockFace: 'MinuteCounter'
-		});
+		clock = $('.your-clock').FlipClock(3, {
+		      countdown: true,
+		      autoStart: false,
+		      clockFace: 'MinuteCounter'
+		    });
 		$(".minutes").addClass('hide_stuff');
 		$(".seconds").addClass('hide_stuff');
 		$(".minutes").next().addClass('hide_stuff');
 		$(".minutes").next().next().addClass('hide_stuff');
-		console.log('increment');
-		$("#picdonebutton").click(function(e) {
-			e.preventDefault();
-			clock.start(function() {
-			// this (optional) callback will fire each time the clock flips
-			});
-		});
+		console.log("clock");
+		console.log(clock);
+		// $("#picdonebutton").click(function(e) {
+		// 	e.preventDefault();
+		// 	clock.start(function() {
+		// 	// this (optional) callback will fire each time the clock flips
+		// 	});
+		// });
 		
 		
 	</script>
