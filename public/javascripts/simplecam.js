@@ -39,11 +39,6 @@ function simpleCam() {
       width = td_width;
       height = td_height;
 
-  console.log('initial')
-  console.log(video);
-  console.log('photo: ')
-  console.log(photo)
-
   var data;
 
   // playing the video
@@ -153,7 +148,7 @@ function simpleCam() {
 
        scrollToAnchor('vmsg');
 
-
+       $('#webcam_stream').children().eq(0).addClass('flipping');
 
 
         // $.ajax({
