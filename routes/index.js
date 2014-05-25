@@ -128,14 +128,15 @@ if (fb_collage_id) {
 		    	faces: faces,
 		    	choice: choice,
 		    	admin: false,
+		    	recipient: false,
 		    }
 		    if (admin_id && true_admin_id == admin_id) {
 		    		console.log('admin!')
 		    		basic_data.admin = true;
 	    	}
 
-
-		    if (recipient_id) {
+		    if (recipient_id && true_recipient_id == recipient_id) {
+		    	basic_data.recipient = true;
 		    	res.render('recipient', basic_data);
 		    } else {
 	    		res.render('index', basic_data);

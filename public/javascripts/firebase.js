@@ -144,19 +144,19 @@ function show(snap) {
 
 function playTile() {
   console.log('tileListener');
-  // console.log($(".tile"));
   
-  $(".tile").mouseenter(function(e) {
-    var _fb_tile_id = $(this).attr("id");
-    console.log(_fb_tile_id+' hovered');
-    var replay = document.getElementById("replay"+_fb_tile_id);
-    if (replay) {
-      replay.play();
-      document.getElementById("audio"+_fb_tile_id).play();
-  }
-  });
-
   if (!recipient_id) {
+    $(".tile").mouseenter(function(e) {
+      var _fb_tile_id = $(this).attr("id");
+      console.log(_fb_tile_id+' hovered');
+      var replay = document.getElementById("replay"+_fb_tile_id);
+      if (replay) {
+        replay.play();
+        document.getElementById("audio"+_fb_tile_id).play();
+    }
+    });
+
+  
     $(".tile").click(showCam);
   }
 }
