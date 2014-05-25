@@ -230,7 +230,6 @@ function displayPage(tile_list) {
 
   displayTwoRows(tile_list);
   // }
-  
 }
 
 function listenToEditAndTrash() {
