@@ -530,6 +530,17 @@ canvas {
 	margin-right: 20%;
 }
 
+#collage-msg {
+	margin-top: 20%;
+	margin-left: 0%;
+	margin-right: 65%;
+}
+
+#emphasize {
+	font-size: 24px;
+	font-style: italic;
+}
+
 .next-btn {
 	position: absolute;
 	margin-right: auto;
@@ -579,4 +590,10 @@ canvas {
 .next-btn:active {
 	position: absolute;
 	bottom: 59px;
+}
+
+#finished_collage {
+	position: absolute;
+	top: 150px;
+	right: 15%;
 }

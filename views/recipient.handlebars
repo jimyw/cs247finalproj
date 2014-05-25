@@ -4,16 +4,34 @@
 			<div class="row">
 				<div class="six columns" id="header">
 					<h3>Welcome to</h3>
-					<h1>COLLAGE WITH FRIENDS</h1>
+					<h1>COLLAGE</h1>
+					<h1>WITH</h1>
+					<h1>FRIENDS</h1>
 					<div class="clear"></div>
 				</div>
-				<div class="six columns">
+				<div id="collage-msg">
 					<p class="intro_text">
-						Make a fun collage with friends, attach your personal video message, and impress whomever receives it!
+						Your friends sent you a collage gift! <span id="emphasize">Hover over </span> a tile to see their personal messages!
 					</p>
 				</div>
 			</div>
-			
+
+			<div id="finished_collage">
+				<div class="row">		
+					<div class="twelve columns">
+						<div id="collage_loading_msg"><h1 style="color: red; text-align: center;">Loading...</h1></div>
+						<table class="centering"> 
+							<tr id="row1">
+							</tr>
+							<tr id="row2">
+							</tr>	
+						</table>
+
+						<canvas id="canvas"></canvas>
+					</div>
+				</div>
+			</div>
+
 			<div class="nav">
 				<div class="row">
 					<div class="twelve columns">
@@ -24,46 +42,6 @@
 			<div class="nav_bg">
 			</div>
 		</section>
-
-		<section class="portfolio">
-
-			<div class="row" style="margin-top: 25px;">
-				<div class="twelve columns" id="direction">
-					<h2 style="color: purple">{{direction}}</h2>
-				</div>
-			</div>
-			<a name="task1"></a>
-			<div class="row">
-			</div>
-			{{!-- <div class="your-clock"></div> --}}
-			<div class="row">		
-				<div class="twelve columns">
-
-					<p id="countdown"></p>
-
-					<div id="outerbuttongrp">
-						<div class="hide_stuff" id="picstartbutton" >
-							<div class="" ><input id="timer-checkbox" type="checkbox" name="my-checkbox" checked></div>
-							<img id="camera_icon" src='images/camera.jpg'/>
-						</div>
-					</div>
-					<div id="collage_loading_msg"><h1 style="color: red; text-align: center;">Loading...</h1></div>
-					<table class="centering"> 
-						<tr id="row1">
-						{{!-- Code is in template/tileItem.handlebars --}}
-						</tr>
-						<tr id="row2">
-							{{!-- <td>hi</td> --}}
-						</tr>	
-					</table>
-
-					<canvas id="canvas"></canvas>
-				</div>
-			</div>
-		</section>
-
-		
-
 
 		<footer>
 		</footer>
