@@ -110,7 +110,7 @@ if (fb_collage_id) {
 		    var true_recipient_id = val.recipient_id;
 		    var true_admin_id = val.admin_id;
 
-		    console.log("true_admin_id "+true_admin_id);
+		    console.log("true_admin_id "+true_admin_id +" while admin_id="+admin_id);
 		    console.log("true_recipient_id "+true_recipient_id)
 
 		    if (templateType == 'Faces') {

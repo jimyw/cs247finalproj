@@ -88,6 +88,7 @@ function load_collage(numTiles) {
         val.fb_tile_id = childSnap.name();
         val.fb_collage_id = fb_collage_id;
         val.isAdmin = isAdmin;
+        console.log('admin='+val.isAdmin);
 
         if (val.audio) {  // convert back to blob
           console.log('audio');

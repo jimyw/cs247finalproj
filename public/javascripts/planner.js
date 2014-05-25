@@ -9,7 +9,7 @@ function planner() {
 	admin_id = Math.random().toString(36).substring(7);
 	recipient_id = Math.random().toString(36).substring(7);
 	var adminLink = shareLink+"&admin_id="+admin_id;
-	var recipientLink = shareLink+"&recipient_id_"+recipient_id;
+	var recipientLink = shareLink+"&recipient_id="+recipient_id;
 	
 	$("#shareLink").html(shareLink);
 	$("#adminLink").html(adminLink);
