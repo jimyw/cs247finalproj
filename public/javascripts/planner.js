@@ -91,6 +91,7 @@ function planner() {
 	    	console.log(templateType);
 		    console.log(direction);
 		    console.log(recipient_name);
+		    ga('send', 'event', 'submit', 'click', templateType);
 		    // $("#task2-val").removeClass('error');
 
 	    	fb_new_collage.child('planner').set({
