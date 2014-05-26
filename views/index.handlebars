@@ -148,14 +148,18 @@
 					<p id="countdown"></p>
 
 					<div id="outerbuttongrp">
-						<div class="hide_stuff" id="picstartbutton" >
+						<div class="hide_stuff relative" id="picstartbutton" >
 							{{!-- <div class="" ><input id="timer-checkbox" type="checkbox" name="my-checkbox" checked></div> --}}
 							<div class="your-clock"></div>
 							<div><img id="camera_icon" src='images/camera.jpg'/></div>
+							<ul class="pager">
+							  <li class="previous hide_stuff" id="piccancelbutton"><a>Cancel</a></li>
+							  <li class="next" style="dispaly: none;" id="picdonebutton"><a>Next</a></li>
+							</ul>
 						</div>
 					</div>
 					<div id="collage_loading_msg"><h1 style="color: red; text-align: center;">Loading...</h1></div>
-					<table class="centering"> 
+					<table class="centering" id="temp_collage"> 
 						<tr id="row1">
 						{{!-- Code is in template/tileItem.handlebars --}}
 						</tr>
@@ -166,10 +170,7 @@
 
 					<canvas id="canvas"></canvas>
 
-				<ul class="pager">
-				  <li class="previous hide_stuff" id="piccancelbutton"><a>Back</a></li>
-				  <li class="next disabled" id="picdonebutton"><a>Next</a></li>
-				</ul>
+
 				
 				<a name="task1_bottom"></a>
 
@@ -190,7 +191,7 @@
 			<div class="row">
 				
 
-				<div class="wrapper_helper">
+				<div class="wrapper_helper relative">
 					<div class="cropper not-recording" id="record_container" ><div id="webcam_stream"></div></div>
 					<div class="cropper not-recording" id="play_container" ><div id="video_container"></div></div>
 					<div id="audio_link"></div>
@@ -203,13 +204,14 @@
 						</span>
 					</div>
 					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
-				</div>
-				<p class="hide_stuff" id="finish_waiting" style="color: red; float: right;">Saving ... </p>
-				<div>
 					<ul class="pager">
 					  <li class="previous" id="vidcancelbutton"><a>Back</a></li>
 					  <li class="next disabled" id="finish"><a>Finish</a></li>
 					</ul>
+				</div>
+				<p class="hide_stuff" id="finish_waiting" style="color: red; float: right;">Saving ... </p>
+				<div>
+					
 				</div>
 
 				<div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>

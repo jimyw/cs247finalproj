@@ -84,7 +84,9 @@ function simpleCam() {
       photo.removeClass('hide_stuff');
       photo.removeClass('overlay');
       videowrapper.addClass('hide_stuff');
-      donebutton.removeClass('disabled');
+      $('#videowrapper').parent().removeClass('border');
+      //donebutton.removeClass('disabled');
+      donebutton.show();
       // donebutton.className = "next";  // removes 'disabled'
   }
 
@@ -156,7 +158,7 @@ function simpleCam() {
       if (!donebutton.hasClass('disabled')) {
         $("#vmsg").removeClass('hide_stuff');
         // ga('send', 'event', 'button', 'click', 'done photo');
-        console.log("Done taking photo");
+        //console.log("Done taking photo");
 
 
         

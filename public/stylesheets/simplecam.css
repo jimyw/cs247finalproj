@@ -49,12 +49,13 @@ canvas {
 	left: 0px;
 	width: 160px;
 	height: 160px;
+	border: 0px;
 	overflow: hidden;
 }
 
 #videowrapper video{
-	width: 205px;
-	height: 154px;
+	width: 213px;
+	height: 160px;
 }
 
 .border {
@@ -197,18 +198,18 @@ canvas {
 
 #picdonebutton {
 	margin-top: 5px;
+	position: absolute;
+	top: 70px;
+	right: 330px;
 	/*margin-right: 40%;*/
 }
 
 #piccancelbutton {
 	margin-top: 5px;
+	position: absolute;
+	top: 70px;
+	left: 330px;
 	/*margin-left: 25%;*/
-}
-
-#finish {
-	background: green;
-	left: 770px;
-	top: 550px;	
 }
 
 .yellow {
@@ -293,7 +294,7 @@ canvas {
   border: 10px solid red !important;
 }
 .picrecording {
-  border: 5px solid red !important;
+  border: 3px solid red !important;
 }
 
 #conversation {
@@ -636,6 +637,22 @@ background:#F7EFDB;
 border-color: #E0D5BB;
 border-width:10px;
 border-style:solid;
+}
+
+#temp_collage {
+	margin-bottom: 10%;
+}
+
+#vidcancelbutton {
+	left: -60px;
+	top: 550px;
+	position: absolute;
+}
+
+#finish {
+	left: 360px;
+	top: 550px;
+	position: absolute;	
 }
 
 
