@@ -5,7 +5,22 @@ $(document).ready(function(){
   // recipient_name = $("#recipient_name").html();
   // recipient_name = recipient_name.toUpperCase();
   initialize_page();
+  checkIfGoogleChrome();
 });
+
+function checkIfGoogleChrome() {
+  // please note, that IE11 now returns true for window.chrome
+  var isChromium = window.chrome,
+      vendorName = window.navigator.vendor;
+  if(isChromium !== null && vendorName === "Google Inc.") {
+     console.log(' is Google chrome ');
+     return true;
+  } else { 
+     console.log(' not Google chrome ');
+     $("#chrome_msg").removeClass('hide_stuff');
+     return false;
+  }
+}
 
 function initialize_page() {
   // var url_segments = document.location.href.split("/#");
