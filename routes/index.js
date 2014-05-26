@@ -129,7 +129,7 @@ if (fb_collage_id) {
 		    	choice: choice,
 		    	admin: false,
 		    	recipient: false,
-		    	recipient_id: recipient_id,
+		    	recipient_id: true_recipient_id,
 		    	collage_id: fb_collage_id,
 		    }
 

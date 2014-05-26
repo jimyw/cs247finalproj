@@ -85,9 +85,21 @@
        <a class="close-reveal-modal">×</a>
     </div>
 
+
+    {{!-- Survey message --}}
+    <div class="reveal-modal xlarge" id="survey-msg" data-reveal="">
+      <h2>Thank you for trying out CollageWithFriends. Please help us improve our prototype by filling out a brief survey. </h2>
+      <div style="text-align:center; width:100%;">
+      <iframe src="https://docs.google.com/forms/d/1-UXZsVNCvhqJVV1OfaHWuvggZvJQfNoDxcyUO4CBnvc/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+	  </div>
+      {{!--  <div class="button close-reveal-modal" href="#" style="margin-top: 10px">Cancel</div> --}}
+       <a class="close-reveal-modal">×</a>
+    </div>
+
 			<div class="row" style="margin-top: 25px;">
 				<div class="twelve columns" id="direction">
 					<h2 style="color: purple">{{direction}}</h2>
+				</br>
 				</div>
 			</div>
 			<a name="task1"></a>
@@ -96,7 +108,22 @@
 			{{/if}}
 			<div class="row">
 				<div class="twelve columns">
-					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. You can checkout the recepient view at <a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&amp;recipient_id={{recipient_id}}</a> <br/>Like Collage With Friends? You can start your own at <a href="http://collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></h1>
+					<div id="finish_msg" class="hide_stuff">
+						<div>Thank you for trying out CollageWithFriends. Please help us improve our prototype by filling out a brief survey.&nbsp;<a class="button tiny" style="border-radius: 0px" id="reveal-link" data-reveal-id="survey-msg">Survey</a>
+						</div>
+						</br>
+
+						<h1 >Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. </span></h1>
+
+						</br>
+						<div>To checkout how the recipient would see it, click <span class="quote"><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">here</a>.</span></div>
+						 </br>
+
+						{{!-- <div>Like Collage With Friends? You can start your own at <span class="quote"><a href="http://collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></div> --}}
+
+						
+					</div>
+
 					<h1 id="task1_msg1">Task 1: <span class="quote" id="task1a"> Click on an empty tile to contribute to the collage {{#if recipient_name}}for {{recipient_name}} {{/if}}</span></h1>
 
 					<h1 id="task1_msg2" class="hide_stuff">Task 1: 

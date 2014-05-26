@@ -130,6 +130,7 @@ function onComplete() {
 	scrollToAnchor('task1')
 	reset(1);
 	console.log('update complete');
+	
 }
 
 function onBack() {
