@@ -15,6 +15,10 @@ function planner() {
 	$("#adminLink").html(adminLink);
 	$("#recipientLink").html(recipientLink);
 
+	// $("#shareLink").html('<a src="'+shareLink+'">'+shareLink+'</a>');
+	// $("#adminLink").html('<a src="'+adminLink+'">'+adminLink+'</a>');
+	// $("#recipientLink").html('<a src="'+recipientLink+'">'+recipientLink+'</a>');
+
 
 	$(".preview-tile").parent().click(function(e) {
 		e.preventDefault();

@@ -679,3 +679,11 @@ border-style:solid;
 	-ms-transform:rotate(7deg); /* IE 9 */
 	-webkit-transform:rotate(15deg); /* Opera, Chrome, and Safari */
 }
+
+#finish_waiting{
+	position: absolute;
+	color: red; 
+	left: 355px; 
+	top: 585px; 
+	width: 50%;
+}
