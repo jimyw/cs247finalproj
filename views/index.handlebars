@@ -123,7 +123,7 @@
 						<h1 >Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. </span></h1>
 
 						</br>
-						<div>To checkout how the recipient would see it, click <span class="quote"><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">here</a>.</span></div>
+						<div>Share the collage with {{#if recipient_name}}{{recipient_name}} {{else}}friends{{/if}} at <span class="quote"><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&amp;recipient_id={{recipient_id}}</a>.</span></div>
 						 </br>
 
 						{{!-- <div>Like Collage With Friends? You can start your own at <span class="quote"><a href="http://collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></div> --}}
