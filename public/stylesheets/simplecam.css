@@ -687,3 +687,15 @@ border-style:solid;
 	top: 585px; 
 	width: 50%;
 }
+
+#task1_msg1 {
+	margin-bottom: 170px;
+}
+
+.task1b {
+	color: #EA3D2A !important;
+}
+#task1c {
+	color: #008CBA !important;
+}
+

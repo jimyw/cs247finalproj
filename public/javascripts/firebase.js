@@ -148,12 +148,24 @@ function playTile() {
   
     $(".tile").mouseenter(function(e) {
       var _fb_tile_id = $(this).attr("id");
-      // console.log(_fb_tile_id+' hovered');
+
+      console.log(_fb_tile_id+' mouseenter');
+      if (_fb_tile_id.indexOf('wrapper')>=0) {
+        console.log('wrapper')
+          _fb_tile_id= _fb_tile_id.substring(7); // removes 'wrapper'
+      }
+
+      if (_fb_tile_id.indexOf('photo')>=0) {
+        console.log('photo')
+          _fb_tile_id= _fb_tile_id.substring(5); // removes 'wrapper'
+      }
+      console.log(_fb_tile_id);
+
       var replay = document.getElementById("replay"+_fb_tile_id);
       if (replay) {
         replay.play();
         document.getElementById("audio"+_fb_tile_id).play();
-    }
+      }
     });
 
   if (!recipient_id) {

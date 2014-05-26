@@ -117,8 +117,7 @@ function setUpAudio() {
     $('input[name="my-checkbox"]').bootstrapSwitch('offColor', 'warning');
 
     finishButtonListener();
-    picCancelButtonListener();
-
+    // picCancelButtonListener();
 
     $("#vidcancelbutton").click(function(e){
       e.preventDefault();

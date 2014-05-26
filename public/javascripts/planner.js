@@ -74,24 +74,24 @@ function planner() {
 	    	$("#task1").css('color','');
 	    }
 
-	    if (direction) {
-	    	$("#task2-val").removeClass('error');
-	    }
+	    // if (direction) {
+	    // 	$("#task2-val").removeClass('error');
+	    // }
 
-	    if (!templateType || !direction) {
-	    	if (!templateType) {
+	    if (!templateType) {
+	    	// if (!templateType) {
 	    		$("#task1").css('color','#C60F13');
 	    		console.log('templateType empty')
-	    	} 
-	    	if (!direction) {
-	    		$("#task2-val").addClass('error')
-	    		console.log('direction empty')
-	    	}
+	    	// } 
+	    	// if (!direction) {
+	    	// 	$("#task2-val").addClass('error')
+	    	// 	console.log('direction empty')
+	    	// }
 	    } else {
 	    	console.log(templateType);
 		    console.log(direction);
 		    console.log(recipient_name);
-		    $("#task2-val").removeClass('error');
+		    // $("#task2-val").removeClass('error');
 
 	    	fb_new_collage.child('planner').set({
 		      'direction': direction,
@@ -102,11 +102,11 @@ function planner() {
 		    }, initialize_collage);   // initialize collage on complete
 	    }
 	  });
-	$("#directions").keyup(function(e) {
-		if ($("#directions").val()) {
-			$("#task2-val").removeClass('error');
-		}
-	})
+	// $("#directions").keyup(function(e) {
+	// 	if ($("#directions").val()) {
+	// 		$("#task2-val").removeClass('error');
+	// 	}
+	// })
 }
 
 function GoToCollageID() {

@@ -87,6 +87,8 @@ function simpleCam() {
       $('#videowrapper').parent().removeClass('border');
       //donebutton.removeClass('disabled');
       donebutton.show();
+      $("#task1_msg2").addClass('hide_stuff');
+      $("#task1_msg3").removeClass('hide_stuff');
       // donebutton.className = "next";  // removes 'disabled'
   }
 

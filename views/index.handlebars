@@ -109,7 +109,14 @@
 			<div class="row">
 				<div class="twelve columns">
 					<div id="finish_msg" class="hide_stuff">
-						<div>Thank you for trying out CollageWithFriends. Please help us improve our prototype by filling out a brief survey.&nbsp;<a class="button tiny" style="border-radius: 0px" id="reveal-link" data-reveal-id="survey-msg">Survey</a>
+						<div>Thank you for trying out CollageWithFriends. Please help us improve our prototype by filling out a brief survey.</div>
+						</br>
+						<div class="row">
+							{{!-- <div class="small-2 large-4 columns" style="width: 40px">...</div> --}}
+
+							<div class="large-2 large-centered columns"><a class="button" style="border-radius: 0px; padding-left: 100px; padding-right: 100px" id="reveal-link" data-reveal-id="survey-msg">Survey</a>
+							</div>
+							{{!-- <div class="small-2 large-4 columns" ></div> --}}
 						</div>
 						</br>
 
@@ -128,17 +135,18 @@
 
 					<h1 id="task1_msg2" class="hide_stuff">Task 1: 
 						{{#if faces}}
-							<span class="quote" id="task1b"> Take a picture with a funny face. 
+							<span class="quote task1b"> Take a picture with a funny face. 
 						{{else}} 
 							{{#if choice}}
-								<span class="quote" id="task1b">Take a picture to follow the instructions given above. 
+								<span class="quote task1b">Take a picture to follow the instructions given above. 
 							{{else}}
-								<span class="quote" id="task1b"> Take a picture that matches the outlined shape. 	
+								<span class="quote task1b"> Take a picture that matches the outlined shape. 	
 							{{/if}}
 						{{/if}}
 						There is a 3-second timer once you press the camera icon</span>
 						
 					</h1>
+					<h1 id="task1_msg3" class="hide_stuff">Task 1: <span class="quote" id="task1c">Press &quot;next&quot; to continue, or the camera icon to retake the picture.</span></h1>
 				</div>
 			</div>
 			
@@ -153,7 +161,7 @@
 							<div class="your-clock"></div>
 							<div><img id="camera_icon" src='images/camera.jpg'/></div>
 							<ul class="pager">
-							  <li class="previous hide_stuff" id="piccancelbutton"><a>Cancel</a></li>
+							  {{!-- <li class="previous hide_stuff" id="piccancelbutton"><a>Cancel</a></li> --}}
 							  <li class="next" style="dispaly: none;" id="picdonebutton"><a>Next</a></li>
 							</ul>
 						</div>
@@ -185,7 +193,7 @@
 			<a name="vmsg"></a>
 			<div class="row">
 				<div class="twelve columns">
-					<h1 id="task2_msg">Task 2: Great! <span class="quote">Now leave a personal video message{{#if recipient_name}} for {{recipient_name}} {{/if}}</span></h1>
+					<h1 id="task2_msg">Task 2: <span class="quote">Great! Now leave a personal video message{{#if recipient_name}} for {{recipient_name}} {{/if}}</span></h1>
 				</div>
 			</div>
 			<div class="row">

@@ -70,6 +70,7 @@ function picCancelButtonListener() {
 	$("#piccancelbutton").click(function(e){
 		e.preventDefault();
 
+
 		// json_data = {name: ''};
 		// updateTile(fb,fb_collage_id,fb_tile_id,json_data, onBack);
 		renderTwoRowTemplates();
@@ -107,6 +108,7 @@ function reset(completed) {
 	$("#picstartbutton").addClass('hide_stuff');
 	$("#piccancelbutton").addClass('hide_stuff');
 	$("#task1_msg2").addClass('hide_stuff');
+	$("#task1_msg3").addClass('hide_stuff');
 	//$("#picdonebutton").addClass('disabled');
 	$("#picdonebutton").hide();
 	$("#finish_waiting").addClass('hide_stuff');
