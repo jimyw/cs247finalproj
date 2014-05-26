@@ -151,7 +151,7 @@ body{
 	color: #555;
 }
 
-span.quote{
+span.quote, p.quote{
 	font-family: 'Source Sans Pro';
 	font-size: 24px;
 	font-style: italic;

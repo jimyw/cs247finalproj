@@ -84,8 +84,7 @@ function initialize_collage() {
 
   loadDirect = false;
 
-  window.location = '/?collage_id='+fb_collage_id;    // redirect page
-  // load_collage(numTiles);   
+  window.location = '/?collage_id='+fb_collage_id+'&admin_id='+admin_id;    // redirect page
 }
 
 // returns the list of tiles for a given collage id as JSON

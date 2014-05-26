@@ -136,6 +136,7 @@ if (fb_collage_id) {
 		    if (admin_id && true_admin_id == admin_id) {
 		    		console.log('admin!')
 		    		basic_data.admin = true;
+		    		basic_data.admin_id = true_admin_id;
 	    	}
 
 		    if (recipient_id && true_recipient_id == recipient_id) {

@@ -103,11 +103,12 @@
 				</br>
 				</div>
 			</div>
-			<a name="task1"></a>
+			
 			{{#if admin}}
 				<p class="hide_stuff" id="isAdmin">{{admin}}</p>
 			{{/if}}
 			<div class="row">
+				<a name="task1"></a>
 				<div class="twelve columns">
 					<div id="finish_msg" class="hide_stuff">
 						<div>Thank you for trying out CollageWithFriends. Please help us improve our prototype by filling out a brief survey.</div>
@@ -124,15 +125,26 @@
 						<h1 >Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. </span></h1>
 
 						</br>
-						<div>Share the collage with {{#if recipient_name}}{{recipient_name}} {{else}}friends{{/if}} at <span class="quote"><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&amp;recipient_id={{recipient_id}}</a>.</span></div>
+						<h1>You are almost done!</h1>
+						<div>a. Invite your friends to collaborate on this collage by sending them this link: <p class=""><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}</a></p></div>
+
+						</br>
+
+						<div>b. Send the collage to {{#if recipient_name}}{{recipient_name}} {{else}}recipients{{/if}} at <p class=""><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&amp;recipient_id={{recipient_id}}</a></p></div>
+						 
 						 </br>
+
+						{{#if admin_id}}
+						<div>c. Save this admin link so you can edit or delete tiles: <p class=""><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&amp;admin_id={{admin_id}}</a></p></div>
+						</br>
+						{{/if}}
 
 						{{!-- <div>Like Collage With Friends? You can start your own at <span class="quote"><a href="http://collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></div> --}}
 
 						
 					</div>
 
-					<h1 id="task1_msg1">Task 1: <span class="quote" id="task1a"> Click on an empty tile to contribute to the collage {{#if recipient_name}}for {{recipient_name}} {{/if}}</span></h1>
+					<h1 id="task1_msg1">Task 1: <span class="quote" id="task1a"> Click on an empty tile to contribute to the collage{{#if recipient_name}} for {{recipient_name}}{{/if}}. You must also enable your webcam at the top of the browser.</span></h1>
 
 					<h1 id="task1_msg2" class="hide_stuff">Task 1: 
 						{{#if faces}}
