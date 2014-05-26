@@ -145,10 +145,10 @@ function show(snap) {
 function playTile() {
   console.log('tileListener');
   
-  if (!recipient_id) {
+  
     $(".tile").mouseenter(function(e) {
       var _fb_tile_id = $(this).attr("id");
-      console.log(_fb_tile_id+' hovered');
+      // console.log(_fb_tile_id+' hovered');
       var replay = document.getElementById("replay"+_fb_tile_id);
       if (replay) {
         replay.play();
@@ -156,7 +156,7 @@ function playTile() {
     }
     });
 
-  
+  if (!recipient_id) {
     $(".tile").click(showCam);
   }
 }

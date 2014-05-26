@@ -52,7 +52,9 @@ function showCam(e) {
 			} else {
 				console.log('video_ready not')
 				console.log(video_ready)
-				getVideo();
+				if (video_clicked > 0) {
+					getVideo();	
+				}
 			}
 		}
 	}
@@ -75,7 +77,7 @@ function finishButtonListener() {
 		e.preventDefault();
 		if (!$(this).hasClass('disabled')) {
 	        json_data.filled = 1;
-	        json_data.is_public = $('#privacy_checkbox').is(":checked");	// check privacy setting (true for public, false for private)
+	        // json_data.is_public = $('#privacy_checkbox').is(":checked");	// check privacy setting (true for public, false for private)
 
 			console.log('finishButtonListener');
 			console.log('json_data');

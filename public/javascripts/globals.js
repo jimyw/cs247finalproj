@@ -21,6 +21,8 @@ var video_ready = 0;
 var audio_ready = 0;
 var video_stream_saved;
 var audio_stream_saved;
+var video_clicked = 0;	// keeps track whether allow buttons have been pressed
+var audio_clicked = 0;
 
 var finishedTileIDs = new Array();	// keeps track of the tile ID that the current user finished
 // var fb_tile_id_to_delete = '';
