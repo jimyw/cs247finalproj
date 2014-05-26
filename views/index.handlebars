@@ -2,21 +2,55 @@
 
 		<section id="intro" class="bg relative">
 			<div class="row">
-				<div class="six columns" id="header">
+				<div class="small-6 columns">
 					<h3>Welcome to</h3>
 					<h1>COLLAGE</h1>
-					<h1>WITH FRIENDS</h1>
+					<h1>WITH</h1>
 					<h1>FRIENDS</h1>
-					<p class="intro_text" id="intro-txt">
-						Make a fun collage with friends, attach your personal video message, and impress whomever receives it!
-					</p>					
-				<div class="clear"></div>
 				</div>
-				<div class="six columns">
-
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-6 columns">
+							<img id="fullhearttemplate" src="/images/fullhearttemplate.png">
+						</div>
+						<div class="small-6 columns">
+							<img id="fullheart" src="/images/fullheart.jpg">
+						</div>
+					</div>
 				</div>
 			</div>
-			<a href="#task1" class="next-btn smoothScroll">Start</a>
+			<div class="row" style="margin-top: 10px;">
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-6 columns">
+							<img id="fullsmileytemplate" src="/images/fullsmiley.png">
+						</div>
+						<div class="small-6 columns">
+							<img id="fullsmiley" src="/images/fullfaces.jpg">	
+						</div>
+					</div>
+				</div>
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-4 columns">
+						</div>
+						<div class="small-8 columns">
+							<div class="row"> 
+								<h3 style="margin-top: 30px">
+									Turn a template… 
+									</br>Into a collaborative photo/video collage
+									</br>And share with your friends
+								</h3>
+							</div>
+							<div class="row"></br></div>
+							<div class="row">
+								<a href="#task1" class="button smoothScroll" style="display: block">Start</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	
 
 			<div class="nav">
 				<div class="row">
@@ -111,60 +145,13 @@
 				</ul>
 				
 				<a name="task1_bottom"></a>
-					
-{{!-- 
-					<ul class="works">
-						<li>
-							<a href="yogurt.html">
-								<div class="hover">
-									<h3>YOGURT</h3>
-									<h5 class="tags"><span>UI</span><span>UX</span><span>Data-vis</span><span>Interaction</span></h5>
-								</div>
-								<img src="images/heart1.jpg"/>
-							</a>
-						</li>
-						<li>
-							<a href="mobiata.html">
-								<div class="hover">
-									<h3>MOBIATA</h3>
-									<h5 class="tags"><span>UI</span><span>UX</span><span>Mobile</span></h5>
-								</div>
-								<img src="images/heart2.jpg"/>
-							</a>
-						</li>
-						<li>
-							<a href="echorus.html">
-								<div class="hover">
-									<h3>ECHORUS</h3>
-									<h5 class="tags"><span>Ideation</span><span>UI</span><span>UX</span><span>Strategy</span></h5>
-								</div>
-								<img src="images/heart3.jpg"/>
-							</a>
-						</li>
-						<li>
-							<a href="derive.html">
-								<div class="hover">
-									<h3>DÉRIVE</h3>
-									<h5 class="tags"><span>Interaction</span><span>Web</span><span>Gesture UI</span></h5>
-								</div>
-								<img src="images/heart4.jpg"/>
-							</a>
-						</li>
-					</ul> --}}
+
 				</div>
 			</div>
 		</section>
 
 		
 
-
-{{!-- 		<section id="hire" class="bg">
-			<div class="row">
-				<div class="six columns offset-by-six">
-					<h1>Now please also record a personal message!</h1>
-				</div>
-			</div>
-		</section>	 --}}
 
 		<section id="vmsg" class="portfolio hide_stuff">
 			<a name="vmsg"></a>
@@ -174,7 +161,6 @@
 				</div>
 			</div>
 			<div class="row">
-				{{!-- <div class="direction">Don't forget to leave a personal video and/or text message :) <span class="msg" id="status"></span></div> --}}
 				
 
 				<div class="wrapper_helper">
@@ -183,7 +169,12 @@
 					<div id="audio_link"></div>
 					<div class="cropper not-recording" id="stat_container" ><div id="video_link"></div></div>
 					<div id="start_recording"><img src="/images/record.jpg" id="btn_record"/><span id="videocountdown"></span></div>
-					<div id="stop_recording"><img src="/images/stop.jpg" id="btn_record2"/></div>
+					<div id="stop_recording">
+						Recording... 
+						<span>
+							<img src="/images/stop.jpg" id="btn_record2"/>
+						</span>
+					</div>
 					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
 				</div>
 				<p class="hide_stuff" id="finish_waiting" style="color: red; float: right;">Saving ... </p>

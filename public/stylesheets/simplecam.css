@@ -156,11 +156,18 @@ canvas {
 	border-radius: 10px;
 }
 
-#start_recording, #stop_recording {
+#start_recording {
 	position: relative;
 	left: 160px;
 	top: 550px;
 	width: 41px;
+}
+
+#stop_recording {
+	position: relative;
+	left: 110px;
+	top: 550px;
+	color: red;
 }
 
 #replay_recording {
