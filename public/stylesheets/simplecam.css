@@ -657,26 +657,26 @@ border-style:solid;
 
 
 #fullhearttemplate{
-	transform:rotate(7deg);	/* IE 9 */
-	-ms-transform:rotate(7deg); /* IE 9 */
+	transform:rotate(-20deg);	/* IE 9 */
+	-ms-transform:rotate(-20deg); /* IE 9 */
 	-webkit-transform:rotate(-20deg); /* Opera, Chrome, and Safari */
 }
 
 #fullheart{
-	transform:rotate(7deg);	/* IE 9 */
-	-ms-transform:rotate(7deg); /* IE 9 */
+	transform:rotate(36deg);	/* IE 9 */
+	-ms-transform:rotate(36deg); /* IE 9 */
 	-webkit-transform:rotate(36deg); /* Opera, Chrome, and Safari */
 }
 
 #fullsmileytemplate{
-	transform:rotate(7deg);	/* IE 9 */
-	-ms-transform:rotate(7deg); /* IE 9 */
+	transform:rotate(-33deg);	/* IE 9 */
+	-ms-transform:rotate(-33deg); /* IE 9 */
 	-webkit-transform:rotate(-33deg); /* Opera, Chrome, and Safari */
 }
 
 #fullsmiley{
-	transform:rotate(7deg);	/* IE 9 */
-	-ms-transform:rotate(7deg); /* IE 9 */
+	transform:rotate(15deg);	/* IE 9 */
+	-ms-transform:rotate(15deg); /* IE 9 */
 	-webkit-transform:rotate(15deg); /* Opera, Chrome, and Safari */
 }
 
