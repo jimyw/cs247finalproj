@@ -61,7 +61,7 @@ function initialize_collage() {
   // }
   
   for (var i=0; i<numTiles; i++) {
-    var _fb_tile_id = Math.random().toString(36).substring(7)
+    var _fb_tile_id = Math.random().toString(36).substring(7);
     var fb_new_tile = fb_new_collage.child('Tile').child(_fb_tile_id);  // create numTiles
 
     var j = i % (photoArray.length);

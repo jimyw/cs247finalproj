@@ -4,7 +4,7 @@ function planner() {
 
 
 	// create new collage  
-	fb_collage_id = Math.random().toString(36).substring(7);
+	fb_collage_id = 'z'+Math.random().toString(36).substring(8);
 	var shareLink = document.location.href+"?collage_id="+fb_collage_id;
 	admin_id = Math.random().toString(36).substring(7);
 	recipient_id = Math.random().toString(36).substring(7);
