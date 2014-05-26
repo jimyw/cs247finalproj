@@ -1,13 +1,16 @@
 function showCam(e) {
 	e.preventDefault();
-	console.log('showCam')
-	console.log('tileIsSelected: '+tileIsSelected)
+	//console.log('showCam')
+	//console.log('tileIsSelected: '+tileIsSelected)
+	
+	$("#picdonebutton").removeClass('disabled');
 	if (!tileIsSelected) {
-		$("#picdonebutton").removeClass('hide_stuff');
-		console.log(tile_dictionary)
+		//$("#picdonebutton").removeClass('hide_stuff');
+		//console.log(tile_dictionary)
+
 		var tileClicked = $(this);
 		fb_tile_id = tileClicked.attr('id');	// fb_tile_id
-		console.log('id='+fb_tile_id);
+		//console.log('id='+fb_tile_id);
 
 		if (fb_tile_id.indexOf('wrapper')>=0) {
 			fb_tile_id = fb_tile_id.substring(7);	// removes 'wrapper'
@@ -34,6 +37,8 @@ function showCam(e) {
 				
 				$("#piccancelbutton").removeClass('hide_stuff');
 				$("#finish_msg").addClass('hide_stuff');
+				$("#picdonebutton").hide();
+
 				scrollToAnchor('task1_bottom');
 
 				console.log(fb_tile_id);
@@ -48,7 +53,8 @@ function showCam(e) {
 				$("#task1_msg1").addClass('hide_stuff');
 				$("#task1_msg2").removeClass('hide_stuff');
 				simpleCam();
-			
+				$('#videowrapper').parent().addClass('border');
+
 			} else {
 				console.log('video_ready not')
 				console.log(video_ready)
@@ -101,14 +107,16 @@ function reset(completed) {
 	$("#picstartbutton").addClass('hide_stuff');
 	$("#piccancelbutton").addClass('hide_stuff');
 	$("#task1_msg2").addClass('hide_stuff');
-	$("#picdonebutton").addClass('disabled');
+	//$("#picdonebutton").addClass('disabled');
+	$("#picdonebutton").hide();
 	$("#finish_waiting").addClass('hide_stuff');
 	
 	if (completed==1) {
 		$("#vmsg").addClass('hide_stuff');
 		$("#finish_msg").removeClass('hide_stuff');
 		$("#direction").addClass('hide_stuff');
-		$("#picdonebutton").addClass('hide_stuff');
+		//
+		//$("#picdonebutton").addClass('hide_stuff');
 	} else {
 		$("#task1_msg1").removeClass('hide_stuff');
 		$("#finish_msg").addClass('hide_stuff');
