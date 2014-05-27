@@ -180,96 +180,38 @@ function setUpAudio() {
       var textbox_text = $("#textbox").val();
       $("#stat_container").removeClass("recording");
       $("#stat_container").addClass("not-recording");
-      recordRTC_Audio.stopRecording(function(audioURL) {
-        //$("#audio_link").append("<a href='"+audioURL+"'' target='_blank'>"+audioURL+"</a>")
-        // console.log('audio url '+audioURL);
 
+
+      recordRTC_Audio.stopRecording(function(audioURL) {
         $("#audio_link").append("<audio id='audio' src='"+audioURL+"'></audio>")
         $("#status").html("Video message recorded!");
         $("#status").removeClass("yellow");
         $("#status").addClass("msg");
 
-
-        // updating firebase
         datauri_to_blob(audioURL,function(blob){
           blob_to_base64(blob,function(base64){
-            // var json_data = {audio: base64};
             json_data.audio = base64;
             console.log(json_data);
-            // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
-
-            // ignore below
-
-            // $("#video_form").val(base64);
-            // console.log(base64);
-
-            // var converteddata = URL.createObjectURL(base64_to_blob(base64))
-            // $("#audio_link").append("<audio id='audio' src='"+converteddata+"'></audio>")
-
-
           });
         });
-
-
-        // var json_data = {audio: audioURL};
-        // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
-
-        // update the form element
-        // datauri_to_blob(audioURL,function(blob){
-        //   blob_to_base64(blob,function(base64){
-        //     $("#audio_form").val(base64);
-        //     //console.log(base64);
-        //   });
-        // });
       });
 
       recordRTC_Video.stopRecording(function(videoURL) {
         $("#video_link").append("<video id='replay' class='flipping' src='"+videoURL+"'></video>")
 
-        // updating firebase
         datauri_to_blob(videoURL,function(blob){
           blob_to_base64(blob,function(base64){
             console.log('conversion')
-            // var json_data = {video: base64};
             json_data.video = base64;
             console.log(json_data);
-            // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
 
-
-
-            // ignore below
-
-            // $("#video_form").val(base64);
-            // console.log(base64);
-
-            // var converteddata = URL.createObjectURL(base64_to_blob(base64))
-            // $("#video_link").append("<video id='replay' src='"+converteddata+"'></video>")
-            // console.log(videoURL);
-            // console.log(converteddata);
           });
         });
-
-        // var json_data = {video: videoURL, text: textbox_text};
-        // updateTile(fb, fb_collage_id, fb_tile_id, json_data)
-
-        // update the form element
-        // datauri_to_blob(videoURL,function(blob){
-        //   blob_to_base64(blob,function(base64){
-        //     console.log('conversion')
-        //     $("#video_form").val(base64);
-        //     console.log(base64);
-        //   });
-        // });
-
-
-        // $("#video_form").val(videoURL);
-
       });
 
       playVideo('');
 
       $(this).hide();
-      //$("#start_recording").html("Retake the Video");
       $("#btn_record").show();
       $("#start_recording").show();
       $("#replay_recording").show();
