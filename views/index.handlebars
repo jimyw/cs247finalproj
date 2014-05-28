@@ -53,7 +53,10 @@
 							</div>
 							{{/if}} --}}
 							<div class="row">
-								<a href="#task1" class="button smoothScroll" style="display: block">Start</a>
+								<a href="#task1" class="radius button smoothScroll" style="display: block">Start your own collage</a>
+							</div>
+							<div class="row">
+								<a data-reveal-id="videoModal" class="radius button" style="display: block; background-color: #f75933"><i class="fa fa-play-circle"></i> What is CollageWithFriends?</a>
 							</div>
 						</div>
 					</div>
@@ -73,6 +76,16 @@
 			<div class="nav_bg">
 			</div>
 		</section>
+
+		<div id="videoModal" style="top: 0px;" class="reveal-modal large" data-reveal>
+		  <div class="flex-video">
+		  	<iframe width="560" height="315" src="//www.youtube.com/embed/d7YAJhF0nyQ" frameborder="0" allowfullscreen></iframe>
+		    {{!-- <iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe> --}}
+		  </div>
+
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>
+
 
 		<section class="portfolio">
 			<div data-alert class="fixed-div alert-box alert radius" id="webcam_alert" style="z-index: 1">
