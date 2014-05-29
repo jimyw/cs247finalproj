@@ -67,7 +67,7 @@ body{
 
 /* Intro section */
 #intro{
-	background: url(/images/index_bg.jpg) no-repeat fixed;
+	background: url(/images/index_bg_opt.jpg) no-repeat fixed;
 	width: 100%;
 	background-size: auto 100%;	
 	color: white;

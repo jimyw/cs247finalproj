@@ -1,5 +1,6 @@
 // $(document).ready(function() {
 function planner() {
+	var finishTileClicked = 0;
 	$("select").imagepicker();
 
 
@@ -57,51 +58,54 @@ function planner() {
 
     // making first tile
 	  $("#make_first_tile").click(function() {
-	    // getting values from the form elements
-	    direction = $("#directions").val();
-	    recipient_name = $("#recipient_name").val();
-	    templateType = $("#template_type").val();
-	    console.log('click')
-	    fb_new_collage = fb.child(fb_collage_id); 
+	  	if (finishTileClicked == 0) {
+		    // getting values from the form elements
+		    direction = $("#directions").val();
+		    recipient_name = $("#recipient_name").val();
+		    templateType = $("#template_type").val();
+		    console.log('click')
+		    fb_new_collage = fb.child(fb_collage_id); 
 
-	    if (!recipient_name) {
-	    	console.log('recipient_name empty')
-	    	recipient_name = '';
-	    }
+		    if (!recipient_name) {
+		    	console.log('recipient_name empty')
+		    	recipient_name = '';
+		    }
 
-	    // reset alerts
-	    if (templateType) {
-	    	$("#task1").css('color','');
-	    }
+		    // reset alerts
+		    if (templateType) {
+		    	$("#task1").css('color','');
+		    }
 
-	    // if (direction) {
-	    // 	$("#task2-val").removeClass('error');
-	    // }
+		    // if (direction) {
+		    // 	$("#task2-val").removeClass('error');
+		    // }
 
-	    if (!templateType) {
-	    	// if (!templateType) {
-	    		$("#task1").css('color','#C60F13');
-	    		console.log('templateType empty')
-	    	// } 
-	    	// if (!direction) {
-	    	// 	$("#task2-val").addClass('error')
-	    	// 	console.log('direction empty')
-	    	// }
-	    } else {
-	    	console.log(templateType);
-		    console.log(direction);
-		    console.log(recipient_name);
-		    ga('send', 'event', 'submit', 'click', templateType);
-		    // $("#task2-val").removeClass('error');
+		    if (!templateType) {
+		    	// if (!templateType) {
+		    		$("#task1").css('color','#C60F13');
+		    		console.log('templateType empty')
+		    	// } 
+		    	// if (!direction) {
+		    	// 	$("#task2-val").addClass('error')
+		    	// 	console.log('direction empty')
+		    	// }
+		    } else {
+		    	finishTileClicked = 1;		// disable future clicks
+		    	console.log(templateType);
+			    console.log(direction);
+			    console.log(recipient_name);
+			    ga('send', 'event', 'submit', 'click', templateType);
+			    // $("#task2-val").removeClass('error');
 
-	    	fb_new_collage.child('planner').set({
-		      'direction': direction,
-		      'templateType': templateType,
-		      'recipient_name': recipient_name,
-		      'recipient_id': recipient_id,
-		      'admin_id': admin_id,
-		    }, initialize_collage);   // initialize collage on complete
-	    }
+		    	fb_new_collage.child('planner').set({
+			      'direction': direction,
+			      'templateType': templateType,
+			      'recipient_name': recipient_name,
+			      'recipient_id': recipient_id,
+			      'admin_id': admin_id,
+			    }, initialize_collage);   // initialize collage on complete
+		    }
+		}
 	  });
 	// $("#directions").keyup(function(e) {
 	// 	if ($("#directions").val()) {

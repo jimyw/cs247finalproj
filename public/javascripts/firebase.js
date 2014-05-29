@@ -37,11 +37,11 @@ function initialize_page() {
   }
 }
 
-function onSucess() {
-  initialize_collage();
+// function onSucess() {
+//   initialize_collage();
   
-  console.log(recipient_name)
-}
+//   console.log(recipient_name)
+// }
 
 function initialize_collage() {
   var numTiles;
