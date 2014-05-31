@@ -1,5 +1,4 @@
 <script src="/templates/hbt.js"></script>
-<script src="/javascripts/firebase.js"></script>
 <link rel="stylesheet" href="/stylesheets/planner.css">
 
 		<section id="intro" class="bg relative">
@@ -130,13 +129,22 @@
 			</div>
 			<div class="row full-height">
 				<div class="twelve columns">
-					<h1 class="planner-msg">Task 2: <span class="quote">Save these links so you send out the collage to your friends </span></h1>
-					<div>Participation link: Share this url with your friends to invite them to collaborate on this collage: <p class="quote shareLink" id="shareLink"></p></div>
+					<h1 class="planner-msg">Task 2: Either<span class="quote">Save these links yourself so you send out the collage to your friends </span></h1>
+					<div>Participation link: Send to anyone you wish to invite them to collaborate on this collage: <p class="quote shareLink" id="shareLink"></p></div>
 					</br>
 					
 					<div>Recipient link: Send this link to recipients: <p class="quote shareLink" id="recipientLink"></p></div></br>
 					<div>Admin link: Access this link to edit or delete tiles: <p class="quote shareLink" id="adminLink"></p></div>
 					</br>
+
+					<h1 class="planner-msg">Or ...<span class="quote">enter your email address to have these links emailed to you </span></h1>
+					<div class="control-group" id="task2-val">
+				      {{!-- <label class="control-label" for="inputError">Input with error</label> --}}
+				      <input class="form-control" type="text" name="email" id="email"></input><br>  
+				    </div>
+
+
+
 					<div>Then click on button below to make the first tile.</div>
 					{{!-- <div><span class="quote">You can always hit back on your browser if you want to change your design </span> --}}
 				</div>

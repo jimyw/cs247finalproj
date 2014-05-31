@@ -16,6 +16,8 @@ var http = require('http');
 var assert = require('chai').assert;
 
 
+
+
 // Setting up server
 app.set('port', process.env.PORT || 3000); // method 1
 
@@ -48,6 +50,7 @@ app.get('/simplecam', index.simplecam);
 app.get('/picture', index.picture);
 app.get('/personalmsg', index.personalmsg);
 app.post('/postVideo', index.postVideo);
+app.post('/postEmail', index.postEmail);
 // app.get('/birthday', index.birthday)
 
 /// catch 404 and forwarding to error handler
