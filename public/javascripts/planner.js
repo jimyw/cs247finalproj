@@ -138,7 +138,7 @@ function planner() {
 		    to: receiver_email,
 		    subject: "CollageWithFriends: Your Collage", // Subject line
 		    // text: "Hello world", // plaintext body
-		    html: '<p>Hi! You have created a collage</p> <p></p> <p>You should keep this e-mail in case you want to edit the collage tiles or invite more participants later on.</p> <p>The link to invite participants for this collage is:<p> <p><a src="'+shareLink+'">'+shareLink+'</a></p> <p>Access this link to edit or delete tiles:</p> <p><a src="'+adminLink+'">Admin Link</a></p> <p>After the collage is complete, send this link to the intended recipient(s):</p> <p><a src="'+recipientLink+'">'+recipientLink+'</a></p>' // html body 
+		    html: '<p>Hi! You have created a collage</p> <p></p> <p>You should keep this e-mail in case you want to edit the collage tiles or invite more participants later on.</p> <p>The link to invite participants for this collage is:<p> <p><a href="'+shareLink+'">'+shareLink+'</a></p> <p>Access this link to edit or delete tiles:</p> <p><a href="'+adminLink+'">Admin Link</a></p> <p>After the collage is complete, send this link to the intended recipient(s):</p> <p><a href="'+recipientLink+'">'+recipientLink+'</a></p>' // html body 
 		}
 
 		if (recipient_name) mailOptions.subject+=" for "+recipient_name;	// add recipient name if there is one
