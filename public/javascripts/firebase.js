@@ -24,8 +24,8 @@ function checkIfGoogleChrome() {
 
 function initialize_page() {
   // var url_segments = document.location.href.split("/#");
-  fb_collage_id = getParameterByName('collage_id');
-  recipient_id = getParameterByName('recipient_id');
+  fb_collage_id = getParameterByName('c');
+  recipient_id = getParameterByName('r');
   isAdmin = $("#isAdmin").html();
   // console.log(url_segments);fb_tile_id
   if (fb_collage_id) {
@@ -84,7 +84,7 @@ function initialize_collage() {
 
   loadDirect = false;
 
-  window.location = '/?collage_id='+fb_collage_id+'&admin_id='+admin_id;    // redirect page
+  window.location = '/?c='+fb_collage_id+'&a='+admin_id;    // redirect page
 }
 
 // returns the list of tiles for a given collage id as JSON

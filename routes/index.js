@@ -32,9 +32,9 @@ exports.index = function(req, res) {
 	console.log('index');
 	console.log(req.query);
 	var post = req.query.post;
-	var fb_collage_id = req.query.collage_id;
-	var admin_id = req.query.admin_id;
-	var recipient_id = req.query.recipient_id;
+	var fb_collage_id = req.query.c;
+	var admin_id = req.query.a;
+	var recipient_id = req.query.r;
 	if (!post) {
 		post = 0;
 	}
@@ -172,7 +172,7 @@ exports.postVideo = function (req, res) {
 
 	tile_instance.update(json_data, function() {
 		// on complete
-		res.redirect('/?collage_id='+params.fb_collage_id+'&post=1');
+		res.redirect('/?c='+params.fb_collage_id+'&post=1');
 	});
 }
 

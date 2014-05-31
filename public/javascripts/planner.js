@@ -5,12 +5,12 @@ function planner() {
 
 
 	// create new collage  
-	fb_collage_id = 'c'+Math.random().toString(36).substring(8);
-	var shareLink = document.location.href+"?collage_id="+fb_collage_id;
-	admin_id = Math.random().toString(36).substring(7);
-	recipient_id = Math.random().toString(36).substring(7);
-	var adminLink = shareLink+"&admin_id="+admin_id;
-	var recipientLink = shareLink+"&recipient_id="+recipient_id;
+	fb_collage_id = 'x'+Math.random().toString(36).substring(2,6);
+	var shareLink = document.location.href+"?c="+fb_collage_id;
+	admin_id = Math.random().toString(36).substring(2,6);
+	recipient_id = Math.random().toString(36).substring(2,6);
+	var adminLink = shareLink+"&a="+admin_id;
+	var recipientLink = shareLink+"&r="+recipient_id;
 	
 	$("#shareLink").html(shareLink);
 	$("#adminLink").html(adminLink);

@@ -147,16 +147,16 @@
 
 						</br>
 						<h1>You are almost done!</h1>
-						<div>a. Invite your friends to collaborate on this collage by sending them this link: <p class=""><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}</a></p></div>
+						<div>a. Invite your friends to collaborate on this collage by sending them this link: <p class=""><a href="http://collagewithfriends.herokuapp.com/?c={{collage_id}}">http://collagewithfriends.herokuapp.com/?c={{collage_id}}</a></p></div>
 
 						</br>
 
-						<div>b. Send the collage to {{#if recipient_name}}{{recipient_name}} {{else}}recipients{{/if}} at <p class=""><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&amp;recipient_id={{recipient_id}}</a></p></div>
+						<div>b. Send the collage to {{#if recipient_name}}{{recipient_name}} {{else}}recipients{{/if}} at <p class=""><a href="http://collagewithfriends.herokuapp.com/?c={{collage_id}}&r={{recipient_id}}">http://collagewithfriends.herokuapp.com/?c={{collage_id}}&amp;r={{recipient_id}}</a></p></div>
 						 
 						 </br>
 
 						{{#if admin_id}}
-						<div>c. Save this admin link so you can edit or delete tiles: <p class=""><a href="http://collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&recipient_id={{recipient_id}}">collagewithfriends.herokuapp.com/?collage_id={{collage_id}}&amp;admin_id={{admin_id}}</a></p></div>
+						<div>c. Save this admin link so you can edit or delete tiles: <p class=""><a href="http://collagewithfriends.herokuapp.com/?c={{collage_id}}&a={{admin_id}}">http://collagewithfriends.herokuapp.com/?c={{collage_id}}&amp;a={{admin_id}}</a></p></div>
 						</br>
 						{{/if}}
 
