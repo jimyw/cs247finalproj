@@ -24,8 +24,8 @@ function checkIfGoogleChrome() {
 
 function initialize_page() {
   // var url_segments = document.location.href.split("/#");
-  fb_collage_id = getParameterByName('c');
-  recipient_id = getParameterByName('r');
+  fb_collage_id = getParameterByName('c') || getParameterByName('collage_id');
+  recipient_id = getParameterByName('r') || getParameterByName('recipient_id');
   isAdmin = $("#isAdmin").html();
   // console.log(url_segments);fb_tile_id
   if (fb_collage_id) {

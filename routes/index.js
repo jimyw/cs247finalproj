@@ -32,9 +32,9 @@ exports.index = function(req, res) {
 	console.log('index');
 	console.log(req.query);
 	var post = req.query.post;
-	var fb_collage_id = req.query.c;
-	var admin_id = req.query.a;
-	var recipient_id = req.query.r;
+	var fb_collage_id = req.query.c || req.query.collage_id;
+	var admin_id = req.query.a || req.query.admin_id;
+	var recipient_id = req.query.r || req.query.recipient_id;
 	if (!post) {
 		post = 0;
 	}
