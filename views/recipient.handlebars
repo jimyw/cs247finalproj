@@ -1,0 +1,97 @@
+<link href="/stylesheets/bootstrap-switch.css" rel="stylesheet">
+
+		<section id="intro" class="bg">
+{{!-- 			<div class="row">
+				<div class="small-6 columns">
+					<div class="row">
+						<h1>COLLAGE</h1>
+						<h1>WITH</h1>
+						<h1>FRIENDS</h1>
+					</div>
+					<div class="row">
+						<h3>
+							Your friends sent you a collage gift! </br><span id="emphasize">Hover over </span> a tile to see their personal messages!
+						</h3>
+					</div>
+					
+				</div>
+				<div class="small-2 columns">
+				</div>
+				<div class="small-4 columns" id="finished_collage">
+						<div id="collage_loading_msg"><h1 style="color: red; text-align: center;">Loading...</h1></div>
+						<table class="centering framed-image"> 
+							<tr id="row1">
+							</tr>
+							<tr id="row2">
+							</tr>	
+						</table>
+
+						<canvas id="canvas"></canvas>
+				</div>
+
+			</div> 
+			<div class="row" style="margin-top: 18%">
+				Like Collage With Friends? You can start your own <a class="button tiny" style="border-radius: 0px" href="http://collagewithfriends.herokuapp.com">here</a>
+			</div> --}}
+
+
+			<div class="row">
+				<div class="six columns" id="header">
+					<h1>COLLAGE</h1>
+					<h1>WITH</h1>
+					<h1>FRIENDS</h1>
+					<div class="clear"></div>
+				</div>
+				<div id="collage-msg">
+					<p class="intro_text">
+						Your friends sent you a collage gift! <span id="emphasize">Hover over </span> a tile to see their personal messages!
+					</p>
+					</br></br></br>
+					<a data-reveal-id="videoModal" class="radius button" style="display: block; background-color: #f75933; margin-left: 5%"><i class="fa fa-play-circle"></i> What is CollageWithFriends?</a>
+				</div>
+
+			</div>
+			<div id="finished_collage">
+				<div class="row">		
+					<div class="twelve columns">
+						<div id="collage_loading_msg"><h1 style="color: red; text-align: center;">Loading...</h1></div>
+						<table class="centering framed-image"> 
+							<tr id="row1">
+							</tr>
+							<tr id="row2">
+							</tr>	
+						</table>
+
+						<canvas id="canvas"></canvas>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="nav">
+				<div class="row" style="margin-top: 12px; margin-bottom: 12px; font-size: 18px;">
+					<div class="twelve columns">
+						Like Collage With Friends? You can start your own at <a href="http://collagewithfriends.herokuapp.com" style="color: #1A0DAB">collagewithfriends.herokuapp.com</a>
+					</div>
+				</div>
+			</div>
+			<div class="nav_bg">
+			</div>
+		</section>
+
+		<div id="videoModal" style="top: 0px;" class="reveal-modal large" data-reveal>
+		  <div class="flex-video">
+		  	<iframe width="560" height="315" src="//www.youtube.com/embed/hHwpd-gpapo" frameborder="0" allowfullscreen></iframe>
+		  	
+		  </div>
+
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>
+
+		<footer>
+		</footer>
+
+    {{!-- Our own javascripts --}}
+
+    <script src="/javascripts/firebase.js"></script>
+

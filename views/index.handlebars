@@ -1,19 +1,69 @@
 <link href="/stylesheets/bootstrap-switch.css" rel="stylesheet">
 
-		<section id="intro" class="bg">
+		<section id="intro" class="bg relative">
 			<div class="row">
-				<div class="six columns" id="header">
+				<div class="small-6 columns">
 					<h3>Welcome to</h3>
-					<h1>COLLAGE WITH FRIENDS</h1>
-					<div class="clear"></div>
+					<h1>COLLAGE</h1>
+					<h1>WITH</h1>
+					<h1>FRIENDS</h1>
 				</div>
-				<div class="six columns">
-					<p class="intro_text">
-						Make a fun collage with friends, attach your personal video message, and impress whomever receives it!
-					</p>
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-6 columns">
+							<img id="fullhearttemplate" src="/images/fullhearttemplate.png">
+						</div>
+						<div class="small-6 columns">
+							<img id="fullheart" src="/images/fullheart.jpg">
+						</div>
+					</div>
 				</div>
 			</div>
-			
+			<div class="row" style="margin-top: 10px;">
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-6 columns">
+							<img id="fullsmileytemplate" src="/images/fullsmiley.png">
+						</div>
+						<div class="small-6 columns">
+							<img id="fullsmiley" src="/images/fullfaces.jpg">	
+						</div>
+					</div>
+				</div>
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-4 columns">
+						</div>
+						<div class="small-8 columns">
+							<div class="row"> 
+								<h3 style="margin-top: 30px">
+									Turn a template… 
+									</br>Into a collaborative photo/video collage
+									</br>And share with your friends
+								</h3>
+							</div>
+							
+							<div class="row"></br></div>
+					{{!-- 		{{#if admin_id}}
+							{{else}}
+							<div class="row">
+								<h3 style="margin-top: 30px; font-style: normal">Hi there! You've been invited to
+									collaborate in a photo/video collage!
+								</h3>
+							</div>
+							{{/if}} --}}
+							<div class="row">
+								<a href="#task1" class="radius button smoothScroll" style="display: block">Start</a>
+							</div>
+							<div class="row">
+								<a data-reveal-id="videoModal" class="radius button" style="display: block; background-color: #f75933"><i class="fa fa-play-circle"></i> What is CollageWithFriends?</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+
 			<div class="nav">
 				<div class="row">
 					<div class="twelve columns">
@@ -27,55 +77,132 @@
 			</div>
 		</section>
 
+		<div id="videoModal" style="top: 0px;" class="reveal-modal large" data-reveal>
+		  <div class="flex-video">
+		  	<iframe width="560" height="315" src="//www.youtube.com/embed/hHwpd-gpapo" frameborder="0" allowfullscreen></iframe>
+		  </div>
+
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>
+
+
 		<section class="portfolio">
-			<div data-alert class="fixed-div alert-box alert radius" id="webcam_alert">
+			<div data-alert class="fixed-div alert-box alert radius" id="webcam_alert" style="z-index: 1">
 			  You need to enable your webcam.
 			  <a href="#" class="close">&times;</a>
 			</div>
-			<div data-alert class="fixed-div alert-box info radius hide_stuff" id="mic_alert">
+			<div data-alert class="fixed-div alert-box info radius " id="mic_alert">
 			  Also enable your microphone :)
 			  <a href="#" class="close">&times;</a>
 			</div>
 
+
+	{{!-- <a data-reveal-id="tile-delete-warning-msg">Button</a>  --}}
+    {{!-- Tile warning message, for deleting --}}
+    <div class="reveal-modal xlarge" id="tile-delete-warning-msg" data-reveal="">
+      <h2>Are you sure you want to delete your work on this tile?</h2>
+      {{!--  <div class="button close-reveal-modal" href="#" style="margin-top: 10px">Cancel</div> --}}
+       <a class="alert button close trash-confirm-btn" style="float: right; margin-top: 50px">Delete</a>
+       <a class="close-reveal-modal">×</a>
+    </div>
+
+
+    {{!-- Survey message --}}
+    <div class="reveal-modal xlarge" id="survey-msg" data-reveal="">
+      <h2>Thank you for trying out CollageWithFriends. Please help us improve our prototype by filling out a brief survey. </h2>
+      <div style="text-align:center; width:100%;">
+      <iframe src="https://docs.google.com/forms/d/1-UXZsVNCvhqJVV1OfaHWuvggZvJQfNoDxcyUO4CBnvc/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+	  </div>
+      {{!--  <div class="button close-reveal-modal" href="#" style="margin-top: 10px">Cancel</div> --}}
+       <a class="close-reveal-modal">×</a>
+    </div>
+    		<div class="row hide_stuff" id="chrome_msg"><h1 style="color: red; text-align: center;">Our prototype is only tested on Google Chrome. Please switch to Chrome for best performance. Thank you!</h1></div>
+
 			<div class="row" style="margin-top: 25px;">
 				<div class="twelve columns" id="direction">
-					<h2>{{direction}}</h2>
+					<h2 style="color: purple">{{direction}}</h2>
+				</br>
 				</div>
 			</div>
-			<a name="task1"></a>
+			
+			{{#if admin}}
+				<p class="hide_stuff" id="isAdmin">{{admin}}</p>
+			{{/if}}
 			<div class="row">
+				<a name="task1"></a>
 				<div class="twelve columns">
-					<h1 id="finish_msg" class="hide_stuff">Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. <br/>Like Collage With Friends? You can start your own at <a href="collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></h1>
-					<h1 id="task1_msg1">Task 1: Click<span class="quote" id="task1a"> on an empty tile to contribute to the collage {{#if recipient_name}}for {{recipient_name}} {{/if}}</span></h1>
+					<div id="finish_msg" class="hide_stuff">
+						<div>Thank you for trying out CollageWithFriends. Please help us improve our prototype by filling out a brief survey.</div>
+						</br>
+						<div class="row">
+							{{!-- <div class="small-2 large-4 columns" style="width: 40px">...</div> --}}
 
-					<h1 id="task1_msg2" class="hide_stuff">Task 1: Take a picture
+							<div class="large-2 large-centered columns"><a class="button" style="border-radius: 0px; padding-left: 100px; padding-right: 100px" id="reveal-link" data-reveal-id="survey-msg">Survey</a>
+							</div>
+							{{!-- <div class="small-2 large-4 columns" ></div> --}}
+						</div>
+						</br>
+
+						<h1 >Congrats! <span class="quote">You have finished a tile{{#if recipient_name}} for {{recipient_name}}&#39;s collage{{/if}}. Hover over your tile to preview. </span></h1>
+
+						</br>
+						<h1>You are almost done!</h1>
+						<div>a. Invite your friends to collaborate on this collage by sending them this link: <p class=""><a href="http://collagewithfriends.herokuapp.com/?c={{collage_id}}">http://collagewithfriends.herokuapp.com/?c={{collage_id}}</a></p></div>
+
+						</br>
+
+						<div>b. Send the collage to {{#if recipient_name}}{{recipient_name}} {{else}}recipients{{/if}} at <p class=""><a href="http://collagewithfriends.herokuapp.com/?c={{collage_id}}&r={{recipient_id}}">http://collagewithfriends.herokuapp.com/?c={{collage_id}}&amp;r={{recipient_id}}</a></p></div>
+						 
+						 </br>
+
+						{{#if admin_id}}
+						<div>c. Save this admin link so you can edit or delete tiles: <p class=""><a href="http://collagewithfriends.herokuapp.com/?c={{collage_id}}&a={{admin_id}}">http://collagewithfriends.herokuapp.com/?c={{collage_id}}&amp;a={{admin_id}}</a></p></div>
+						</br>
+						{{/if}}
+
+						{{!-- <div>Like Collage With Friends? You can start your own at <span class="quote"><a href="http://collagewithfriends.herokuapp.com">collagewithfriends.herokuapp.com</a></span></div> --}}
+
+						
+					</div>
+
+					<h1 id="task1_msg1">Task 1: <span class="quote" id="task1a"> Click on an empty tile to contribute to the collage{{#if recipient_name}} for {{recipient_name}}{{/if}}. You must also enable your webcam at the top of the browser.</span></h1>
+
+					<h1 id="task1_msg2" class="hide_stuff">Task 1: 
 						{{#if faces}}
-							<span class="quote" id="task1b"> with a funny face. </span>
+							<span class="quote task1b"> Take a picture with a funny face. 
 						{{else}} 
 							{{#if choice}}
-								<span class="quote" id="task1b"> to follow the instructions given above. </span>
+								<span class="quote task1b">Take a picture to follow the instructions given above. 
 							{{else}}
-								<span class="quote" id="task1b"> that matches the outlined shape. </span>	
+								<span class="quote task1b"> Take a picture that matches the outlined shape. 	
 							{{/if}}
 						{{/if}}
+						There is a 3-second timer once you press the camera icon</span>
 						
 					</h1>
+					<h1 id="task1_msg3" class="hide_stuff">Task 1: <span class="quote" id="task1c">Press &quot;next&quot; to continue, or the camera icon to retake the picture.</span></h1>
 				</div>
 			</div>
-			{{!-- <div class="your-clock"></div> --}}
+			
 			<div class="row">		
 				<div class="twelve columns">
-					
-					
 
 					<p id="countdown"></p>
+
 					<div id="outerbuttongrp">
-						<div class="hide_stuff" id="picstartbutton" >
-							<img id="camera_icon" src='images/camera.jpg'/>
+						<div class="hide_stuff relative" id="picstartbutton" >
+							{{!-- <div class="" ><input id="timer-checkbox" type="checkbox" name="my-checkbox" checked></div> --}}
+							<div class="your-clock"></div>
+							<div><img id="camera_icon" src='images/camera.jpg'/></div>
+							<ul class="pager">
+							  {{!-- <li class="previous hide_stuff" id="piccancelbutton"><a>Cancel</a></li> --}}
+							  <li class="next" style="dispaly: none;" id="picdonebutton"><a>Next</a></li>
+							</ul>
 						</div>
 					</div>
+
 					<div id="collage_loading_msg"><h1 style="color: red; text-align: center;">Loading...</h1></div>
-					<table class="centering"> 
+					<table class="centering" id="temp_collage"> 
 						<tr id="row1">
 						{{!-- Code is in template/tileItem.handlebars --}}
 						</tr>
@@ -86,52 +213,10 @@
 
 					<canvas id="canvas"></canvas>
 
-				<ul class="pager">
-				  <li class="previous hide_stuff" id="piccancelbutton"><a>Back</a></li>
-				  <li class="next disabled" id="picdonebutton"><a>Next</a></li>
-				</ul>
+
 				
 				<a name="task1_bottom"></a>
-					
-{{!-- 
-					<ul class="works">
-						<li>
-							<a href="yogurt.html">
-								<div class="hover">
-									<h3>YOGURT</h3>
-									<h5 class="tags"><span>UI</span><span>UX</span><span>Data-vis</span><span>Interaction</span></h5>
-								</div>
-								<img src="images/heart1.jpg"/>
-							</a>
-						</li>
-						<li>
-							<a href="mobiata.html">
-								<div class="hover">
-									<h3>MOBIATA</h3>
-									<h5 class="tags"><span>UI</span><span>UX</span><span>Mobile</span></h5>
-								</div>
-								<img src="images/heart2.jpg"/>
-							</a>
-						</li>
-						<li>
-							<a href="echorus.html">
-								<div class="hover">
-									<h3>ECHORUS</h3>
-									<h5 class="tags"><span>Ideation</span><span>UI</span><span>UX</span><span>Strategy</span></h5>
-								</div>
-								<img src="images/heart3.jpg"/>
-							</a>
-						</li>
-						<li>
-							<a href="derive.html">
-								<div class="hover">
-									<h3>DÉRIVE</h3>
-									<h5 class="tags"><span>Interaction</span><span>Web</span><span>Gesture UI</span></h5>
-								</div>
-								<img src="images/heart4.jpg"/>
-							</a>
-						</li>
-					</ul> --}}
+
 				</div>
 			</div>
 		</section>
@@ -139,40 +224,34 @@
 		
 
 
-{{!-- 		<section id="hire" class="bg">
-			<div class="row">
-				<div class="six columns offset-by-six">
-					<h1>Now please also record a personal message!</h1>
-				</div>
-			</div>
-		</section>	 --}}
-
 		<section id="vmsg" class="portfolio hide_stuff">
 			<a name="vmsg"></a>
 			<div class="row">
 				<div class="twelve columns">
-					<h1 id="task2_msg">Task 2: Great! <span class="quote">Now leave a personal video message{{#if recipient_name}} for {{recipient_name}} {{/if}}</span></h1>
+					<h1 id="task2_msg">Task 2: <span class="quote">Great! Now leave a personal video message{{#if recipient_name}} for {{recipient_name}} {{/if}}</span></h1>
 				</div>
 			</div>
 			<div class="row">
-				{{!-- <div class="direction">Don't forget to leave a personal video and/or text message :) <span class="msg" id="status"></span></div> --}}
-				<div class="centered" ><input id="privacy_checkbox" type="checkbox" name="my-checkbox" checked></div>
+				
 
-				<div class="wrapper_helper">
+				<div class="wrapper_helper relative">
 					<div class="cropper not-recording" id="record_container" ><div id="webcam_stream"></div></div>
 					<div class="cropper not-recording" id="play_container" ><div id="video_container"></div></div>
 					<div id="audio_link"></div>
 					<div class="cropper not-recording" id="stat_container" ><div id="video_link"></div></div>
 					<div id="start_recording"><img src="/images/record.jpg" id="btn_record"/><span id="videocountdown"></span></div>
-					<div id="stop_recording"><img src="/images/stop.jpg" id="btn_record2"/></div>
+					<div id="stop_recording">
+						Recording... 
+						<span>
+							<img src="/images/stop.jpg" id="btn_record2"/>
+						</span>
+					</div>
 					<div id="replay_recording"><img src="/images/replay2.png" id="btn_record3"/></div>
-				</div>
-				<p class="hide_stuff" id="finish_waiting" style="color: red; float: right;">Waiting ... </p>
-				<div>
 					<ul class="pager">
 					  <li class="previous" id="vidcancelbutton"><a>Back</a></li>
 					  <li class="next disabled" id="finish"><a>Finish</a></li>
 					</ul>
+					<p class="hide_stuff" id="finish_waiting">Saving ... </p>	
 				</div>
 
 				<div id="fb_collage_id" style="display: none;">{{fb_collage_id}}</div>
@@ -194,22 +273,23 @@
     <script src="/javascripts/firebase.js"></script>
 
     <script type="text/javascript">
-		var clock = $('.your-clock').FlipClock(10, {
-			countdown: true,
-			autoStart: false,
-			clockFace: 'MinuteCounter'
-		});
+		clock = $('.your-clock').FlipClock(3, {
+		      countdown: true,
+		      autoStart: false,
+		      clockFace: 'MinuteCounter'
+		    });
 		$(".minutes").addClass('hide_stuff');
 		$(".seconds").addClass('hide_stuff');
 		$(".minutes").next().addClass('hide_stuff');
 		$(".minutes").next().next().addClass('hide_stuff');
-		console.log('increment');
-		$("#picdonebutton").click(function(e) {
-			e.preventDefault();
-			clock.start(function() {
-			// this (optional) callback will fire each time the clock flips
-			});
-		});
+		console.log("clock");
+		console.log(clock);
+		// $("#picdonebutton").click(function(e) {
+		// 	e.preventDefault();
+		// 	clock.start(function() {
+		// 	// this (optional) callback will fire each time the clock flips
+		// 	});
+		// });
 		
 		
 	</script>

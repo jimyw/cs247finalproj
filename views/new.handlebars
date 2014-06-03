@@ -1,81 +1,74 @@
 <script src="/templates/hbt.js"></script>
-<script src="/javascripts/firebase.js"></script>
+<link rel="stylesheet" href="/stylesheets/planner.css">
 
 		<section id="intro" class="bg relative">
+			{{!-- <div class="small-12 columns">
+			<h1>COLLAGE WITH FRIENDS</h1>
+			</div> --}}
 			<div class="row">
-				<div class="six columns" id="header">
+				<div class="small-6 columns">
 					<h3>Welcome to</h3>
-					<h1>COLLAGE WITH FRIENDS</h1>
-					<div class="clear"></div>
+					<h1>COLLAGE</h1>
+					<h1>WITH</h1>
+					<h1>FRIENDS</h1>
 				</div>
-				<div class="six columns">
-					<p class="intro_text">
-						Make a fun collage with friends, attach your personal video message, and impress whomever receives it!
-					</p>
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-6 columns">
+							<img id="fullhearttemplate" src="/images/fullhearttemplate.png">
+						</div>
+						<div class="small-6 columns">
+							<img id="fullheart" src="/images/fullheart.jpg">
+						</div>
+					</div>
 				</div>
 			</div>
-{{!-- 
-			<table id="heart-example">
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/hr1.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/hr2.png"></div>
-					</td>				
-				</tr>
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/hr4.png"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/hr3.png"></div>
-					</td>				
-				</tr>
-			</table>
+			<div class="row" style="margin-top: 10px;">
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-6 columns">
+							<img id="fullsmileytemplate" src="/images/fullsmiley.png">
+						</div>
+						<div class="small-6 columns">
+							<img id="fullsmiley" src="/images/fullfaces.jpg">	
+						</div>
+					</div>
+				</div>
+				<div class="small-6 columns">
+					<div class="row">
+						<div class="small-4 columns">
+						</div>
+						<div class="small-8 columns">
+							<div class="row"> 
+								<h3 style="margin-top: 30px">
+									Turn a template… 
+									</br>Into a collaborative photo/video collage
+									</br>And share with your friends
+								</h3>
+							</div>
+							<div class="row"></br></div>
+							<div class="row">
+								<a href="#task1" class="radius button smoothScroll" style="display: block">Start your own collage</a>
+							</div>
+							<div class="row">
+								<a data-reveal-id="videoModal" class="radius button" style="display: block; background-color: #f75933"><i class="fa fa-play-circle"></i> What is CollageWithFriends?</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
 
-
-			<table id="love-example">
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/lv1.jpg"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/lv2.jpg"></div>
-					</td>				
-					<td class="thin">
-						<div class="example"><img src="/images/lv3.jpg"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/lv4.jpg"></div>
-					</td>				
-				</tr>
-			</table>
-
-
-			<table id="face-example">
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/fc1.jpg"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/fc2.jpg"></div>
-					</td>				
-				</tr>
-				<tr>
-					<td class="thin">
-						<div class="example"><img src="/images/fc3.jpg"></div>
-					</td>
-					<td class="thin">
-						<div class="example"><img src="/images/fc4.jpg"></div>
-					</td>				
-				</tr>
-			</table>				 --}}		
+	
 			<div class="nav">
 				<div class="row">
 					<div class="twelve columns">
-						<a href="#portfolio" class="smoothScroll">Start your own Collage</a>
-						<a href="#contribute" class="smoothScroll">Contribute to existing Collage</a>
+						<a href="#portfolio" class="smoothScroll"></a>
+{{!-- 						<span href="#contribute" class="smoothScroll">Contribute to existing Collage
+							<input type="text" name="existing_collage" id="existing_collage" placeholder="Enter Collage ID">
+							<button type="button" onclick="GoToCollageID()">Go!</button>
+						</span> --}}
 					</div>
 				</div>
 			</div>
@@ -91,18 +84,21 @@
 			</div>
 		</section> --}}
 
+		<div id="videoModal" style="top: 0px;" class="reveal-modal large" data-reveal>
+		  <div class="flex-video">
+		  	<iframe width="560" height="315" src="//www.youtube.com/embed/hHwpd-gpapo" frameborder="0" allowfullscreen></iframe>
+		  	
+		  </div>
+
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>
+
 		<section id="portfolio" class="relative">
 			<a name="task1"></a>
 			<div class="row full-height pad-left">
 
-				{{!-- <select class="image-picker show-labels show-html">
-				  <option data-img-label="Awww" data-img-src="http://placekitten.com/220/200" value="1">Cute Kitten 1</option>
-				  <option data-img-label="Yeah" data-img-src="http://placekitten.com/180/200" value="2">Cute Kitten 2</option>
-				  <option data-img-label="Ohai" data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
-				  <option data-img-label="Plop" data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
-				</select> --}}
+				<h1 class="planner-msg">Task 1: <span class="quote" id="task1">Choose a template for your collage. Hover over the templates for examples. </span></h1>
 
-				<h1 class="planner-msg">Task 1: <span class="quote" id="task1">Choose a template. </span></h1>
 				<select class="image-picker show-html show-label works" id="template_type">
 				  <option value=""></option>
 				  <option data-img-src="images/raw/heart.png" value="Heart">Heart</option>
@@ -112,64 +108,17 @@
 				  <option data-img-src="images/raw/faces.png" value="Faces">Faces</option>
 				  <option data-img-src="images/raw/choice.png" value="Choice">Choice</option>
 				</select>
-
-						{{!-- <ul class="works">
-							<li>
-								<div >
-									<div class="hover">
-										<h3>Heart</h3>
-									</div>
-									<img class="preview-tile" src="images/raw/heart.png"/>
-								</div>
-							</li>
-							<li>
-								<div class="preview-tile">
-									<div class="hover">
-										<h3>Star</h3>
-									</div>
-									<img src="images/raw/star.png"/>
-								</div>
-							</li>
-							<li>
-								<div class="preview-tile">
-									<div class="hover">
-										<h3>Circle</h3>
-									</div>
-									<img src="images/raw/circle.png"/>
-								</div>
-							</li>
-							<li>
-								<div class="preview-tile">
-									<div class="hover">
-										<h3>Square</h3>
-									</div>
-									<img src="images/raw/square.png"/>
-								</div>
-							</li>
-							<li>
-								<div class="preview-tile">
-									<div class="hover">
-										<h3>Faces</h3>
-									</div>
-									<img src="images/raw/circle.png"/>
-								</div>
-							</li>
-							<li>
-								<div class="preview-tile">
-									<div class="hover">
-										<h3>Your Choice</h3>
-									</div>
-									<img src="images/raw/square.png"/>
-								</div>
-							</li>
-						</ul> --}}
 			</div>
 
 
 			<div class="row full-height">
 				<div class="twelve columns">
-					<h1 class="planner-msg">Task 2: <span class="quote" id="task2-text">Write instructions for the friends you will invite to collaborate on this collage.</span></h1>
-					<textarea class="form-control" type="text" name="directions" id="directions"></textarea><br>
+					<h1 class="planner-msg">Optional: <span class="quote" id="task2-text">Write instructions for the friends you will invite to collaborate on this collage.</span></h1>
+					<div class="control-group" id="task2-val">
+				      {{!-- <label class="control-label" for="inputError">Input with error</label> --}}
+				      <textarea class="form-control" type="text" name="directions" id="directions"></textarea><br>  
+				    </div>
+					
 				</div>
 			</div>
 			<div class="row full-height">
@@ -180,18 +129,37 @@
 			</div>
 			<div class="row full-height">
 				<div class="twelve columns">
-					<h1 class="planner-msg">Task 3: <span class="quote shareLink" id="shareLink"></span></h1>
-					<div><span class="quote">Then click on button below to make the first tile.</span></div>
-					<div><span class="quote">You can always hit back on your browser if you want to change your design </span>
+					<h1 class="planner-msg">Task 2: Either<span class="quote">Save these links yourself so you send out the collage to your friends later </span></h1>
+					<div>Participation link: Invite friends to collaborate on this collage via this link: <p class="quote shareLink" id="shareLink"></p></div>
+					</br>
+					
+					<div>Recipient link: After the collage is complete, send this link to the intended recipients: <p class="quote shareLink" id="recipientLink"></p></div></br>
+
+					<div>Admin link: Access this link to edit or delete tiles: <p class="quote shareLink" id="adminLink"></p></div>
+					</br>
+
+					<h1 class="planner-msg">Or ...<span class="quote">enter your email address to have these links emailed to you </span></h1>
+					<div class="control-group" id="task2-val">
+				      {{!-- <label class="control-label" for="inputError">Input with error</label> --}}
+				      <input class="form-control" type="text" name="email" id="email"></input><br>  
+				    </div>
+
+
+
+					<div>Then click on button below to make the first tile.</div>
+					{{!-- <div><span class="quote">You can always hit back on your browser if you want to change your design </span> --}}
 				</div>
 			</div>
 			<div class="row full-height pad-left">
 					<div><input class="button" type="submit" id="make_first_tile" value="Make the first tile" style="margin-bottom: 50px; margin-top: 50px; border-radius: 0px; float: right;"></input></div>
 			</div>
+
+			
 		</section>
 
-<script src="/javascripts/planner.js"></script>
+
 <script src="/javascripts/firebase.js"></script>
+<script src="/javascripts/planner.js"></script>
 {{!-- 
 <table> 
 <tr id="row1">

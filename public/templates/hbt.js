@@ -9,7 +9,14 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n    <div class=\"edit-tile\">\n\n    </div>    \n    <div class=\"flip-container wrapper tile\" id=\"wrapper";
+  buffer += "\n    <div class=\"edit-tile\" >\n\n      <a data-reveal-id=\"tile-delete-warning-msg\"><img class = \"trash ";
+  stack1 = helpers.unless.call(depth0, (depth0 && depth0.isAdmin), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\" id=\"trash";
+  if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" src=\"/images/trash_icon.png\"/></a>  \n    </div>    \n    <div class=\"flip-container wrapper tile\" id=\"wrapper";
   if (helper = helpers.fb_tile_id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -30,12 +37,18 @@ function program1(depth0,data) {
   else { helper = (depth0 && depth0.fb_tile_id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "\">\n                  ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.is_public), {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.is_public), {hash:{},inverse:self.program(6, program6, data),fn:self.program(4, program4, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "    \n                </div>  \n              \n                \n            </div>\n          \n        </div>\n      </div>\n\n    ";
   return buffer;
   }
 function program2(depth0,data) {
+  
+  
+  return "hide_stuff";
+  }
+
+function program4(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n                    <audio id=\"audio";
@@ -58,7 +71,7 @@ function program2(depth0,data) {
   return buffer;
   }
 
-function program4(depth0,data) {
+function program6(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n                    <img id=\"lock_";
@@ -69,7 +82,7 @@ function program4(depth0,data) {
   return buffer;
   }
 
-function program6(depth0,data) {
+function program8(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n      <div class=\"wrapper tile\" id=\"";
@@ -89,7 +102,7 @@ function program6(depth0,data) {
   }
 
   buffer += "\n  <td class=\"template_art relative\">\n\n    ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.filled), {hash:{},inverse:self.program(6, program6, data),fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.filled), {hash:{},inverse:self.program(8, program8, data),fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n  </td>";
   return buffer;

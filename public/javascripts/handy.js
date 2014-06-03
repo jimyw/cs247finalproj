@@ -16,26 +16,25 @@ function includeHandlebarsTemplate(partial, wrapper, inner_item, data, append_id
 }
 
 // get firebase tile instance
-function getTileInstance(fb, fb_collage_id, fb_tile_id) {
-	return fb.child(fb_collage_id).child('Tile').child(fb_tile_id);
+function getTileInstance(fb_db, collage_id, tile_id) {
+	return fb_db.child(collage_id).child('Tile').child(tile_id);
 }
 
 // update firebase with new tile
-function updateTile(fb, fb_collage_id, fb_tile_id, json_data, onComplete) {
+function updateTile(fb_db, collage_id, tile_id, jsondata, onComplete) {
   console.log('updateTile');
-  console.log(fb.child(fb_collage_id));
-  var tile_instance = getTileInstance(fb, fb_collage_id, fb_tile_id);
+  var tile_instance = getTileInstance(fb_db, collage_id, tile_id);
   console.log(tile_instance);
-  tile_instance.update(json_data, onComplete);
+  tile_instance.update(jsondata, onComplete);
 }
 
 // function onComplete() {
 // 	console.log('update complete')
 // }
 
-function getTilePhoto(fb, fb_collage_id, fb_tile_id) {
+function getTilePhoto(fb_db, collage_id, tile_id) {
   console.log('getTilePhoto');
-  var tile_instance = getTileInstance(fb, fb_collage_id, fb_tile_id) ;
+  var tile_instance = getTileInstance(fb_db, collage_id, tile_id) ;
   console.log(tile_instance);
   tile_instance.once('value', function(snap) {
   	console.log('tile_instance');
@@ -49,40 +48,39 @@ function getTilePhoto(fb, fb_collage_id, fb_tile_id) {
   });
 }
 
-
 function datauri_to_blob(dataURI,callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', dataURI, true);
-    xhr.responseType = 'blob';
-    xhr.onload = function(e) {
-      if (this.status == 200) {
-        callback(this.response);
-      }
-    };
-    xhr.send();
-  }
-
-  var blob_to_base64 = function(blob, callback) {
-    var reader = new FileReader();
-    reader.onload = function() {
-      var dataUrl = reader.result;
-      var base64 = dataUrl.split(',')[1];
-      callback(base64);
-    };
-    reader.readAsDataURL(blob);
-  };
-
-  var base64_to_blob = function(base64) {
-    var binary = atob(base64);
-    var len = binary.length;
-    var buffer = new ArrayBuffer(len);
-    var view = new Uint8Array(buffer);
-    for (var i = 0; i < len; i++) {
-      view[i] = binary.charCodeAt(i);
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', dataURI, true);
+  xhr.responseType = 'blob';
+  xhr.onload = function(e) {
+    if (this.status == 200) {
+      callback(this.response);
     }
-    var blob = new Blob([view]);
-    return blob;
   };
+  xhr.send();
+}
+
+var blob_to_base64 = function(blob, callback) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    var dataUrl = reader.result;
+    var base64 = dataUrl.split(',')[1];
+    callback(base64);
+  };
+  reader.readAsDataURL(blob);
+};
+
+var base64_to_blob = function(base64) {
+  var binary = atob(base64);
+  var len = binary.length;
+  var buffer = new ArrayBuffer(len);
+  var view = new Uint8Array(buffer);
+  for (var i = 0; i < len; i++) {
+    view[i] = binary.charCodeAt(i);
+  }
+  var blob = new Blob([view]);
+  return blob;
+};
 
 
 function playVideo(tileId) {

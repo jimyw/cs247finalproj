@@ -21,7 +21,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: Arial;
+	font-family: Source Sans Pro;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -67,11 +67,12 @@ body{
 
 /* Intro section */
 #intro{
-	background: url(/images/index_bg.jpg) no-repeat fixed;
+	background: url(/images/index_bg_opt.jpg) no-repeat fixed;
 	width: 100%;
 	background-size: auto 100%;	
 	color: white;
-	padding-top: 14%;
+	padding-top: 5%;
+	overflow: hidden;
 }
 
 #intro h1{
@@ -145,16 +146,16 @@ body{
 .portfolio h1{
 	font-family: Cassannet;
 	font-size: 40px;
-	line-height: 60px;
+	/*line-height: 60px;*/
 	opacity: 0.9;
 	color: #555;
 }
 
-span.quote{
+span.quote, p.quote{
 	font-family: 'Source Sans Pro';
-	font-size: 18px;
+	font-size: 24px;
 	font-style: italic;
-	line-height: 36px;
+	/*line-height: 36px;*/
 	opacity: 0.8;
 	color: #555;
 	padding-left: 10px;
@@ -189,7 +190,7 @@ ul.works img{
 	height: 100%;
 	width: 100%;
 	background-color: white;
-	opacity: 0.9;
+	/*opacity: 0.9;*/
 	display: none;
 	text-align: center;
 }

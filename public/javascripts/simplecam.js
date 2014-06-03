@@ -1,5 +1,3 @@
-
-
 // passes the JQuery object of the tile Clicked
 function simpleCam() {
   var td_height = $("td").height();
@@ -39,11 +37,6 @@ function simpleCam() {
       width = td_width;
       height = td_height;
 
-  console.log('initial')
-  console.log(video);
-  console.log('photo: ')
-  console.log(photo)
-
   var data;
 
   // playing the video
@@ -69,7 +62,7 @@ function simpleCam() {
   }, false);
 
   function takepicture() {
-    // setTimeout(takepicture(), 3000);
+    $("#"+fb_tile_id).removeClass('picrecording');
 
       $("#photo").addClass('flipping');
       console.log('takepicture')
@@ -91,7 +84,11 @@ function simpleCam() {
       photo.removeClass('hide_stuff');
       photo.removeClass('overlay');
       videowrapper.addClass('hide_stuff');
-      donebutton.removeClass('disabled');
+      $('#videowrapper').parent().removeClass('border');
+      //donebutton.removeClass('disabled');
+      donebutton.show();
+      $("#task1_msg2").addClass('hide_stuff');
+      $("#task1_msg3").removeClass('hide_stuff');
       // donebutton.className = "next";  // removes 'disabled'
   }
 
@@ -130,8 +127,25 @@ function simpleCam() {
 
       photo.addClass('hide_stuff');
       videowrapper.removeClass('hide_stuff');
-      showCountDown();
-      setTimeout(takepicture, 3000);
+
+      // 3 second timer
+      clock.setTime(3);
+
+      $("#"+fb_tile_id).addClass('picrecording');
+
+
+      clock.start(function() {
+      // this (optional) callback will fire each time the clock flips
+      });
+      setTimeout(takepicture, 5000);  // flipclock has 2 sec lag
+
+
+      // if ($('#timer-checkbox').is(":checked")) {
+      // } else {
+      //   // 10 second timer
+      //   showCountDown();
+        
+      // }
     } else {
       status.html("Enable the webcam to take a picture :)");
       status.addClass("yellow");
@@ -146,14 +160,14 @@ function simpleCam() {
       if (!donebutton.hasClass('disabled')) {
         $("#vmsg").removeClass('hide_stuff');
         // ga('send', 'event', 'button', 'click', 'done photo');
-        console.log("Done taking photo");
+        //console.log("Done taking photo");
 
 
         
 
        scrollToAnchor('vmsg');
 
-
+       $('#webcam_stream').children().eq(0).addClass('flipping');
 
 
         // $.ajax({

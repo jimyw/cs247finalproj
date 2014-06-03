@@ -299,7 +299,12 @@
       text = jQuery("<p class='template-text'>" + text + "</p>");
 
       // hacked here
-      hover = '<div class="hover"> <table class="example"> <tr> <td class="thin"> <div class="example"><img src="/images/' + value + '1.png"></div> </td> <td class="thin"> <div class="example"><img src="/images/' + value + '2.png"></div> </td> </tr> <tr> <td class="thin"> <div class="example"><img src="/images/' + value + '3.png"></div> </td> <td class="thin"> <div class="example"><img src="/images/' + value + '4.png"></div> </td> </tr> </table> </div>'; thumbnail.append(hover);
+      if (value == "Star") {
+        hover = '<div class="hover"> <div class=""><img src="/images/starexample.png"></div> </div>'; 
+      } else {
+         hover = '<div class="hover"> <table class="example"> <tr> <td class="thin"> <div class="example"><img src="/images/' + value + '1.png"></div> </td> <td class="thin"> <div class="example"><img src="/images/' + value + '2.png"></div> </td> </tr> <tr> <td class="thin"> <div class="example"><img src="/images/' + value + '3.png"></div> </td> <td class="thin"> <div class="example"><img src="/images/' + value + '4.png"></div> </td> </tr> </table> </div>'; 
+      }
+      thumbnail.append(hover);
       thumbnail.append(image);
       thumbnail.append(text);
       //

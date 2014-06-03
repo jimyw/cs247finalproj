@@ -19,7 +19,9 @@
     "mocha": "*",
     "chai": "*",
     "sinon": "*",
-    "supervisor": "*"
+    "supervisor": "*",
+    "nodemailer": "^0.6.5",
+    "dotenv": "^0.2.8"
   },
   "devDependencies": {
     "grunt": "^0.4.4",

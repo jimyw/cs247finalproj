@@ -2,8 +2,9 @@
   <td class="template_art relative">
 
     {{#if filled}}
-    <div class="edit-tile">
-
+    <div class="edit-tile" >
+{{!--       <img class="edit hide_stuff" id="edit{{fb_tile_id}}" src="/images/edit_icon.png"/> --}}
+      <a data-reveal-id="tile-delete-warning-msg"><img class = "trash {{#unless isAdmin}}hide_stuff{{/unless}}" id="trash{{fb_tile_id}}" src="/images/trash_icon.png"/></a>  
     </div>    
     <div class="flip-container wrapper tile" id="wrapper{{fb_tile_id}}" ontouchstart="this.classList.toggle('hover');">
         <div class="flipper">

@@ -18,8 +18,9 @@ function getVideo() {
       },
       function(stream) {
         video_ready += 1;
+        video_clicked += 1;
         $("#webcam_alert").addClass("hide_stuff");
-        $("#mic_alert").removeClass("hide_stuff");
+        // $("#mic_alert").removeClass("hide_stuff");
         video_stream_saved = stream;
         console.log('video_ready');
         // if (navigator.mozGetUserMedia) { 
@@ -29,10 +30,11 @@ function getVideo() {
         //   video.src = vendorURL.createObjectURL(stream);
         // }
         // video.play();
-
+        
         setUpVideo(); // in personalmsg
       },
       function(err) {
+        video_clicked += 1;
         console.log("An error occured! " + err);
       }
   );
@@ -41,10 +43,12 @@ function getVideo() {
 function getAudio() {
   navigator.getMedia({audio: true}, function(mediaStream) {
     audio_ready += 1;
+    audio_clicked += 1;
     $("#mic_alert").addClass("hide_stuff");
     audio_stream_saved = mediaStream;
     setUpAudio(); // in personalmsg
     },function(failure){
+        audio_clicked += 1;
         console.log(failure);
   });
 }
