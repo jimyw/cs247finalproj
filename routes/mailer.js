@@ -16,6 +16,7 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 module.exports = function(mailOptions) {
     // mailOptions.from = "Collage With Friends <collagewithfriends@hotmail.com>", // sender address
     mailOptions.from = process.env.EMAIL_FULL;
+    console.log(process.env.EMAIL_FULL);
     console.log('hello!')
 
     // send mail with defined transport object

@@ -49,38 +49,38 @@ function getTilePhoto(fb_db, collage_id, tile_id) {
 }
 
 function datauri_to_blob(dataURI,callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', dataURI, true);
-    xhr.responseType = 'blob';
-    xhr.onload = function(e) {
-      if (this.status == 200) {
-        callback(this.response);
-      }
-    };
-    xhr.send();
-  }
-
-  var blob_to_base64 = function(blob, callback) {
-    var reader = new FileReader();
-    reader.onload = function() {
-      var dataUrl = reader.result;
-      var base64 = dataUrl.split(',')[1];
-      callback(base64);
-    };
-    reader.readAsDataURL(blob);
-  };
-
-  var base64_to_blob = function(base64) {
-    var binary = atob(base64);
-    var len = binary.length;
-    var buffer = new ArrayBuffer(len);
-    var view = new Uint8Array(buffer);
-    for (var i = 0; i < len; i++) {
-      view[i] = binary.charCodeAt(i);
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', dataURI, true);
+  xhr.responseType = 'blob';
+  xhr.onload = function(e) {
+    if (this.status == 200) {
+      callback(this.response);
     }
-    var blob = new Blob([view]);
-    return blob;
   };
+  xhr.send();
+}
+
+var blob_to_base64 = function(blob, callback) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    var dataUrl = reader.result;
+    var base64 = dataUrl.split(',')[1];
+    callback(base64);
+  };
+  reader.readAsDataURL(blob);
+};
+
+var base64_to_blob = function(base64) {
+  var binary = atob(base64);
+  var len = binary.length;
+  var buffer = new ArrayBuffer(len);
+  var view = new Uint8Array(buffer);
+  for (var i = 0; i < len; i++) {
+    view[i] = binary.charCodeAt(i);
+  }
+  var blob = new Blob([view]);
+  return blob;
+};
 
 
 function playVideo(tileId) {

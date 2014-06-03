@@ -2,8 +2,6 @@ var Firebase = require('firebase');
 var fb_link = "https://jjdcs247p4.firebaseio.com/Collage";
 var mailer = require('./mailer');	// returns a function. Send mail by mailer(mailOptions) and pass in mailOptions
 
-
-
 // mailer(mailOptions);
 
 // check if instance exist
