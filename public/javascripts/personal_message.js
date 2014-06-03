@@ -215,7 +215,7 @@ function setUpAudio() {
       $("#btn_record").show();
       $("#start_recording").show();
       $("#replay_recording").show();
-      $("#finish").removeClass('disabled');
+      $("#finish").removeClass('hide_stuff');
     });
 
     $("#replay_recording").click(function (){
