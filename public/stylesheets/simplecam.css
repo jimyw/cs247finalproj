@@ -47,15 +47,15 @@ canvas {
 	/*position: absolute;*/
 	position: relative;
 	left: 0px;
-	width: 160px;
-	height: 160px;
+	width: 240px;
+	height: 240px;
 	border: 0px;
 	overflow: hidden;
 }
 
 #videowrapper video{
-	width: 213px;
-	height: 160px;
+	width: 320px;
+	height: 240px;
 }
 
 .border {
@@ -69,8 +69,8 @@ canvas {
 }
 
 .stretch {
-	width: 210px;
-	height: 160px;
+	width: 320px;
+	height: 240px;
 }
 
 .tile .stretch {
@@ -258,8 +258,8 @@ canvas {
 }
 
 .crop, td .tile {
-	width: 160px;
-	height:160px;
+	width: 240px;
+	height:240px;
 	overflow: hidden;
 }
 
@@ -370,7 +370,7 @@ canvas {
 
 
 .videoMSG {
-	height: 160px;
+	height: 240px;
 }
 
 .textMSG {
@@ -381,8 +381,8 @@ canvas {
 
 .wrapper {
 	position: relative;
-	width: 160px;
-	height:160px;
+	width: 240px;
+	height:240px;
 }
 
 .wrapper img {
@@ -541,8 +541,8 @@ canvas {
 	z-index: 4;
 	top: 0px;
 	left: 0px;
-	width: 160px;
-	height: 160px;
+	width: 240px;
+	height: 240px;
 }
 
 #intro-txt {
@@ -615,8 +615,8 @@ canvas {
 
 #finished_collage {
 	position: absolute;
-	top: 150px;
-	right: 15%;
+	top: 70px;
+	right: 8%;
 }
 
 .like_msg{
@@ -640,7 +640,7 @@ border-style:solid;
 }
 
 #temp_collage {
-	margin-bottom: 10%;
+	margin-bottom: 4%;
 }
 
 #vidcancelbutton {
